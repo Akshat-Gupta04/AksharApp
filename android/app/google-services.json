@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "3885247249",
+    "project_id": "akshar-409f0",
+    "storage_bucket": "akshar-409f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3885247249:android:1b1bd1543ccf9d57f7fab0",
+        "android_client_info": {
+          "package_name": "com.mycompany.akshar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNtSTs5QNfgA6i42CvZvEpeHYsLpEZkbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
