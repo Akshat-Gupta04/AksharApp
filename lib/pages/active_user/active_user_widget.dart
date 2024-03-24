@@ -51,17 +51,7 @@ class _ActiveUserWidgetState extends State<ActiveUserWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                FlutterFlowTheme.of(context).accent3,
-                FlutterFlowTheme.of(context).accent1
-              ],
-              stops: const [0.0, 1.0],
-              begin: const AlignmentDirectional(0.0, -1.0),
-              end: const AlignmentDirectional(0, 1.0),
-            ),
-          ),
+          decoration: const BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -295,49 +285,13 @@ class _ActiveUserWidgetState extends State<ActiveUserWidget> {
                                                   listViewUsersRecord.photoUrl,
                                               messageSeen: false,
                                             ));
-
-                                        context.pushNamed(
-                                          'chats',
-                                          queryParameters: {
-                                            'userName': serializeParam(
-                                              listViewUsersRecord.displayName,
-                                              ParamType.String,
-                                            ),
-                                            'userEmail': serializeParam(
-                                              listViewUsersRecord.email,
-                                              ParamType.String,
-                                            ),
-                                            'chatUser': serializeParam(
-                                              containerChatsRecord?.reference,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'userRef': serializeParam(
-                                              currentUserReference,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'userProfile': serializeParam(
-                                              listViewUsersRecord.photoUrl,
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
                                       },
                                       child: Container(
                                         width: 100.0,
                                         height: 100.0,
                                         decoration: BoxDecoration(
-                                          gradient: LinearGradient(
-                                            colors: [
-                                              FlutterFlowTheme.of(context)
-                                                  .accent3,
-                                              FlutterFlowTheme.of(context)
-                                                  .accent1
-                                            ],
-                                            stops: const [0.0, 1.0],
-                                            begin:
-                                                const AlignmentDirectional(0.0, -1.0),
-                                            end: const AlignmentDirectional(0, 1.0),
-                                          ),
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
                                           borderRadius:
                                               BorderRadius.circular(16.0),
                                           border: Border.all(
@@ -516,15 +470,8 @@ class _ActiveUserWidgetState extends State<ActiveUserWidget> {
                                     width: 100.0,
                                     height: 100.0,
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          FlutterFlowTheme.of(context).accent3,
-                                          FlutterFlowTheme.of(context).accent1
-                                        ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
-                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       borderRadius: BorderRadius.circular(16.0),
                                       border: Border.all(
                                         color: FlutterFlowTheme.of(context)

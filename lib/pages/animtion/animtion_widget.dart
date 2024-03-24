@@ -44,7 +44,7 @@ class _AnimtionWidgetState extends State<AnimtionWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 4000));
 
-      context.pushNamed('AuthentificationCopy');
+      context.pushNamed('login');
     });
   }
 
@@ -87,7 +87,7 @@ class _AnimtionWidgetState extends State<AnimtionWidget>
                   'assets/images/logo.jpg',
                   width: double.infinity,
                   height: double.infinity,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ).animateOnPageLoad(animationsMap['imageOnPageLoadAnimation']!),
             ),

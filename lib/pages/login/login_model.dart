@@ -1,25 +1,20 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'authentification_copy_widget.dart' show AuthentificationCopyWidget;
+import 'login_widget.dart' show LoginWidget;
 import 'package:flutter/material.dart';
 
-class AuthentificationCopyModel
-    extends FlutterFlowModel<AuthentificationCopyWidget> {
+class LoginModel extends FlutterFlowModel<LoginWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for NAME widget.
-  FocusNode? nameFocusNode;
-  TextEditingController? nameController;
-  String? Function(BuildContext, String?)? nameControllerValidator;
-  // State field(s) for Password widget.
+  // State field(s) for emailAddress widget.
+  FocusNode? emailAddressFocusNode;
+  TextEditingController? emailAddressController;
+  String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
-  // State field(s) for email widget.
-  FocusNode? emailFocusNode;
-  TextEditingController? emailController;
-  String? Function(BuildContext, String?)? emailControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -31,14 +26,11 @@ class AuthentificationCopyModel
   @override
   void dispose() {
     unfocusNode.dispose();
-    nameFocusNode?.dispose();
-    nameController?.dispose();
+    emailAddressFocusNode?.dispose();
+    emailAddressController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordController?.dispose();
-
-    emailFocusNode?.dispose();
-    emailController?.dispose();
   }
 
   /// Action blocks are added here.

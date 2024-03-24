@@ -12,7 +12,20 @@
           "package_name": "com.mycompany.akshar"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "3885247249-smmknnrimis5ok3hdogreslnvj7ia82h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.akshar",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "3885247249-909ujj1k766ltpi1nakhjkteoi4l31a9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBNtSTs5QNfgA6i42CvZvEpeHYsLpEZkbc"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3885247249-909ujj1k766ltpi1nakhjkteoi4l31a9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "3885247249-pjrqkenqkhl9hqjejpj3iu0haoofrl2k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.akshar"
+              }
+            }
+          ]
         }
       }
     }

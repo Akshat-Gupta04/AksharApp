@@ -2,8 +2,10 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/pages/primary_language/primary_language_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -23,6 +25,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (!(valueOrDefault(currentUserDocument?.primaryLang, '') != '')) {
+        await showModalBottomSheet(
+          isScrollControlled: true,
+          backgroundColor: const Color(0xFFB4ADAD),
+          enableDrag: false,
+          context: context,
+          builder: (context) {
+            return GestureDetector(
+              onTap: () => _model.unfocusNode.canRequestFocus
+                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                  : FocusScope.of(context).unfocus(),
+              child: Padding(
+                padding: MediaQuery.viewInsetsOf(context),
+                child: const PrimaryLanguageWidget(),
+              ),
+            );
+          },
+        ).then((value) => safeSetState(() {}));
+      }
+    });
 
     _model.searchController ??= TextEditingController();
     _model.searchFocusNode ??= FocusNode();
@@ -79,39 +104,36 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                         ),
                       ),
-                      AuthUserStreamWidget(
-                        builder: (context) => InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(
-                              'Setting',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType:
-                                      PageTransitionType.rightToLeft,
-                                ),
-                              },
-                            );
-                          },
-                          child: Container(
-                            width: 42.0,
-                            height: 42.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: Image.network(
-                                  currentUserPhoto,
-                                ).image,
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('Setting');
+                        },
+                        child: Container(
+                          width: 42.0,
+                          height: 42.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          child: AuthUserStreamWidget(
+                            builder: (context) => Container(
+                              width: 42.0,
+                              height: 42.0,
+                              clipBehavior: Clip.antiAlias,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
                               ),
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                width: 2.0,
+                              child: Image.network(
+                                currentUserPhoto,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -343,6 +365,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           ),
                                         ),
                                       ),
+                                    ),
+                                    Text(
+                                      rowUsersRecord.displayName,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 12.0,
+                                          ),
                                     ),
                                   ],
                                 ),

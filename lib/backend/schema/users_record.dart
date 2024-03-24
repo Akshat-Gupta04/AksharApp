@@ -45,6 +45,16 @@ class UsersRecord extends FirestoreRecord {
   String get phoneNumber => _phoneNumber ?? '';
   bool hasPhoneNumber() => _phoneNumber != null;
 
+  // "Primary_Lang" field.
+  String? _primaryLang;
+  String get primaryLang => _primaryLang ?? '';
+  bool hasPrimaryLang() => _primaryLang != null;
+
+  // "Secondary_Lang" field.
+  String? _secondaryLang;
+  String get secondaryLang => _secondaryLang ?? '';
+  bool hasSecondaryLang() => _secondaryLang != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -52,6 +62,8 @@ class UsersRecord extends FirestoreRecord {
     _uid = snapshotData['uid'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _phoneNumber = snapshotData['phone_number'] as String?;
+    _primaryLang = snapshotData['Primary_Lang'] as String?;
+    _secondaryLang = snapshotData['Secondary_Lang'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -94,6 +106,8 @@ Map<String, dynamic> createUsersRecordData({
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
+  String? primaryLang,
+  String? secondaryLang,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -103,6 +117,8 @@ Map<String, dynamic> createUsersRecordData({
       'uid': uid,
       'created_time': createdTime,
       'phone_number': phoneNumber,
+      'Primary_Lang': primaryLang,
+      'Secondary_Lang': secondaryLang,
     }.withoutNulls,
   );
 
@@ -119,7 +135,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.photoUrl == e2?.photoUrl &&
         e1?.uid == e2?.uid &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.phoneNumber == e2?.phoneNumber;
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.primaryLang == e2?.primaryLang &&
+        e1?.secondaryLang == e2?.secondaryLang;
   }
 
   @override
@@ -129,7 +147,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.photoUrl,
         e?.uid,
         e?.createdTime,
-        e?.phoneNumber
+        e?.phoneNumber,
+        e?.primaryLang,
+        e?.secondaryLang
       ]);
 
   @override

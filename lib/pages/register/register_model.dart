@@ -1,16 +1,20 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'authentification_widget.dart' show AuthentificationWidget;
+import 'register_widget.dart' show RegisterWidget;
 import 'package:flutter/material.dart';
 
-class AuthentificationModel extends FlutterFlowModel<AuthentificationWidget> {
+class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for email widget.
-  FocusNode? emailFocusNode;
-  TextEditingController? emailController;
-  String? Function(BuildContext, String?)? emailControllerValidator;
-  // State field(s) for Password widget.
+  // State field(s) for name widget.
+  FocusNode? nameFocusNode;
+  TextEditingController? nameController;
+  String? Function(BuildContext, String?)? nameControllerValidator;
+  // State field(s) for emailAddress widget.
+  FocusNode? emailAddressFocusNode;
+  TextEditingController? emailAddressController;
+  String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordController;
   late bool passwordVisibility;
@@ -26,8 +30,11 @@ class AuthentificationModel extends FlutterFlowModel<AuthentificationWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    emailFocusNode?.dispose();
-    emailController?.dispose();
+    nameFocusNode?.dispose();
+    nameController?.dispose();
+
+    emailAddressFocusNode?.dispose();
+    emailAddressController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordController?.dispose();

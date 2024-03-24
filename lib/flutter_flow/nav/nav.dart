@@ -111,19 +111,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const SettingWidget(),
         ),
         FFRoute(
-          name: 'Authentification',
-          path: '/authentification',
-          builder: (context, params) => const AuthentificationWidget(),
-        ),
-        FFRoute(
-          name: 'AuthentificationCopy',
-          path: '/authentificationCopy',
-          builder: (context, params) => const AuthentificationCopyWidget(),
-        ),
-        FFRoute(
           name: 'animtion',
           path: '/animtion',
           builder: (context, params) => const AnimtionWidget(),
+        ),
+        FFRoute(
+          name: 'login',
+          path: '/login',
+          builder: (context, params) => const LoginWidget(),
+        ),
+        FFRoute(
+          name: 'Register',
+          path: '/register',
+          builder: (context, params) => const RegisterWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
