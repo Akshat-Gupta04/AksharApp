@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -86,9 +87,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
-          name: 'activeUser',
-          path: '/activeUser',
-          builder: (context, params) => ActiveUserWidget(
+          name: 'RecentUser',
+          path: '/recentUser',
+          builder: (context, params) => RecentUserWidget(
             search: params.getParam('search', ParamType.String),
           ),
         ),
@@ -124,8 +125,60 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Register',
           path: '/register',
           builder: (context, params) => const RegisterWidget(),
+        ),
+        FFRoute(
+          name: 'start_Animation',
+          path: '/startAnimation',
+          builder: (context, params) => const StartAnimationWidget(),
+        ),
+        FFRoute(
+          name: 'assistantAi',
+          path: '/assistantAi',
+          builder: (context, params) => const AssistantAiWidget(),
+        ),
+        FFRoute(
+          name: 'chat_interface',
+          path: '/chatInterface',
+          asyncParams: {
+            'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
+          },
+          builder: (context, params) => ChatInterfaceWidget(
+            chatRef: params.getParam('chatRef', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'chat_addUser',
+          path: '/chatAddUser',
+          asyncParams: {
+            'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
+          },
+          builder: (context, params) => ChatAddUserWidget(
+            chatRef: params.getParam('chatRef', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'image_Details',
+          path: '/imageDetails',
+          asyncParams: {
+            'chatMessage':
+                getDoc(['chat_messages'], ChatMessagesRecord.fromSnapshot),
+          },
+          builder: (context, params) => ImageDetailsWidget(
+            chatMessage: params.getParam('chatMessage', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'PrimaryLangSelect',
+          path: '/primaryLangSelect',
+          builder: (context, params) => const PrimaryLangSelectWidget(),
+        ),
+        FFRoute(
+          name: 'SecondaryLangSelect',
+          path: '/secondaryLangSelect',
+          builder: (context, params) => const SecondaryLangSelectWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {

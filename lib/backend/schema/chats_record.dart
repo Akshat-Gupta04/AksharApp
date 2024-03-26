@@ -6,6 +6,7 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class ChatsRecord extends FirestoreRecord {
   ChatsRecord._(
@@ -50,6 +51,32 @@ class ChatsRecord extends FirestoreRecord {
   bool get messageSeen => _messageSeen ?? false;
   bool hasMessageSeen() => _messageSeen != null;
 
+  // "users" field.
+  List<DocumentReference>? _users;
+  List<DocumentReference> get users => _users ?? const [];
+  bool hasUsers() => _users != null;
+
+  // "last_message_time" field.
+  DateTime? _lastMessageTime;
+  DateTime? get lastMessageTime => _lastMessageTime;
+  bool hasLastMessageTime() => _lastMessageTime != null;
+
+  // "last_message_sent_by" field.
+  DocumentReference? _lastMessageSentBy;
+  DocumentReference? get lastMessageSentBy => _lastMessageSentBy;
+  bool hasLastMessageSentBy() => _lastMessageSentBy != null;
+
+  // "last_message_seen_by" field.
+  List<DocumentReference>? _lastMessageSeenBy;
+  List<DocumentReference> get lastMessageSeenBy =>
+      _lastMessageSeenBy ?? const [];
+  bool hasLastMessageSeenBy() => _lastMessageSeenBy != null;
+
+  // "group_chat_id" field.
+  int? _groupChatId;
+  int get groupChatId => _groupChatId ?? 0;
+  bool hasGroupChatId() => _groupChatId != null;
+
   void _initializeFields() {
     _user = snapshotData['user'] as DocumentReference?;
     _userA = snapshotData['user_a'] as DocumentReference?;
@@ -58,6 +85,12 @@ class ChatsRecord extends FirestoreRecord {
     _lastMessTime = snapshotData['last_mess_time'] as DateTime?;
     _image = snapshotData['image'] as String?;
     _messageSeen = snapshotData['message_seen'] as bool?;
+    _users = getDataList(snapshotData['users']);
+    _lastMessageTime = snapshotData['last_message_time'] as DateTime?;
+    _lastMessageSentBy =
+        snapshotData['last_message_sent_by'] as DocumentReference?;
+    _lastMessageSeenBy = getDataList(snapshotData['last_message_seen_by']);
+    _groupChatId = castToType<int>(snapshotData['group_chat_id']);
   }
 
   static CollectionReference get collection =>
@@ -101,6 +134,9 @@ Map<String, dynamic> createChatsRecordData({
   DateTime? lastMessTime,
   String? image,
   bool? messageSeen,
+  DateTime? lastMessageTime,
+  DocumentReference? lastMessageSentBy,
+  int? groupChatId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -111,6 +147,9 @@ Map<String, dynamic> createChatsRecordData({
       'last_mess_time': lastMessTime,
       'image': image,
       'message_seen': messageSeen,
+      'last_message_time': lastMessageTime,
+      'last_message_sent_by': lastMessageSentBy,
+      'group_chat_id': groupChatId,
     }.withoutNulls,
   );
 
@@ -122,13 +161,19 @@ class ChatsRecordDocumentEquality implements Equality<ChatsRecord> {
 
   @override
   bool equals(ChatsRecord? e1, ChatsRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.user == e2?.user &&
         e1?.userA == e2?.userA &&
         e1?.userB == e2?.userB &&
         e1?.lastMessage == e2?.lastMessage &&
         e1?.lastMessTime == e2?.lastMessTime &&
         e1?.image == e2?.image &&
-        e1?.messageSeen == e2?.messageSeen;
+        e1?.messageSeen == e2?.messageSeen &&
+        listEquality.equals(e1?.users, e2?.users) &&
+        e1?.lastMessageTime == e2?.lastMessageTime &&
+        e1?.lastMessageSentBy == e2?.lastMessageSentBy &&
+        listEquality.equals(e1?.lastMessageSeenBy, e2?.lastMessageSeenBy) &&
+        e1?.groupChatId == e2?.groupChatId;
   }
 
   @override
@@ -139,7 +184,12 @@ class ChatsRecordDocumentEquality implements Equality<ChatsRecord> {
         e?.lastMessage,
         e?.lastMessTime,
         e?.image,
-        e?.messageSeen
+        e?.messageSeen,
+        e?.users,
+        e?.lastMessageTime,
+        e?.lastMessageSentBy,
+        e?.lastMessageSeenBy,
+        e?.groupChatId
       ]);
 
   @override

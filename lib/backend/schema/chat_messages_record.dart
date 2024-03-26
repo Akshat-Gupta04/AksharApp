@@ -40,12 +40,24 @@ class ChatMessagesRecord extends FirestoreRecord {
   DocumentReference? get chatUser => _chatUser;
   bool hasChatUser() => _chatUser != null;
 
+  // "chat" field.
+  DocumentReference? _chat;
+  DocumentReference? get chat => _chat;
+  bool hasChat() => _chat != null;
+
+  // "video" field.
+  String? _video;
+  String get video => _video ?? '';
+  bool hasVideo() => _video != null;
+
   void _initializeFields() {
     _user = snapshotData['user'] as DocumentReference?;
     _text = snapshotData['text'] as String?;
     _timestamp = snapshotData['timestamp'] as DateTime?;
     _image = snapshotData['image'] as String?;
     _chatUser = snapshotData['chatUser'] as DocumentReference?;
+    _chat = snapshotData['chat'] as DocumentReference?;
+    _video = snapshotData['video'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -88,6 +100,8 @@ Map<String, dynamic> createChatMessagesRecordData({
   DateTime? timestamp,
   String? image,
   DocumentReference? chatUser,
+  DocumentReference? chat,
+  String? video,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -96,6 +110,8 @@ Map<String, dynamic> createChatMessagesRecordData({
       'timestamp': timestamp,
       'image': image,
       'chatUser': chatUser,
+      'chat': chat,
+      'video': video,
     }.withoutNulls,
   );
 
@@ -112,12 +128,21 @@ class ChatMessagesRecordDocumentEquality
         e1?.text == e2?.text &&
         e1?.timestamp == e2?.timestamp &&
         e1?.image == e2?.image &&
-        e1?.chatUser == e2?.chatUser;
+        e1?.chatUser == e2?.chatUser &&
+        e1?.chat == e2?.chat &&
+        e1?.video == e2?.video;
   }
 
   @override
-  int hash(ChatMessagesRecord? e) => const ListEquality()
-      .hash([e?.user, e?.text, e?.timestamp, e?.image, e?.chatUser]);
+  int hash(ChatMessagesRecord? e) => const ListEquality().hash([
+        e?.user,
+        e?.text,
+        e?.timestamp,
+        e?.image,
+        e?.chatUser,
+        e?.chat,
+        e?.video
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is ChatMessagesRecord;
