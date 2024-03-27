@@ -21,3 +21,8 @@ export '/akshar_pages/primary_lang_select/primary_lang_select_widget.dart'
     show PrimaryLangSelectWidget;
 export '/akshar_pages/secondary_lang_select/secondary_lang_select_widget.dart'
     show SecondaryLangSelectWidget;
+export '/akshar_pages/user_information/user_information_widget.dart'
+    show UserInformationWidget;
+export '/walkthrough/ai_text/ai_text_widget.dart' show AiTextWidget;
+export '/walkthrough/text_generate/text_generate_widget.dart'
+    show TextGenerateWidget;

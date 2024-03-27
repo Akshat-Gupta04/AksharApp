@@ -100,7 +100,7 @@ class _RecentUserWidgetState extends State<RecentUserWidget> {
                                         16.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        't3hcw0fv' /* Active Users */,
+                                        't3hcw0fv' /* Recent Users */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium

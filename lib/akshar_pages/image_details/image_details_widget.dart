@@ -202,7 +202,12 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                               height: 36.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).accent1,
-                                borderRadius: BorderRadius.circular(12.0),
+                                borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(10.0),
+                                  bottomRight: Radius.circular(10.0),
+                                  topLeft: Radius.circular(10.0),
+                                  topRight: Radius.circular(10.0),
+                                ),
                                 shape: BoxShape.rectangle,
                                 border: Border.all(
                                   color: FlutterFlowTheme.of(context).primary,

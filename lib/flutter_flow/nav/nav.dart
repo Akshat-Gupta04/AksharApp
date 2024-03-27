@@ -176,6 +176,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SecondaryLangSelect',
           path: '/secondaryLangSelect',
           builder: (context, params) => const SecondaryLangSelectWidget(),
+        ),
+        FFRoute(
+          name: 'UserInformation',
+          path: '/userInformation',
+          builder: (context, params) => const UserInformationWidget(),
+        ),
+        FFRoute(
+          name: 'ai_text',
+          path: '/aiText',
+          builder: (context, params) => const AiTextWidget(),
+        ),
+        FFRoute(
+          name: 'text_generate',
+          path: '/textGenerate',
+          builder: (context, params) => const TextGenerateWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

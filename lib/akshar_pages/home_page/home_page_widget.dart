@@ -4,6 +4,9 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/walkthroughs/use_a_i.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -30,10 +33,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (!((valueOrDefault(currentUserDocument?.primaryLang, '') != '') &&
-          (valueOrDefault(currentUserDocument?.secondaryLang, '') != ''))) {
-        context.pushNamed('PrimaryLangSelect');
-      }
+      await Future.wait([
+        Future(() async {
+          if (!((valueOrDefault(currentUserDocument?.primaryLang, '') != '') &&
+              (valueOrDefault(currentUserDocument?.secondaryLang, '') !=
+                      ''))) {
+            context.pushNamed('PrimaryLangSelect');
+          }
+        }),
+      ]);
     });
 
     _model.searchController ??= TextEditingController();
@@ -314,126 +322,155 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            StreamBuilder<List<UsersRecord>>(
-                              stream: queryUsersRecord(),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 80.0,
+                                height: 80.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                child: Icon(
+                                  Icons.add_box,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 36.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          StreamBuilder<List<UsersRecord>>(
+                            stream: queryUsersRecord(),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
                                       ),
                                     ),
-                                  );
-                                }
-                                List<UsersRecord> rowUsersRecordList = snapshot
-                                    .data!
-                                    .where((u) => u.uid != currentUserUid)
-                                    .toList();
-                                return Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: List.generate(
-                                      rowUsersRecordList.length, (rowIndex) {
-                                    final rowUsersRecord =
-                                        rowUsersRecordList[rowIndex];
-                                    return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 8.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          StreamBuilder<List<ChatsRecord>>(
-                                            stream: queryChatsRecord(
-                                              singleRecord: true,
-                                            ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                      ),
+                                  ),
+                                );
+                              }
+                              List<UsersRecord> rowUsersRecordList = snapshot
+                                  .data!
+                                  .where((u) => u.uid != currentUserUid)
+                                  .toList();
+                              return Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: List.generate(
+                                    rowUsersRecordList.length, (rowIndex) {
+                                  final rowUsersRecord =
+                                      rowUsersRecordList[rowIndex];
+                                  return Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 8.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        StreamBuilder<List<ChatsRecord>>(
+                                          stream: queryChatsRecord(
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
                                                     ),
-                                                  ),
-                                                );
-                                              }
-                                              List<ChatsRecord>
-                                                  containerChatsRecordList =
-                                                  snapshot.data!;
-                                              // Return an empty Container when the item does not exist.
-                                              if (snapshot.data!.isEmpty) {
-                                                return Container();
-                                              }
-                                              final containerChatsRecord =
-                                                  containerChatsRecordList
-                                                          .isNotEmpty
-                                                      ? containerChatsRecordList
-                                                          .first
-                                                      : null;
-                                              return Container(
-                                                width: 60.0,
-                                                height: 60.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: Image.network(
-                                                      rowUsersRecord.photoUrl,
-                                                    ).image,
-                                                  ),
-                                                  shape: BoxShape.circle,
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
                                                   ),
                                                 ),
                                               );
-                                            },
-                                          ),
-                                          Text(
-                                            rowUsersRecord.displayName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  fontSize: 12.0,
-                                                  fontWeight: FontWeight.w600,
+                                            }
+                                            List<ChatsRecord>
+                                                containerChatsRecordList =
+                                                snapshot.data!;
+                                            // Return an empty Container when the item does not exist.
+                                            if (snapshot.data!.isEmpty) {
+                                              return Container();
+                                            }
+                                            final containerChatsRecord =
+                                                containerChatsRecordList
+                                                        .isNotEmpty
+                                                    ? containerChatsRecordList
+                                                        .first
+                                                    : null;
+                                            return Container(
+                                              width: 60.0,
+                                              height: 60.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: Image.network(
+                                                    rowUsersRecord.photoUrl,
+                                                  ).image,
                                                 ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }),
-                                );
-                              },
+                                                shape: BoxShape.circle,
+                                                border: Border.all(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                        Text(
+                                          rowUsersRecord.displayName,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 12.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }),
+                              );
+                            },
+                          ),
+                          Container(
+                            width: 100.0,
+                            height: 100.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                     Expanded(
@@ -479,7 +516,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                     title: 'No Chats',
                                     body:
-                                        'You don\'t have any chats created, start a chat by tapping the button in the top right. ',
+                                        'You don\'t have any chats created, start a chat by tapping the create button  ',
                                   ),
                                 ),
                               );
@@ -1415,7 +1452,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           0.0, 0.0, 0.0, 16.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'menzaya4' /* AksharAi */,
+                                          'menzaya4' /* AksharAI */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -1427,6 +1464,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                   ],
+                                ).addWalkthrough(
+                                  column6xhs2qa9,
+                                  _model.useAIController,
                                 ),
                               ),
                             ),
@@ -1443,4 +1483,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       ),
     );
   }
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onFinish: () async {
+          safeSetState(() => _model.useAIController = null);
+        },
+        onSkip: () {
+          () async {}();
+          return true;
+        },
+      );
 }

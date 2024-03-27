@@ -1,18 +1,18 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'home_page_widget.dart' show HomePageWidget;
+import '/flutter_flow/form_field_controller.dart';
+import 'ai_text_widget.dart' show AiTextWidget;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
 
-class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+class AiTextModel extends FlutterFlowModel<AiTextWidget> {
   ///  State fields for stateful widgets in this page.
 
-  TutorialCoachMark? useAIController;
+  TutorialCoachMark? usage2Controller;
   final unfocusNode = FocusNode();
-  // State field(s) for search widget.
-  FocusNode? searchFocusNode;
-  TextEditingController? searchController;
-  String? Function(BuildContext, String?)? searchControllerValidator;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
 
   /// Initialization and disposal methods.
 
@@ -21,10 +21,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   @override
   void dispose() {
-    useAIController?.finish();
+    usage2Controller?.finish();
     unfocusNode.dispose();
-    searchFocusNode?.dispose();
-    searchController?.dispose();
   }
 
   /// Action blocks are added here.

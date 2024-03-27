@@ -6,6 +6,7 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
@@ -80,6 +81,26 @@ class UsersRecord extends FirestoreRecord {
   String get title => _title ?? '';
   bool hasTitle() => _title != null;
 
+  // "dateofBirth" field.
+  String? _dateofBirth;
+  String get dateofBirth => _dateofBirth ?? '';
+  bool hasDateofBirth() => _dateofBirth != null;
+
+  // "Age" field.
+  int? _age;
+  int get age => _age ?? 0;
+  bool hasAge() => _age != null;
+
+  // "Gender" field.
+  String? _gender;
+  String get gender => _gender ?? '';
+  bool hasGender() => _gender != null;
+
+  // "Walkthrough" field.
+  bool? _walkthrough;
+  bool get walkthrough => _walkthrough ?? false;
+  bool hasWalkthrough() => _walkthrough != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -94,6 +115,10 @@ class UsersRecord extends FirestoreRecord {
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _role = snapshotData['role'] as String?;
     _title = snapshotData['title'] as String?;
+    _dateofBirth = snapshotData['dateofBirth'] as String?;
+    _age = castToType<int>(snapshotData['Age']);
+    _gender = snapshotData['Gender'] as String?;
+    _walkthrough = snapshotData['Walkthrough'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -143,6 +168,10 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastActiveTime,
   String? role,
   String? title,
+  String? dateofBirth,
+  int? age,
+  String? gender,
+  bool? walkthrough,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -159,6 +188,10 @@ Map<String, dynamic> createUsersRecordData({
       'last_active_time': lastActiveTime,
       'role': role,
       'title': title,
+      'dateofBirth': dateofBirth,
+      'Age': age,
+      'Gender': gender,
+      'Walkthrough': walkthrough,
     }.withoutNulls,
   );
 
@@ -182,7 +215,11 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.shortDescription == e2?.shortDescription &&
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.role == e2?.role &&
-        e1?.title == e2?.title;
+        e1?.title == e2?.title &&
+        e1?.dateofBirth == e2?.dateofBirth &&
+        e1?.age == e2?.age &&
+        e1?.gender == e2?.gender &&
+        e1?.walkthrough == e2?.walkthrough;
   }
 
   @override
@@ -199,7 +236,11 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.shortDescription,
         e?.lastActiveTime,
         e?.role,
-        e?.title
+        e?.title,
+        e?.dateofBirth,
+        e?.age,
+        e?.gender,
+        e?.walkthrough
       ]);
 
   @override

@@ -549,7 +549,15 @@ class _SettingWidgetState extends State<SettingWidget>
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed('assistantAi');
+                          context.pushNamed(
+                            'UserInformation',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.bottomToTop,
+                              ),
+                            },
+                          );
                         },
                         child: Container(
                           width: double.infinity,

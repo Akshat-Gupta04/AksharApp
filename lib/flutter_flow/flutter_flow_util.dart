@@ -9,6 +9,7 @@ import 'package:from_css_color/from_css_color.dart';
 import 'package:intl/intl.dart';
 import 'package:json_path/json_path.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
@@ -350,6 +351,19 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
       setState(fn);
     }
   }
+}
+
+extension WalkthroughWrapperExtension on Widget {
+  Widget addWalkthrough(
+    GlobalKey walkthroughKey,
+    TutorialCoachMark? controller,
+  ) =>
+      controller != null
+          ? KeyedSubtree(
+              key: walkthroughKey,
+              child: this,
+            )
+          : this;
 }
 
 // For iOS 16 and below, set the status bar color to match the app's theme.
