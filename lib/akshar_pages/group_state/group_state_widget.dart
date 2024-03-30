@@ -60,6 +60,7 @@ class _GroupStateWidgetState extends State<GroupStateWidget> {
               style: FlutterFlowTheme.of(context).headlineSmall.override(
                     fontFamily: 'Outfit',
                     color: FlutterFlowTheme.of(context).primaryText,
+                    letterSpacing: 0.0,
                   ),
             ),
           ),
@@ -68,7 +69,10 @@ class _GroupStateWidgetState extends State<GroupStateWidget> {
             child: Text(
               widget.body,
               textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).labelMedium,
+              style: FlutterFlowTheme.of(context).labelMedium.override(
+                    fontFamily: 'Readex Pro',
+                    letterSpacing: 0.0,
+                  ),
             ),
           ),
         ],

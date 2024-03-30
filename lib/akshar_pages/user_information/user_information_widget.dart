@@ -77,13 +77,19 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                 FFLocalizations.of(context).getText(
                   'o4lahbk0' /* Your Account */,
                 ),
-                style: FlutterFlowTheme.of(context).headlineMedium,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0.0,
+                    ),
               ),
               Text(
                 FFLocalizations.of(context).getText(
                   'keqbaxiz' /* Please fill out the informatio... */,
                 ),
-                style: FlutterFlowTheme.of(context).labelMedium,
+                style: FlutterFlowTheme.of(context).labelMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
               ),
             ].divide(const SizedBox(height: 4.0)),
           ),
@@ -168,10 +174,15 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           errorStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyMedium
@@ -181,6 +192,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .error,
                                                 fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -236,7 +248,12 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                   16.0, 20.0, 16.0, 20.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .headlineMedium,
+                                            .headlineMedium
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        minLines: null,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
@@ -260,10 +277,18 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                           ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelLarge,
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           errorStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyMedium
@@ -273,6 +298,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .error,
                                                 fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -328,7 +354,12 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                   16.0, 20.0, 16.0, 20.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge,
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        minLines: null,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
@@ -352,10 +383,18 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                           ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelLarge,
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           errorStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyMedium
@@ -365,6 +404,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .error,
                                                 fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -421,7 +461,12 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                   16.0, 20.0, 16.0, 20.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge,
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        minLines: null,
                                         maxLength: 10,
                                         maxLengthEnforcement:
                                             MaxLengthEnforcement.enforced,
@@ -454,10 +499,18 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                           ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelLarge,
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           errorStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyMedium
@@ -467,6 +520,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .error,
                                                 fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -523,7 +577,12 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                   16.0, 20.0, 16.0, 20.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge,
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        minLines: null,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
@@ -540,7 +599,11 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                         'saqvblj7' /* Gender */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                     AuthUserStreamWidget(
                                       builder: (context) =>
@@ -574,6 +637,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                           iconColor:
                                               FlutterFlowTheme.of(context)
@@ -599,6 +663,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                           iconColor:
                                               FlutterFlowTheme.of(context)
@@ -634,7 +699,11 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                         '51ic99uf' /* About */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                     AuthUserStreamWidget(
                                       builder: (context) => TextFormField(
@@ -652,11 +721,19 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                           ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelLarge,
+                                                  .labelLarge
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           alignLabelWithHint: true,
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           errorStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyMedium
@@ -666,6 +743,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .error,
                                                 fontSize: 12.0,
+                                                letterSpacing: 0.0,
                                               ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -722,7 +800,11 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                   16.0, 16.0, 16.0, 16.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge,
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
                                         maxLines: 9,
                                         minLines: 5,
                                         maxLength: 100,
@@ -767,9 +849,8 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                             displayName: _model.fullNameController.text,
                             phoneNumber: _model.phoneNumberController.text,
                             shortDescription: _model.descriptionController.text,
-                            dateofBirth:
-                                (_model.dateOfBirthFocusNode?.hasFocus ?? false)
-                                    .toString(),
+                            dateofBirth: valueOrDefault(
+                                currentUserDocument?.dateofBirth, ''),
                             age: valueOrDefault(currentUserDocument?.age, 0),
                             gender: _model.choiceChipsValue,
                           ));
@@ -784,6 +865,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                       fontFamily: 'Readex Pro',
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                               duration: const Duration(milliseconds: 2400),
@@ -809,6 +891,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Readex Pro',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
                           borderSide: const BorderSide(

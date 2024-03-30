@@ -23,8 +23,6 @@ class ChatUpdateModel extends FlutterFlowModel<ChatUpdateWidget> {
   void clearChatUserCacheKey(String? uniqueKey) =>
       _chatUserManager.clearRequest(uniqueKey);
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -34,8 +32,4 @@ class ChatUpdateModel extends FlutterFlowModel<ChatUpdateWidget> {
 
     clearChatUserCache();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

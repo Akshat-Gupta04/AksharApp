@@ -67,8 +67,6 @@ class UserInformationModel extends FlutterFlowModel<UserInformationWidget> {
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     fullNameControllerValidator = _fullNameControllerValidator;
@@ -94,8 +92,4 @@ class UserInformationModel extends FlutterFlowModel<UserInformationWidget> {
     descriptionFocusNode?.dispose();
     descriptionController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

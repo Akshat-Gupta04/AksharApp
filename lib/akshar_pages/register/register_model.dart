@@ -20,8 +20,6 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     passwordVisibility = false;
@@ -39,8 +37,4 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
     passwordFocusNode?.dispose();
     passwordController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

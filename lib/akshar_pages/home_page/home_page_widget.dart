@@ -33,15 +33,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.wait([
-        Future(() async {
-          if (!((valueOrDefault(currentUserDocument?.primaryLang, '') != '') &&
-              (valueOrDefault(currentUserDocument?.secondaryLang, '') !=
-                      ''))) {
-            context.pushNamed('PrimaryLangSelect');
-          }
-        }),
-      ]);
+      if (valueOrDefault<bool>(currentUserDocument?.walkthrough, false) ==
+          false) {
+        safeSetState(
+            () => _model.useAIController = createPageWalkthrough(context));
+        _model.useAIController?.show(context: context);
+      }
     });
 
     _model.searchController ??= TextEditingController();
@@ -95,6 +92,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   .override(
                                     fontFamily: 'Noto Sans JP',
                                     fontSize: 28.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w900,
                                   ),
                             ),
@@ -121,49 +119,48 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                               child: Stack(
                                 children: [
-                                  if (currentUserPhoto != '')
-                                    AuthUserStreamWidget(
-                                      builder: (context) => Container(
-                                        width: 42.0,
-                                        height: 42.0,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: CachedNetworkImage(
-                                          fadeInDuration:
-                                              const Duration(milliseconds: 500),
-                                          fadeOutDuration:
-                                              const Duration(milliseconds: 500),
-                                          imageUrl: currentUserPhoto,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  if (currentUserPhoto == '')
-                                    AuthUserStreamWidget(
-                                      builder: (context) => Container(
-                                        width: 42.0,
-                                        height: 42.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: Image.network(
-                                              '',
-                                            ).image,
+                                  Builder(
+                                    builder: (context) {
+                                      if (currentUserPhoto == '') {
+                                        return Container(
+                                          width: 42.0,
+                                          height: 42.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: Image.network(
+                                                '',
+                                              ).image,
+                                            ),
+                                            shape: BoxShape.circle,
                                           ),
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Icon(
-                                          Icons.person,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 32.0,
-                                        ),
-                                      ),
-                                    ),
+                                          child: Icon(
+                                            Icons.person,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 32.0,
+                                          ),
+                                        );
+                                      } else {
+                                        return AuthUserStreamWidget(
+                                          builder: (context) => Container(
+                                            width: 42.0,
+                                            height: 42.0,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.network(
+                                              currentUserPhoto,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -212,8 +209,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       FFLocalizations.of(context).getText(
                                     'd39snm5w' /* Search User */,
                                   ),
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
                                   alignLabelWithHint: true,
                                   hintText: FFLocalizations.of(context).getText(
                                     'gx7n4ftx' /* Search for users */,
@@ -224,6 +225,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         fontFamily: 'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
+                                        letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -265,7 +267,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
+                                      letterSpacing: 0.0,
                                     ),
+                                minLines: null,
                                 validator: _model.searchControllerValidator
                                     .asValidator(context),
                               ),
@@ -290,6 +294,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   fontSize: 24.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
@@ -313,7 +318,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FFLocalizations.of(context).getText(
                                 'eys85ujb' /* see all */,
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                         ],
@@ -325,32 +335,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 80.0,
-                                height: 80.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                child: Icon(
-                                  Icons.add_box,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 36.0,
-                                ),
-                              ),
-                            ],
-                          ),
                           StreamBuilder<List<UsersRecord>>(
                             stream: queryUsersRecord(),
                             builder: (context, snapshot) {
@@ -372,103 +358,99 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   .data!
                                   .where((u) => u.uid != currentUserUid)
                                   .toList();
-                              return Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: List.generate(
-                                    rowUsersRecordList.length, (rowIndex) {
-                                  final rowUsersRecord =
-                                      rowUsersRecordList[rowIndex];
-                                  return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 8.0, 0.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        StreamBuilder<List<ChatsRecord>>(
-                                          stream: queryChatsRecord(
-                                            singleRecord: true,
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
+                              return SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: List.generate(
+                                      rowUsersRecordList.length, (rowIndex) {
+                                    final rowUsersRecord =
+                                        rowUsersRecordList[rowIndex];
+                                    return Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 8.0, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          StreamBuilder<List<ChatsRecord>>(
+                                            stream: queryChatsRecord(
+                                              singleRecord: true,
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      valueColor:
+                                                          AlwaysStoppedAnimation<
+                                                              Color>(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                      ),
                                                     ),
+                                                  ),
+                                                );
+                                              }
+                                              List<ChatsRecord>
+                                                  containerChatsRecordList =
+                                                  snapshot.data!;
+                                              // Return an empty Container when the item does not exist.
+                                              if (snapshot.data!.isEmpty) {
+                                                return Container();
+                                              }
+                                              final containerChatsRecord =
+                                                  containerChatsRecordList
+                                                          .isNotEmpty
+                                                      ? containerChatsRecordList
+                                                          .first
+                                                      : null;
+                                              return Container(
+                                                width: 60.0,
+                                                height: 60.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: Image.network(
+                                                      rowUsersRecord.photoUrl,
+                                                    ).image,
+                                                  ),
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
                                                   ),
                                                 ),
                                               );
-                                            }
-                                            List<ChatsRecord>
-                                                containerChatsRecordList =
-                                                snapshot.data!;
-                                            // Return an empty Container when the item does not exist.
-                                            if (snapshot.data!.isEmpty) {
-                                              return Container();
-                                            }
-                                            final containerChatsRecord =
-                                                containerChatsRecordList
-                                                        .isNotEmpty
-                                                    ? containerChatsRecordList
-                                                        .first
-                                                    : null;
-                                            return Container(
-                                              width: 60.0,
-                                              height: 60.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: Image.network(
-                                                    rowUsersRecord.photoUrl,
-                                                  ).image,
+                                            },
+                                          ),
+                                          Text(
+                                            rowUsersRecord.displayName,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  fontSize: 12.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
                                                 ),
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                        Text(
-                                          rowUsersRecord.displayName,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 12.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                ),
                               );
                             },
-                          ),
-                          Container(
-                            width: 100.0,
-                            height: 100.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
                           ),
                         ],
                       ),
@@ -573,7 +555,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              offset: const Offset(0.0, 1.0),
+                                              offset: const Offset(
+                                                0.0,
+                                                1.0,
+                                              ),
                                             )
                                           ],
                                           borderRadius: const BorderRadius.only(
@@ -724,8 +709,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                               '',
                                                                             ).image,
                                                                           ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12.0),
                                                                           shape:
-                                                                              BoxShape.circle,
+                                                                              BoxShape.rectangle,
                                                                         ),
                                                                         child:
                                                                             Icon(
@@ -782,8 +769,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           ),
                                                                           textAlign:
                                                                               TextAlign.start,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyLarge,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyLarge
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -834,7 +825,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .labelMedium,
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Readex Pro',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
                                                                   ),
                                                                 ),
                                                                 Row(
@@ -863,7 +860,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         textAlign:
                                                                             TextAlign.start,
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .labelSmall,
+                                                                            .labelSmall
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              letterSpacing: 0.0,
+                                                                            ),
                                                                       ),
                                                                     ),
                                                                     Icon(
@@ -1053,6 +1054,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                     textAlign: TextAlign.center,
                                                                                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                           fontFamily: 'Readex Pro',
+                                                                                          letterSpacing: 0.0,
                                                                                           fontWeight: FontWeight.bold,
                                                                                         ),
                                                                                   ),
@@ -1140,6 +1142,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                 textAlign: TextAlign.center,
                                                                                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                                                                                       fontFamily: 'Readex Pro',
+                                                                                      letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.bold,
                                                                                     ),
                                                                               ),
@@ -1192,8 +1195,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           ),
                                                                           textAlign:
                                                                               TextAlign.start,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyLarge,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyLarge
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1248,7 +1255,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             .start,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .labelMedium,
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Readex Pro',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
                                                                   ),
                                                                 ),
                                                                 Row(
@@ -1280,7 +1293,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         textAlign:
                                                                             TextAlign.start,
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .labelSmall,
+                                                                            .labelSmall
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              letterSpacing: 0.0,
+                                                                            ),
                                                                       ),
                                                                     ),
                                                                     Icon(
@@ -1387,11 +1404,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               fontSize: 20.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
                                       ),
                                     ),
                                   ],
+                                ).addWalkthrough(
+                                  column5grtsbdu,
+                                  _model.useAIController,
                                 ),
                               ),
                             ),
@@ -1459,6 +1480,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               fontSize: 20.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
                                       ),
@@ -1489,9 +1511,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         targets: createWalkthroughTargets(context),
         onFinish: () async {
           safeSetState(() => _model.useAIController = null);
+
+          await currentUserReference!.update(createUsersRecordData(
+            walkthrough: true,
+          ));
+          await Future.delayed(const Duration(milliseconds: 1000));
+          if (!(valueOrDefault(currentUserDocument?.secondaryLang, '') != '')) {
+            context.pushNamed('PrimaryLangSelect');
+          }
         },
         onSkip: () {
-          () async {}();
+          () async {
+            await currentUserReference!.update(createUsersRecordData(
+              walkthrough: true,
+            ));
+            await Future.delayed(const Duration(milliseconds: 1000));
+            if (!(valueOrDefault(currentUserDocument?.secondaryLang, '') != '')) {
+              context.pushNamed('PrimaryLangSelect');
+            }
+          }();
           return true;
         },
       );

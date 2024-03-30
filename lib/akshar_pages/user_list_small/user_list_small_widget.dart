@@ -121,6 +121,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                             style:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
                                       fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                           ),
@@ -145,6 +146,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                             ),
                       ),
@@ -160,6 +162,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                               FlutterFlowTheme.of(context).bodySmall.override(
                                     fontFamily: 'Readex Pro',
                                     color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
                                   ),
                         ),
                       ),
@@ -188,7 +191,10 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                           'xpittvnb' /* ME */,
                         ),
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ),
                   ),

@@ -125,6 +125,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                       .headlineSmall
                                       .override(
                                         fontFamily: 'Outfit',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w800,
                                         decoration: TextDecoration.underline,
                                       ),
@@ -188,8 +189,12 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                   },
                                   width: 150.0,
                                   height: 40.0,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
                                   hintText: FFLocalizations.of(context).getText(
                                     'nliy1c1p' /* Generate From */,
                                   ),
@@ -245,6 +250,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
@@ -311,10 +317,18 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
@@ -358,8 +372,13 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                             ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                           maxLines: null,
+                                          minLines: null,
                                           validator: _model
                                               .textControllerValidator
                                               .asValidator(context),
@@ -416,6 +435,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                                   .override(
                                                     fontFamily: 'Readex Pro',
                                                     color: Colors.white,
+                                                    letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
                                           borderSide: const BorderSide(

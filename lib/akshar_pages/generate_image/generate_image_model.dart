@@ -21,8 +21,6 @@ class GenerateImageModel extends FlutterFlowModel<GenerateImageWidget> {
   // Stores action output result for [Gemini - Text From Image] action in Button widget.
   String? picResult;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -31,8 +29,4 @@ class GenerateImageModel extends FlutterFlowModel<GenerateImageWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

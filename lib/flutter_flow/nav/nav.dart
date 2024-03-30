@@ -73,13 +73,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomePageWidget() : const AnimtionWidget(),
+          appStateNotifier.loggedIn ? const StartAnimationWidget() : const AnimtionWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomePageWidget() : const AnimtionWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? const StartAnimationWidget()
+              : const AnimtionWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -90,20 +91,40 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'RecentUser',
           path: '/recentUser',
           builder: (context, params) => RecentUserWidget(
-            search: params.getParam('search', ParamType.String),
+            search: params.getParam(
+              'search',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
           name: 'chats',
           path: '/chats',
           builder: (context, params) => ChatsWidget(
-            userName: params.getParam('userName', ParamType.String),
-            userEmail: params.getParam('userEmail', ParamType.String),
+            userName: params.getParam(
+              'userName',
+              ParamType.String,
+            ),
+            userEmail: params.getParam(
+              'userEmail',
+              ParamType.String,
+            ),
             chatUser: params.getParam(
-                'chatUser', ParamType.DocumentReference, false, ['chats']),
+              'chatUser',
+              ParamType.DocumentReference,
+              false,
+              ['chats'],
+            ),
             userRef: params.getParam(
-                'userRef', ParamType.DocumentReference, false, ['users']),
-            userProfile: params.getParam('userProfile', ParamType.String),
+              'userRef',
+              ParamType.DocumentReference,
+              false,
+              ['users'],
+            ),
+            userProfile: params.getParam(
+              'userProfile',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -132,18 +153,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const StartAnimationWidget(),
         ),
         FFRoute(
-          name: 'assistantAi',
-          path: '/assistantAi',
-          builder: (context, params) => const AssistantAiWidget(),
-        ),
-        FFRoute(
           name: 'chat_interface',
           path: '/chatInterface',
           asyncParams: {
             'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
           },
           builder: (context, params) => ChatInterfaceWidget(
-            chatRef: params.getParam('chatRef', ParamType.Document),
+            chatRef: params.getParam(
+              'chatRef',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -153,7 +172,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
           },
           builder: (context, params) => ChatAddUserWidget(
-            chatRef: params.getParam('chatRef', ParamType.Document),
+            chatRef: params.getParam(
+              'chatRef',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -164,7 +186,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 getDoc(['chat_messages'], ChatMessagesRecord.fromSnapshot),
           },
           builder: (context, params) => ImageDetailsWidget(
-            chatMessage: params.getParam('chatMessage', ParamType.Document),
+            chatMessage: params.getParam(
+              'chatMessage',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -181,16 +206,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'UserInformation',
           path: '/userInformation',
           builder: (context, params) => const UserInformationWidget(),
-        ),
-        FFRoute(
-          name: 'ai_text',
-          path: '/aiText',
-          builder: (context, params) => const AiTextWidget(),
-        ),
-        FFRoute(
-          name: 'text_generate',
-          path: '/textGenerate',
-          builder: (context, params) => const TextGenerateWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
@@ -324,8 +339,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 

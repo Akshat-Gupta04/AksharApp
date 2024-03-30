@@ -196,7 +196,11 @@ class _LoginWidgetState extends State<LoginWidget>
                         FFLocalizations.of(context).getText(
                           'bc10wynd' /* Sign In */,
                         ),
-                        style: FlutterFlowTheme.of(context).headlineSmall,
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation1']!),
                     ),
@@ -207,7 +211,11 @@ class _LoginWidgetState extends State<LoginWidget>
                         FFLocalizations.of(context).getText(
                           '9wlvoiqh' /* Use the account below to sign ... */,
                         ),
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation2']!),
                     ),
@@ -238,8 +246,12 @@ class _LoginWidgetState extends State<LoginWidget>
                             labelText: FFLocalizations.of(context).getText(
                               'ttivdagc' /* Email */,
                             ),
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).alternate,
@@ -273,7 +285,12 @@ class _LoginWidgetState extends State<LoginWidget>
                                 .secondaryBackground,
                             contentPadding: const EdgeInsets.all(24.0),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          minLines: null,
                           keyboardType: TextInputType.emailAddress,
                           validator: _model.emailAddressControllerValidator
                               .asValidator(context),
@@ -288,14 +305,19 @@ class _LoginWidgetState extends State<LoginWidget>
                         child: TextFormField(
                           controller: _model.passwordController,
                           focusNode: _model.passwordFocusNode,
+                          autofocus: false,
                           autofillHints: const [AutofillHints.password],
                           obscureText: !_model.passwordVisibility,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
                               'oux716fq' /* Password */,
                             ),
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).alternate,
@@ -344,7 +366,12 @@ class _LoginWidgetState extends State<LoginWidget>
                               ),
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          minLines: null,
                           validator: _model.passwordControllerValidator
                               .asValidator(context),
                         ),
@@ -368,7 +395,8 @@ class _LoginWidgetState extends State<LoginWidget>
                               return;
                             }
 
-                            context.goNamedAuth('HomePage', context.mounted);
+                            context.goNamedAuth(
+                                'start_Animation', context.mounted);
                           },
                           text: FFLocalizations.of(context).getText(
                             'qnn324n0' /* Sign In */,
@@ -386,6 +414,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
                             borderSide: const BorderSide(
@@ -403,8 +432,21 @@ class _LoginWidgetState extends State<LoginWidget>
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            if (_model.emailAddressController.text.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Email required!',
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+                            await authManager.resetPassword(
+                              email: _model.emailAddressController.text,
+                              context: context,
+                            );
                           },
                           text: FFLocalizations.of(context).getText(
                             '5tqpp815' /* Forgot Password */,
@@ -418,7 +460,12 @@ class _LoginWidgetState extends State<LoginWidget>
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                             elevation: 0.0,
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context)
@@ -443,7 +490,12 @@ class _LoginWidgetState extends State<LoginWidget>
                                 '1lzjyzs2' /* Or sign up with */,
                               ),
                               textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context).labelMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                         ),
@@ -486,6 +538,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                       elevation: 0.0,

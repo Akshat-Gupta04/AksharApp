@@ -146,6 +146,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                             ),
                                       ),
@@ -177,6 +178,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 14.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                     )),
@@ -193,7 +195,11 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                         '--',
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .labelSmall,
+                                          .labelSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ].divide(const SizedBox(width: 4.0)),
                                 ),
@@ -205,7 +211,10 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                     BoxShadow(
                                       blurRadius: 3.0,
                                       color: Color(0x33000000),
-                                      offset: Offset(0.0, 1.0),
+                                      offset: Offset(
+                                        0.0,
+                                        1.0,
+                                      ),
                                     )
                                   ],
                                   borderRadius: const BorderRadius.only(
@@ -238,6 +247,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                             .bodyLarge
                                             .override(
                                               fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
                                               lineHeight: 1.5,
                                             ),
                                       )),
@@ -339,7 +349,10 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                               FFLocalizations.of(context).languageShortCode ??
                                   FFLocalizations.of(context).languageCode,
                         ),
-                        style: FlutterFlowTheme.of(context).labelSmall,
+                        style: FlutterFlowTheme.of(context).labelSmall.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ),
                     Container(
@@ -349,7 +362,10 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                           BoxShadow(
                             blurRadius: 3.0,
                             color: Color(0x33000000),
-                            offset: Offset(0.0, 1.0),
+                            offset: Offset(
+                              0.0,
+                              1.0,
+                            ),
                           )
                         ],
                         borderRadius: const BorderRadius.only(
@@ -382,6 +398,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                     fontFamily: 'Readex Pro',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    letterSpacing: 0.0,
                                   ),
                             )),
                             if (widget.chatMessagesRef?.image != null &&

@@ -40,8 +40,6 @@ class ChatAddUserModel extends FlutterFlowModel<ChatAddUserWidget> {
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ChatsRecord? newChatThread;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -52,10 +50,7 @@ class ChatAddUserModel extends FlutterFlowModel<ChatAddUserWidget> {
     listViewPagingController?.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
-
+  /// Additional helper methods.
   PagingController<DocumentSnapshot?, UsersRecord> setListViewController(
     Query query, {
     DocumentReference<Object?>? parent,

@@ -509,33 +509,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': 'హోమ్',
     },
   },
-  // assistantAi
-  {
-    't47ot4zt': {
-      'en': 'Label here...',
-      'bn': 'এখানে লেবেল করুন...',
-      'hi': 'यहां लेबल करें...',
-      'pa': 'ਇੱਥੇ ਲੇਬਲ ਕਰੋ...',
-      'ta': 'இங்கே லேபிளிடு...',
-      'te': 'ఇక్కడ లేబుల్ చేయండి...',
-    },
-    'kn73iodi': {
-      'en': 'Button',
-      'bn': 'বোতাম',
-      'hi': 'बटन',
-      'pa': 'ਬਟਨ',
-      'ta': 'பொத்தானை',
-      'te': 'బటన్',
-    },
-    'h7re2vdy': {
-      'en': 'Home',
-      'bn': 'বাড়ি',
-      'hi': 'घर',
-      'pa': 'ਘਰ',
-      'ta': 'வீடு',
-      'te': 'హోమ్',
-    },
-  },
   // chat_interface
   {
     'i1pwcz61': {
@@ -546,7 +519,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'குழு அரட்டை',
       'te': 'గ్రూప్ చాట్',
     },
-    '8osvnun7': {
+    'h7re2vdy': {
       'en': 'Home',
       'bn': 'বাড়ি',
       'hi': 'घर',
@@ -826,122 +799,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
     'jout30zu': {
-      'en': 'Home',
-      'bn': 'বাড়ি',
-      'hi': 'घर',
-      'pa': 'ਘਰ',
-      'ta': 'வீடு',
-      'te': 'హోమ్',
-    },
-  },
-  // ai_text
-  {
-    'lqpksn3m': {
-      'en': 'AksharAI',
-      'bn': 'অক্ষরএআই',
-      'hi': 'अक्षराई',
-      'pa': 'ਅਕਸ਼ਰਏ.ਆਈ',
-      'ta': 'அக்ஷராஐ',
-      'te': 'అక్షరఏఐ',
-    },
-    '0l0san8a': {
-      'en': 'Text',
-      'bn': 'পাঠ্য',
-      'hi': 'मूलपाठ',
-      'pa': 'ਟੈਕਸਟ',
-      'ta': 'உரை',
-      'te': 'వచనం',
-    },
-    'n1bhjatm': {
-      'en': 'Image',
-      'bn': 'ছবি',
-      'hi': 'छवि',
-      'pa': 'ਚਿੱਤਰ',
-      'ta': 'படம்',
-      'te': 'చిత్రం',
-    },
-    'sbjce0qa': {
-      'en': 'Generate From',
-      'bn': 'থেকে তৈরি করুন',
-      'hi': 'से उत्पन्न करें',
-      'pa': 'ਤੋਂ ਤਿਆਰ ਕਰੋ',
-      'ta': 'இருந்து உருவாக்கு',
-      'te': 'నుండి రూపొందించండి',
-    },
-    'lsgfb342': {
-      'en':
-          'AksharAI  is a powerfull AI assistant which can easily answer your questions and generates solutions from images also\n\nIn your prefered language.  \n',
-      'bn':
-          'AksharAI হল Google-এর Gemini দ্বারা চালিত একটি শক্তিশালী AI সহকারী যা সহজেই আপনার প্রশ্নের উত্তর দিতে পারে এবং ছবিও তৈরি করে',
-      'hi':
-          'अक्षरएआई Google के जेमिनी द्वारा संचालित एक शक्तिशाली एआई सहायक है जो आसानी से आपके प्रश्न का उत्तर दे सकता है और छवियां भी उत्पन्न कर सकता है',
-      'pa':
-          'ਅਕਸ਼ਰਏਆਈ ਗੂਗਲ ਦੇ ਜੈਮਿਨੀ ਦੁਆਰਾ ਸੰਚਾਲਿਤ ਇੱਕ ਸ਼ਕਤੀਸ਼ਾਲੀ AI ਸਹਾਇਕ ਹੈ ਜੋ ਆਸਾਨੀ ਨਾਲ ਤੁਹਾਡੇ ਸਵਾਲ ਦਾ ਜਵਾਬ ਦੇ ਸਕਦਾ ਹੈ ਅਤੇ ਚਿੱਤਰ ਵੀ ਤਿਆਰ ਕਰਦਾ ਹੈ',
-      'ta':
-          'அக்ஷராஐ என்பது கூகிளின் ஜெமினியால் இயக்கப்படும் ஒரு சக்திவாய்ந்த AI உதவியாளர், இது உங்கள் கேள்விக்கு எளிதாக பதிலளிக்கும் மற்றும் படங்களையும் உருவாக்குகிறது.',
-      'te':
-          'AksharAI అనేది Google యొక్క జెమిని ద్వారా ఆధారితమైన శక్తివంతమైన AI సహాయకం, ఇది మీ ప్రశ్నకు సులభంగా సమాధానం ఇవ్వగలదు మరియు చిత్రాలను కూడా రూపొందించగలదు.',
-    },
-    'q06wdtdx': {
-      'en': 'Home',
-      'bn': 'বাড়ি',
-      'hi': 'घर',
-      'pa': 'ਘਰ',
-      'ta': 'வீடு',
-      'te': 'హోమ్',
-    },
-  },
-  // text_generate
-  {
-    'e4wuyps5': {
-      'en': 'AksharAI',
-      'bn': 'অক্ষরএআই',
-      'hi': 'अक्षराई',
-      'pa': 'ਅਕਸ਼ਰਏ.ਆਈ',
-      'ta': 'அக்ஷராஐ',
-      'te': 'అక్షరఏఐ',
-    },
-    'zvbi8ka7': {
-      'en': 'Text',
-      'bn': 'পাঠ্য',
-      'hi': 'मूलपाठ',
-      'pa': 'ਟੈਕਸਟ',
-      'ta': 'உரை',
-      'te': 'వచనం',
-    },
-    'dfapz6u7': {
-      'en': 'Text',
-      'bn': 'পাঠ্য',
-      'hi': 'मूलपाठ',
-      'pa': 'ਟੈਕਸਟ',
-      'ta': 'உரை',
-      'te': 'వచనం',
-    },
-    '5mfhyjy1': {
-      'en': 'Image',
-      'bn': 'ছবি',
-      'hi': 'छवि',
-      'pa': 'ਚਿੱਤਰ',
-      'ta': 'படம்',
-      'te': 'చిత్రం',
-    },
-    'vjrr4fru': {
-      'en': 'Generate From',
-      'bn': 'থেকে তৈরি করুন',
-      'hi': 'से उत्पन्न करें',
-      'pa': 'ਤੋਂ ਤਿਆਰ ਕਰੋ',
-      'ta': 'இருந்து உருவாக்கு',
-      'te': 'నుండి రూపొందించండి',
-    },
-    'b00jm31m': {
-      'en': 'Label here...',
-      'bn': 'এখানে লেবেল করুন...',
-      'hi': 'यहां लेबल करें...',
-      'pa': 'ਇੱਥੇ ਲੇਬਲ ਕਰੋ...',
-      'ta': 'இங்கே லேபிளிடு...',
-      'te': 'ఇక్కడ లేబుల్ చేయండి...',
-    },
-    '8fb6xogm': {
       'en': 'Home',
       'bn': 'বাড়ি',
       'hi': 'घर',
@@ -1350,13 +1207,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'இங்கே தட்டச்சு செய்யத் தொடங்கு...',
       'te': 'ఇక్కడ టైప్ చేయడం ప్రారంభించండి...',
     },
-    'nm6flly2': {
-      'en': 'You must enter a message...',
-      'bn': 'আপনাকে অবশ্যই একটি বার্তা লিখতে হবে...',
-      'hi': 'आपको एक संदेश दर्ज करना होगा...',
-      'pa': 'ਤੁਹਾਨੂੰ ਇੱਕ ਸੁਨੇਹਾ ਦਾਖਲ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ...',
-      'ta': 'நீங்கள் ஒரு செய்தியை உள்ளிட வேண்டும்...',
-      'te': 'మీరు తప్పనిసరిగా సందేశాన్ని నమోదు చేయాలి...',
+    'jcem6gso': {
+      'en': 'Field is required',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
     },
     'depzx262': {
       'en': 'Please choose an option from the dropdown',
@@ -1378,9 +1235,75 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': 'ME',
     },
   },
+  // tut
+  {
+    'gh5ojjpl': {
+      'en': 'Akshar',
+      'bn': 'অক্ষরএআই',
+      'hi': 'अक्षराई',
+      'pa': 'ਅਕਸ਼ਰਏ.ਆਈ',
+      'ta': 'அக்ஷராஐ',
+      'te': 'అక్షరఏఐ',
+    },
+  },
+  // mail_verify
+  {
+    '4us5f29q': {
+      'en': 'Email Verification',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'eb1iyabi': {
+      'en':
+          'Dear User,\nA mail has been sent to you for verification.\n\nPlease verify your account by clicking the link in your mail before moving forward. \n\n\n\nClick on Cancel if u have verified.You will be redirected to LoginPage.  ',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'cf6uvm4w': {
+      'en': 'Cancel',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'u4itq7s0': {
+      'en': 'Resend Mail',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+  },
+  // LanugeSetting
+  {
+    '9c2ypuvg': {
+      'en': 'Akshar',
+      'bn': 'অক্ষরএআই',
+      'hi': 'अक्षराई',
+      'pa': 'ਅਕਸ਼ਰਏ.ਆਈ',
+      'ta': 'அக்ஷராஐ',
+      'te': 'అక్షరఏఐ',
+    },
+    'sk10yqtk': {
+      'en': 'Choose your Language',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+  },
   // deleteDialog
   {
-    'p4e5a30u': {
+    'sosk88x4': {
       'en': 'Chat Settings',
       'bn': 'চ্যাট সেটিংস',
       'hi': 'चैट सेटिंग्स',
@@ -1388,7 +1311,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'அரட்டை அமைப்புகள்',
       'te': 'చాట్ సెట్టింగ్‌లు',
     },
-    'thqvsvt3': {
+    'w4encrvo': {
       'en': 'Language Setting',
       'bn': 'ভাষা সেটিং',
       'hi': 'भाषा सेटिंग',
@@ -1443,17 +1366,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pa': 'ਮਿਟਾਓ',
       'ta': 'அழி',
       'te': 'తొలగించు',
-    },
-  },
-  // tut
-  {
-    'gh5ojjpl': {
-      'en': 'Akshar',
-      'bn': 'অক্ষরএআই',
-      'hi': 'अक्षराई',
-      'pa': 'ਅਕਸ਼ਰਏ.ਆਈ',
-      'ta': 'அக்ஷராஐ',
-      'te': 'అక్షరఏఐ',
     },
   },
   // Miscellaneous

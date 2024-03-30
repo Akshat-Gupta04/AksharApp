@@ -224,6 +224,7 @@ class _SettingWidgetState extends State<SettingWidget>
                   fontFamily: 'Outfit',
                   color: FlutterFlowTheme.of(context).primary,
                   fontSize: 30.0,
+                  letterSpacing: 0.0,
                   fontWeight: FontWeight.bold,
                 ),
           ),
@@ -261,20 +262,21 @@ class _SettingWidgetState extends State<SettingWidget>
                       ),
                       child: Stack(
                         children: [
-                          AuthUserStreamWidget(
-                            builder: (context) => Container(
-                              width: 120.0,
-                              height: 120.0,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: Image.network(
-                                currentUserPhoto,
-                                fit: BoxFit.cover,
+                          if (currentUserPhoto != '')
+                            AuthUserStreamWidget(
+                              builder: (context) => Container(
+                                width: 120.0,
+                                height: 120.0,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image.network(
+                                  currentUserPhoto,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
                           if (currentUserPhoto == '')
                             AuthUserStreamWidget(
                               builder: (context) => Container(
@@ -307,6 +309,7 @@ class _SettingWidgetState extends State<SettingWidget>
                               .override(
                                 fontFamily: 'Outfit',
                                 color: FlutterFlowTheme.of(context).primary,
+                                letterSpacing: 0.0,
                               ),
                         ).animateOnPageLoad(
                             animationsMap['textOnPageLoadAnimation1']!),
@@ -320,6 +323,7 @@ class _SettingWidgetState extends State<SettingWidget>
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily: 'Readex Pro',
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                             ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation2']!),
@@ -358,7 +362,7 @@ class _SettingWidgetState extends State<SettingWidget>
                           if (selectedMedia != null &&
                               selectedMedia.every((m) =>
                                   validateFileFormat(m.storagePath, context))) {
-                            setState(() => _model.isDataUploading1 = true);
+                            setState(() => _model.isDataUploading = true);
                             var selectedUploadedFiles = <FFUploadedFile>[];
 
                             var downloadUrls = <String>[];
@@ -390,15 +394,15 @@ class _SettingWidgetState extends State<SettingWidget>
                             } finally {
                               ScaffoldMessenger.of(context)
                                   .hideCurrentSnackBar();
-                              _model.isDataUploading1 = false;
+                              _model.isDataUploading = false;
                             }
                             if (selectedUploadedFiles.length ==
                                     selectedMedia.length &&
                                 downloadUrls.length == selectedMedia.length) {
                               setState(() {
-                                _model.uploadedLocalFile1 =
+                                _model.uploadedLocalFile =
                                     selectedUploadedFiles.first;
-                                _model.uploadedFileUrl1 = downloadUrls.first;
+                                _model.uploadedFileUrl = downloadUrls.first;
                               });
                               showUploadMessage(context, 'Success!');
                             } else {
@@ -411,7 +415,7 @@ class _SettingWidgetState extends State<SettingWidget>
 
                           await currentUserReference!
                               .update(createUsersRecordData(
-                            photoUrl: _model.uploadedFileUrl1,
+                            photoUrl: _model.uploadedFileUrl,
                           ));
                         },
                         child: Container(
@@ -428,112 +432,35 @@ class _SettingWidgetState extends State<SettingWidget>
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 12.0, 8.0, 12.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                final selectedMedia =
-                                    await selectMediaWithSourceBottomSheet(
-                                  context: context,
-                                  maxWidth: 200.00,
-                                  maxHeight: 200.00,
-                                  imageQuality: 50,
-                                  allowPhoto: true,
-                                  allowVideo: true,
-                                );
-                                if (selectedMedia != null &&
-                                    selectedMedia.every((m) =>
-                                        validateFileFormat(
-                                            m.storagePath, context))) {
-                                  setState(
-                                      () => _model.isDataUploading2 = true);
-                                  var selectedUploadedFiles =
-                                      <FFUploadedFile>[];
-
-                                  var downloadUrls = <String>[];
-                                  try {
-                                    showUploadMessage(
-                                      context,
-                                      'Uploading file...',
-                                      showLoading: true,
-                                    );
-                                    selectedUploadedFiles = selectedMedia
-                                        .map((m) => FFUploadedFile(
-                                              name:
-                                                  m.storagePath.split('/').last,
-                                              bytes: m.bytes,
-                                              height: m.dimensions?.height,
-                                              width: m.dimensions?.width,
-                                              blurHash: m.blurHash,
-                                            ))
-                                        .toList();
-
-                                    downloadUrls = (await Future.wait(
-                                      selectedMedia.map(
-                                        (m) async => await uploadData(
-                                            m.storagePath, m.bytes),
-                                      ),
-                                    ))
-                                        .where((u) => u != null)
-                                        .map((u) => u!)
-                                        .toList();
-                                  } finally {
-                                    ScaffoldMessenger.of(context)
-                                        .hideCurrentSnackBar();
-                                    _model.isDataUploading2 = false;
-                                  }
-                                  if (selectedUploadedFiles.length ==
-                                          selectedMedia.length &&
-                                      downloadUrls.length ==
-                                          selectedMedia.length) {
-                                    setState(() {
-                                      _model.uploadedLocalFile2 =
-                                          selectedUploadedFiles.first;
-                                      _model.uploadedFileUrl2 =
-                                          downloadUrls.first;
-                                    });
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    setState(() {});
-                                    showUploadMessage(
-                                        context, 'Failed to upload data');
-                                    return;
-                                  }
-                                }
-
-                                await currentUserReference!
-                                    .update(createUsersRecordData(
-                                  photoUrl: _model.uploadedFileUrl1,
-                                ));
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 0.0, 0.0, 0.0),
-                                    child: Icon(
-                                      Icons.account_circle_outlined,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
-                                    ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 0.0, 0.0),
+                                  child: Icon(
+                                    Icons.account_circle_outlined,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '2o2ipr7a' /* Edit Profile Pic */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      '2o2ipr7a' /* Edit Profile Pic */,
                                     ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -593,8 +520,12 @@ class _SettingWidgetState extends State<SettingWidget>
                                     FFLocalizations.of(context).getText(
                                       'tsp18p55' /* Account Settings */,
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -667,8 +598,12 @@ class _SettingWidgetState extends State<SettingWidget>
                                     FFLocalizations.of(context).getText(
                                       'r21kj7q0' /* Language Options */,
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -700,7 +635,11 @@ class _SettingWidgetState extends State<SettingWidget>
                           iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          textStyle: FlutterFlowTheme.of(context).bodyLarge,
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyLarge.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                           elevation: 0.0,
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).alternate,

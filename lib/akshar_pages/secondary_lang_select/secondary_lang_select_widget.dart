@@ -51,6 +51,7 @@ class _SecondaryLangSelectWidgetState extends State<SecondaryLangSelectWidget> {
                   fontFamily: 'Readex Pro',
                   color: FlutterFlowTheme.of(context).primary,
                   fontSize: 24.0,
+                  letterSpacing: 0.0,
                   fontWeight: FontWeight.bold,
                 ),
           ),

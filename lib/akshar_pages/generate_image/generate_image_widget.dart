@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'generate_image_model.dart';
 export 'generate_image_model.dart';
 
@@ -32,25 +31,6 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => GenerateImageModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (_model.dropDownValue == 'Text') {
-        Navigator.pop(context);
-        await showModalBottomSheet(
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          enableDrag: false,
-          context: context,
-          builder: (context) {
-            return Padding(
-              padding: MediaQuery.viewInsetsOf(context),
-              child: const GenerateTextWidget(),
-            );
-          },
-        ).then((value) => safeSetState(() {}));
-      }
-    });
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -146,6 +126,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                       .headlineSmall
                                       .override(
                                         fontFamily: 'Outfit',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w800,
                                         decoration: TextDecoration.underline,
                                       ),
@@ -214,6 +195,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         fontSize: 14.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                   hintText: FFLocalizations.of(context).getText(
@@ -271,6 +253,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),
@@ -378,10 +361,18 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                             ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
@@ -425,8 +416,13 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                             ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                           maxLines: null,
+                                          minLines: null,
                                           validator: _model
                                               .textControllerValidator
                                               .asValidator(context),
@@ -480,6 +476,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.white,
+                                              letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
                                         borderSide: const BorderSide(

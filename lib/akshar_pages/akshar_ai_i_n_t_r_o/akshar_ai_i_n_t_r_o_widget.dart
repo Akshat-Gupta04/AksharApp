@@ -121,6 +121,7 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                                       .headlineSmall
                                       .override(
                                         fontFamily: 'Outfit',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w800,
                                         decoration: TextDecoration.underline,
                                       ),
@@ -179,8 +180,12 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                                   },
                                   width: 150.0,
                                   height: 40.0,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
                                   hintText: FFLocalizations.of(context).getText(
                                     '5cnuqcbi' /* Generate From */,
                                   ),
@@ -230,6 +235,7 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     fontSize: 22.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),

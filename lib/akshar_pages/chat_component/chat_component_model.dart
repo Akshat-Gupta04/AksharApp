@@ -47,8 +47,6 @@ class ChatComponentModel extends FlutterFlowModel<ChatComponentWidget> {
   // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
   ChatMessagesRecord? newChat;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     chatUpdateModels = FlutterFlowDynamicModels(() => ChatUpdateModel());
@@ -60,8 +58,4 @@ class ChatComponentModel extends FlutterFlowModel<ChatComponentWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -93,7 +92,7 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(0.0),
           ),
           child: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
@@ -101,61 +100,60 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                Column(
                   mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              12.0, 12.0, 0.0, 8.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'p4e5a30u' /* Chat Settings */,
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 0.0, 8.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'sosk88x4' /* Chat Settings */,
+                        ),
+                        textAlign: TextAlign.start,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                      ),
+                    ),
+                    Align(
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: FaIcon(
+                                FontAwesomeIcons.language,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
                             ),
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context).labelMedium,
                           ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.language,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'w4encrvo' /* Language Setting */,
                               ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'thqvsvt3' /* Language Setting */,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
-                        Divider(
-                          thickness: 1.0,
-                          color: FlutterFlowTheme.of(context).accent4,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -166,7 +164,10 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                       'jo7lwk7j' /* Options */,
                     ),
                     textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).labelMedium,
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
                 MouseRegion(
@@ -218,8 +219,12 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                                   FFLocalizations.of(context).getText(
                                     'smy8hehj' /* Invite Users */,
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                             ),
@@ -229,80 +234,78 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                     ),
                   ),
                 ),
-                if (widget.chatList?.userA == currentUserReference)
-                  Divider(
-                    thickness: 1.0,
-                    color: FlutterFlowTheme.of(context).alternate,
-                  ),
-                if (widget.chatList?.userA == currentUserReference)
-                  MouseRegion(
-                    opaque: false,
-                    cursor: MouseCursor.defer ?? MouseCursor.defer,
-                    onEnter: ((event) async {
-                      setState(() => _model.mouseRegionHovered2 = true);
-                    }),
-                    onExit: ((event) async {
-                      setState(() => _model.mouseRegionHovered2 = false);
-                    }),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        setState(() {
-                          _model.showDelete = true;
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        curve: Curves.easeInOut,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: _model.mouseRegionHovered2
-                              ? FlutterFlowTheme.of(context).primaryBackground
-                              : FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 0.0, 8.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
+                Divider(
+                  thickness: 1.0,
+                  color: FlutterFlowTheme.of(context).alternate,
+                ),
+                MouseRegion(
+                  opaque: false,
+                  cursor: MouseCursor.defer ?? MouseCursor.defer,
+                  onEnter: ((event) async {
+                    setState(() => _model.mouseRegionHovered2 = true);
+                  }),
+                  onExit: ((event) async {
+                    setState(() => _model.mouseRegionHovered2 = false);
+                  }),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      setState(() {
+                        _model.showDelete = true;
+                      });
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.easeInOut,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: _model.mouseRegionHovered2
+                            ? FlutterFlowTheme.of(context).primaryBackground
+                            : FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: Icon(
+                                Icons.delete_outline_rounded,
+                                color: FlutterFlowTheme.of(context).error,
+                                size: 20.0,
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 0.0, 0.0),
-                                child: Icon(
-                                  Icons.delete_outline_rounded,
-                                  color: FlutterFlowTheme.of(context).error,
-                                  size: 20.0,
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'mn7p878h' /* Delete Chat */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                        ),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'mn7p878h' /* Delete Chat */,
                                   ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
+                ),
                 if (_model.showDelete == true)
                   Divider(
                     thickness: 1.0,
@@ -347,7 +350,11 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                                       ),
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
                                   Padding(
@@ -358,7 +365,11 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                                         'z4ta2494' /* You can't undo this action. */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -376,6 +387,7 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context).error,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),

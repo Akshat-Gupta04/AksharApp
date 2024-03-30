@@ -108,6 +108,7 @@ class _TutWidgetState extends State<TutWidget> {
                                     .headlineSmall
                                     .override(
                                       fontFamily: 'Outfit',
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w800,
                                     ),
                               ),
@@ -145,8 +146,14 @@ class _TutWidgetState extends State<TutWidget> {
                                 Text(
                                   widget.question!,
                                   textAlign: TextAlign.center,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                 ),
                               ],
                             ),
@@ -170,7 +177,11 @@ class _TutWidgetState extends State<TutWidget> {
                                       Text(
                                         widget.explain!,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ],
                                   ),

@@ -17,8 +17,6 @@ class GenerateTextModel extends FlutterFlowModel<GenerateTextWidget> {
   // Stores action output result for [Gemini - Generate Text] action in Button widget.
   String? textResult;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -27,8 +25,4 @@ class GenerateTextModel extends FlutterFlowModel<GenerateTextWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

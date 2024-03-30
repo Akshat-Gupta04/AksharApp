@@ -175,7 +175,10 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                 BoxShadow(
                   blurRadius: 3.0,
                   color: Color(0x33000000),
-                  offset: Offset(0.0, -2.0),
+                  offset: Offset(
+                    0.0,
+                    -2.0,
+                  ),
                 )
               ],
             ),
@@ -445,13 +448,21 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
                                         'zljrmqlc' /* Start typing here... */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .labelSmall,
+                                          .labelSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -459,6 +470,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
+                                            letterSpacing: 0.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -500,10 +512,14 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                           const EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 56.0, 16.0),
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                    maxLines: 12,
-                                    minLines: 1,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    maxLines: null,
+                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.textControllerValidator

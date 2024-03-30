@@ -44,7 +44,7 @@ class _AnimtionWidgetState extends State<AnimtionWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 4000));
 
-      context.pushNamed('login');
+      context.pushNamed('Register');
     });
   }
 
@@ -76,7 +76,10 @@ class _AnimtionWidgetState extends State<AnimtionWidget>
               alignment: const AlignmentDirectional(0.0, 0.27),
               child: Text(
                 '',
-                style: FlutterFlowTheme.of(context).bodyMedium,
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
               ),
             ),
             Align(

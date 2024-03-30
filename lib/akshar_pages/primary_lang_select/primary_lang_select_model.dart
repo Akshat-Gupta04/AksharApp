@@ -10,8 +10,6 @@ class PrimaryLangSelectModel extends FlutterFlowModel<PrimaryLangSelectWidget> {
   // Model for Primary_Language component.
   late PrimaryLanguageModel primaryLanguageModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     primaryLanguageModel = createModel(context, () => PrimaryLanguageModel());
@@ -22,8 +20,4 @@ class PrimaryLangSelectModel extends FlutterFlowModel<PrimaryLangSelectWidget> {
     unfocusNode.dispose();
     primaryLanguageModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

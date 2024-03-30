@@ -7,10 +7,8 @@ export '/akshar_pages/setting/setting_widget.dart' show SettingWidget;
 export '/akshar_pages/animtion/animtion_widget.dart' show AnimtionWidget;
 export '/akshar_pages/login/login_widget.dart' show LoginWidget;
 export '/akshar_pages/register/register_widget.dart' show RegisterWidget;
-export '/extra_components/start_animation/start_animation_widget.dart'
+export '/akshar_pages/start_animation/start_animation_widget.dart'
     show StartAnimationWidget;
-export '/extra_components/assistant_ai/assistant_ai_widget.dart'
-    show AssistantAiWidget;
 export '/akshar_pages/chat_interface/chat_interface_widget.dart'
     show ChatInterfaceWidget;
 export '/akshar_pages/chat_add_user/chat_add_user_widget.dart'
@@ -23,6 +21,3 @@ export '/akshar_pages/secondary_lang_select/secondary_lang_select_widget.dart'
     show SecondaryLangSelectWidget;
 export '/akshar_pages/user_information/user_information_widget.dart'
     show UserInformationWidget;
-export '/walkthrough/ai_text/ai_text_widget.dart' show AiTextWidget;
-export '/walkthrough/text_generate/text_generate_widget.dart'
-    show TextGenerateWidget;

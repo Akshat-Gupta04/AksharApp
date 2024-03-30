@@ -86,7 +86,12 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                             FFLocalizations.of(context).getText(
                               'vu4b712a' /* Chat Details */,
                             ),
-                            style: FlutterFlowTheme.of(context).headlineSmall,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                         Padding(
@@ -134,7 +139,11 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                               ),
                             )
                           ],
-                          style: FlutterFlowTheme.of(context).labelMedium,
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ),
@@ -145,7 +154,11 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                         FFLocalizations.of(context).getText(
                           '851drton' /* In this chat */,
                         ),
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                       ),
                     ),
                     Expanded(
@@ -226,67 +239,15 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                                 color: FlutterFlowTheme.of(context).alternate,
                               ),
                             ),
-                            child: wrapWithModel(
-                              model: _model.deleteDialogModel,
-                              updateCallback: () => setState(() {}),
-                              updateOnChange: true,
-                              child: DeleteDialogWidget(
-                                chatList: widget.chatRef,
-                                action: () async {
-                                  Navigator.pop(context);
-
-                                  context.pushNamed(
-                                    'chat_addUser',
-                                    queryParameters: {
-                                      'chatRef': serializeParam(
-                                        widget.chatRef,
-                                        ParamType.Document,
-                                      ),
-                                    }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      'chatRef': widget.chatRef,
-                                      kTransitionInfoKey: const TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.bottomToTop,
-                                        duration: Duration(milliseconds: 250),
-                                      ),
-                                    },
-                                  );
-                                },
-                                deleteAction: () async {
-                                  await widget.chatRef!.reference.delete();
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'You have successfully deleted a chat!',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                            ),
-                                      ),
-                                      duration: const Duration(milliseconds: 3000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context).error,
-                                    ),
-                                  );
-
-                                  context.pushNamed(
-                                    'HomePage',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType:
-                                            PageTransitionType.leftToRight,
-                                        duration: Duration(milliseconds: 220),
-                                      ),
-                                    },
-                                  );
-                                },
+                            child: SizedBox(
+                              height: 200.0,
+                              child: wrapWithModel(
+                                model: _model.deleteDialogModel,
+                                updateCallback: () => setState(() {}),
+                                child: DeleteDialogWidget(
+                                  action: () async {},
+                                  deleteAction: () async {},
+                                ),
                               ),
                             ),
                           ),
@@ -316,6 +277,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Outfit',
                                     fontSize: 18.0,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 0.0,
                           borderSide: BorderSide(

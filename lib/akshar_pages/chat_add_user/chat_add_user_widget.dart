@@ -80,7 +80,10 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                 FFLocalizations.of(context).getText(
                   'ukqk38do' /* Invite Friends */,
                 ),
-                style: FlutterFlowTheme.of(context).headlineSmall,
+                style: FlutterFlowTheme.of(context).headlineSmall.override(
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0.0,
+                    ),
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
@@ -88,7 +91,10 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                   FFLocalizations.of(context).getText(
                     'e97g2xum' /* Select users from below to sta... */,
                   ),
-                  style: FlutterFlowTheme.of(context).labelSmall,
+                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
                 ),
               ),
             ],
@@ -146,7 +152,12 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                               FFLocalizations.of(context).getText(
                                 'tsllruh8' /* Invite Friends */,
                               ),
-                              style: FlutterFlowTheme.of(context).labelMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                         ),
@@ -160,7 +171,12 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                     ) -
                                     1))
                                 .toString(),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                         Padding(
@@ -170,7 +186,12 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                             FFLocalizations.of(context).getText(
                               '5iasfji3' /* Selected */,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                       ],
@@ -349,6 +370,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
+                                                        letterSpacing: 0.0,
                                                         lineHeight: 2.0,
                                                       ),
                                             ),
@@ -365,6 +387,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondary,
+                                                    letterSpacing: 0.0,
                                                   ),
                                             ),
                                             tileColor:
@@ -527,6 +550,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context).info,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                               duration: const Duration(milliseconds: 3000),
@@ -553,6 +577,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                         elevation: 2.0,
                         borderSide: const BorderSide(

@@ -169,7 +169,12 @@ class _ChatInterfaceWidgetState extends State<ChatInterfaceWidget> {
                                   conditionalBuilderUsersRecord.displayName,
                                   'Ghost User',
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
@@ -188,6 +193,7 @@ class _ChatInterfaceWidgetState extends State<ChatInterfaceWidget> {
                                         fontFamily: 'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
+                                        letterSpacing: 0.0,
                                       ),
                                   minFontSize: 10.0,
                                 ),
@@ -310,6 +316,7 @@ class _ChatInterfaceWidgetState extends State<ChatInterfaceWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -395,6 +402,7 @@ class _ChatInterfaceWidgetState extends State<ChatInterfaceWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -419,7 +427,12 @@ class _ChatInterfaceWidgetState extends State<ChatInterfaceWidget> {
                                 FFLocalizations.of(context).getText(
                                   'i1pwcz61' /* Group Chat */,
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
@@ -435,6 +448,7 @@ class _ChatInterfaceWidgetState extends State<ChatInterfaceWidget> {
                                         fontFamily: 'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),

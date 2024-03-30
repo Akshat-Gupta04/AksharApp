@@ -35,8 +35,6 @@ class ChatInterfaceModel extends FlutterFlowModel<ChatInterfaceWidget> {
   // Model for chat_Component component.
   late ChatComponentModel chatComponentModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     chatComponentModel = createModel(context, () => ChatComponentModel());
@@ -47,8 +45,4 @@ class ChatInterfaceModel extends FlutterFlowModel<ChatInterfaceWidget> {
     unfocusNode.dispose();
     chatComponentModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

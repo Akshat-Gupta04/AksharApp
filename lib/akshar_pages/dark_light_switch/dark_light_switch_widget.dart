@@ -135,6 +135,7 @@ class _DarkLightSwitchWidgetState extends State<DarkLightSwitchWidget>
                                       ? FlutterFlowTheme.of(context).primaryText
                                       : FlutterFlowTheme.of(context)
                                           .secondaryText,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),
@@ -197,6 +198,7 @@ class _DarkLightSwitchWidgetState extends State<DarkLightSwitchWidget>
                                       ? FlutterFlowTheme.of(context).primaryText
                                       : FlutterFlowTheme.of(context)
                                           .secondaryText,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),

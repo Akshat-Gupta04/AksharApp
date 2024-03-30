@@ -14,8 +14,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   TextEditingController? searchController;
   String? Function(BuildContext, String?)? searchControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -26,8 +24,4 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
     searchFocusNode?.dispose();
     searchController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

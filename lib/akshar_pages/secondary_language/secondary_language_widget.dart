@@ -60,6 +60,7 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                         fontFamily: 'Readex Pro',
                         color: FlutterFlowTheme.of(context).primaryBackground,
                         fontSize: 20.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.w500,
                       ),
                 ),
@@ -109,6 +110,7 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                                 fontFamily: 'Readex Pro',
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 fontSize: 24.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                               ),
                       selectedTextStyle:
@@ -116,6 +118,7 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                                 fontFamily: 'Readex Pro',
                                 color: FlutterFlowTheme.of(context).secondary,
                                 fontSize: 32.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w800,
                               ),
                       buttonPosition: RadioButtonPosition.left,
@@ -201,6 +204,7 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,
+                        letterSpacing: 0.0,
                       ),
                   borderSide: const BorderSide(
                     color: Colors.transparent,

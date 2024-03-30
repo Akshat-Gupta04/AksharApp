@@ -13,8 +13,6 @@ class RecentUserModel extends FlutterFlowModel<RecentUserWidget> {
   String? Function(BuildContext, String?)? searchControllerValidator;
   List<UsersRecord> simpleSearchResults = [];
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -24,8 +22,4 @@ class RecentUserModel extends FlutterFlowModel<RecentUserWidget> {
     searchFocusNode?.dispose();
     searchController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -11,8 +11,6 @@ class SecondaryLangSelectModel
   // Model for Secondary_Language component.
   late SecondaryLanguageModel secondaryLanguageModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     secondaryLanguageModel =
@@ -24,8 +22,4 @@ class SecondaryLangSelectModel
     unfocusNode.dispose();
     secondaryLanguageModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

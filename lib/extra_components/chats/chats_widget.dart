@@ -169,6 +169,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                 .override(
                                                   fontFamily: 'Readex Pro',
                                                   fontSize: 18.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                           ),
@@ -179,6 +180,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                 .override(
                                                   fontFamily: 'Readex Pro',
                                                   fontSize: 16.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w300,
                                                 ),
                                           ),
@@ -386,6 +388,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                                             'Readex Pro',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryText,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                       ),
                                                                 ),
                                                               ],
@@ -422,6 +426,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                                               'Readex Pro',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryText,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -524,6 +530,8 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                                             'Readex Pro',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryText,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                       ),
                                                                 ),
                                                               ],
@@ -564,6 +572,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
                                                                               color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              letterSpacing: 0.0,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -902,10 +911,20 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                               ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                               enabledBorder:
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
@@ -951,7 +970,12 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                            minLines: null,
                                             validator: _model
                                                 .typeSomethingControllerValidator
                                                 .asValidator(context),
@@ -1193,6 +1217,7 @@ class _ChatsWidgetState extends State<ChatsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                   duration: const Duration(

@@ -136,7 +136,10 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x33000000),
-                  offset: Offset(0.0, 2.0),
+                  offset: Offset(
+                    0.0,
+                    2.0,
+                  ),
                 )
               ],
             ),
@@ -251,6 +254,7 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
                                               lineHeight: 1.5,
                                             ),
                                       )),
@@ -267,7 +271,11 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                                                     .languageCode,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .labelSmall,
+                                              .labelSmall
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                     ].divide(const SizedBox(width: 4.0)),
@@ -286,6 +294,7 @@ class _ImageDetailsWidgetState extends State<ImageDetailsWidget>
                                           .labelLarge
                                           .override(
                                             fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
                                             lineHeight: 1.5,
                                           ),
                                     )),

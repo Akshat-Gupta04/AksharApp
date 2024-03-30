@@ -179,7 +179,11 @@ class _RegisterWidgetState extends State<RegisterWidget>
                         FFLocalizations.of(context).getText(
                           'me2l9tru' /* Register */,
                         ),
-                        style: FlutterFlowTheme.of(context).headlineSmall,
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation1']!),
                     ),
@@ -190,7 +194,11 @@ class _RegisterWidgetState extends State<RegisterWidget>
                         FFLocalizations.of(context).getText(
                           'i1swichr' /* Use the account below to regis... */,
                         ),
-                        style: FlutterFlowTheme.of(context).labelMedium,
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                       ).animateOnPageLoad(
                           animationsMap['textOnPageLoadAnimation2']!),
                     ),
@@ -221,8 +229,12 @@ class _RegisterWidgetState extends State<RegisterWidget>
                             labelText: FFLocalizations.of(context).getText(
                               'x3r7lno7' /* Name */,
                             ),
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).alternate,
@@ -256,7 +268,12 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                 .secondaryBackground,
                             contentPadding: const EdgeInsets.all(24.0),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          minLines: null,
                           keyboardType: TextInputType.emailAddress,
                           validator: _model.nameControllerValidator
                               .asValidator(context),
@@ -278,8 +295,12 @@ class _RegisterWidgetState extends State<RegisterWidget>
                             labelText: FFLocalizations.of(context).getText(
                               'x3kxbmui' /* Email */,
                             ),
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).alternate,
@@ -313,7 +334,12 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                 .secondaryBackground,
                             contentPadding: const EdgeInsets.all(24.0),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          minLines: null,
                           keyboardType: TextInputType.emailAddress,
                           validator: _model.emailAddressControllerValidator
                               .asValidator(context),
@@ -328,14 +354,19 @@ class _RegisterWidgetState extends State<RegisterWidget>
                         child: TextFormField(
                           controller: _model.passwordController,
                           focusNode: _model.passwordFocusNode,
+                          autofocus: false,
                           autofillHints: const [AutofillHints.password],
                           obscureText: !_model.passwordVisibility,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
                               'vdc3ur7c' /* Password */,
                             ),
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).alternate,
@@ -384,7 +415,12 @@ class _RegisterWidgetState extends State<RegisterWidget>
                               ),
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          minLines: null,
                           validator: _model.passwordControllerValidator
                               .asValidator(context),
                         ),
@@ -414,9 +450,11 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                 .update(createUsersRecordData(
                                   displayName: _model.nameController.text,
                                   created: false,
+                                  walkthrough: false,
                                 ));
 
-                            context.goNamedAuth('HomePage', context.mounted);
+                            context.goNamedAuth(
+                                'start_Animation', context.mounted);
                           },
                           text: FFLocalizations.of(context).getText(
                             'govqndhq' /* Register */,
@@ -434,6 +472,7 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
                             borderSide: const BorderSide(
@@ -466,7 +505,12 @@ class _RegisterWidgetState extends State<RegisterWidget>
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
                             elevation: 0.0,
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context)

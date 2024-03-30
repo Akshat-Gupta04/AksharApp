@@ -9,17 +9,10 @@ class SettingModel extends FlutterFlowModel<SettingWidget> {
   final unfocusNode = FocusNode();
   // Model for DarkLightSwitch component.
   late DarkLightSwitchModel darkLightSwitchModel;
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl1 = '';
-
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
-
-  /// Initialization and disposal methods.
+  String uploadedFileUrl = '';
 
   @override
   void initState(BuildContext context) {
@@ -31,8 +24,4 @@ class SettingModel extends FlutterFlowModel<SettingWidget> {
     unfocusNode.dispose();
     darkLightSwitchModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }
