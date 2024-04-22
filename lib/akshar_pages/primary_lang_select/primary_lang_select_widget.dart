@@ -2,7 +2,10 @@ import '/akshar_pages/primary_language/primary_language_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'primary_lang_select_model.dart';
 export 'primary_lang_select_model.dart';
 
@@ -70,13 +73,13 @@ class _PrimaryLangSelectWidgetState extends State<PrimaryLangSelectWidget> {
                   fontWeight: FontWeight.bold,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
         ),
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xFFC31432), Color(0xFF240B36)],
                 stops: [0.0, 1.0],
@@ -91,7 +94,7 @@ class _PrimaryLangSelectWidgetState extends State<PrimaryLangSelectWidget> {
                   child: wrapWithModel(
                     model: _model.primaryLanguageModel,
                     updateCallback: () => setState(() {}),
-                    child: const PrimaryLanguageWidget(),
+                    child: PrimaryLanguageWidget(),
                   ),
                 ),
               ],

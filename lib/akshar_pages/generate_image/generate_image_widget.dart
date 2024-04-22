@@ -8,6 +8,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'generate_image_model.dart';
 export 'generate_image_model.dart';
 
@@ -46,25 +48,25 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Color(0xB20B191E),
         ),
         child: Align(
-          alignment: const AlignmentDirectional(0.0, 1.0),
+          alignment: AlignmentDirectional(0.0, 1.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(1.0, 0.0),
+                  alignment: AlignmentDirectional(1.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 16.0),
                     child: FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 30.0,
@@ -85,7 +87,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                 Material(
                   color: Colors.transparent,
                   elevation: 5.0,
-                  shape: const RoundedRectangleBorder(
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
@@ -97,7 +99,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: const BorderRadius.only(
+                      borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(16.0),
@@ -109,14 +111,14 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -133,7 +135,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 16.0, 0.0),
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.dropDownValueController ??=
@@ -166,7 +168,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                             return Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
-                                              child: const GenerateTextWidget(),
+                                              child: GenerateTextWidget(),
                                             );
                                           },
                                         ).then((value) => safeSetState(() {}));
@@ -181,7 +183,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                             return Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
-                                              child: const GenerateImageWidget(),
+                                              child: GenerateImageWidget(),
                                             );
                                           },
                                         ).then((value) => safeSetState(() {}));
@@ -210,10 +212,10 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   elevation: 2.0,
-                                  borderColor: const Color(0xFFE0E3E7),
+                                  borderColor: Color(0xFFE0E3E7),
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 4.0, 12.0, 4.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
@@ -223,14 +225,14 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                             ],
                           ),
                         ),
-                        const Divider(
+                        Divider(
                           height: 4.0,
                           thickness: 1.0,
                           color: Color(0xFFE0E3E7),
                         ),
                         Container(
                           width: double.infinity,
-                          constraints: const BoxConstraints(
+                          constraints: BoxConstraints(
                             minHeight: 100.0,
                           ),
                           decoration: BoxDecoration(
@@ -241,7 +243,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 2.0, 8.0, 2.0),
                                 child: Text(
                                   valueOrDefault<String>(
@@ -261,20 +263,20 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                             ],
                           ),
                         ),
-                        const Divider(
+                        Divider(
                           height: 4.0,
                           thickness: 1.0,
                           color: Color(0xFFE0E3E7),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               8.0, 4.0, 16.0, 20.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: FlutterFlowIconButton(
                                   borderColor: Colors.transparent,
@@ -340,11 +342,11 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                 children: [
                                   Container(
                                     width: 230.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 8.0, 0.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.19,
@@ -422,7 +424,6 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                                 letterSpacing: 0.0,
                                               ),
                                           maxLines: null,
-                                          minLines: null,
                                           validator: _model
                                               .textControllerValidator
                                               .asValidator(context),
@@ -434,7 +435,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(30.0),
                                         bottomRight: Radius.circular(30.0),
                                         topLeft: Radius.circular(30.0),
@@ -464,10 +465,10 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                         size: 40.0,
                                       ),
                                       options: FFButtonOptions(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .alternate,
@@ -479,7 +480,7 @@ class _GenerateImageWidgetState extends State<GenerateImageWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),

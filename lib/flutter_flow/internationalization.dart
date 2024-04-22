@@ -111,22 +111,6 @@ Locale createLocale(String language) => language.contains('_')
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // HomePage
   {
-    'd39snm5w': {
-      'en': 'Search User',
-      'bn': 'ব্যবহারকারী অনুসন্ধান করুন',
-      'hi': 'उपयोगकर्ता खोजें',
-      'pa': 'ਖੋਜ ਉਪਭੋਗਤਾ',
-      'ta': 'தேடல் பயனர்',
-      'te': 'శోధన వినియోగదారు',
-    },
-    'gx7n4ftx': {
-      'en': 'Search for users',
-      'bn': 'ব্যবহারকারীদের জন্য অনুসন্ধান করুন',
-      'hi': 'उपयोगकर्ताओं को खोजें',
-      'pa': 'ਉਪਭੋਗਤਾਵਾਂ ਲਈ ਖੋਜ ਕਰੋ',
-      'ta': 'பயனர்களைத் தேடுங்கள்',
-      'te': 'వినియోగదారుల కోసం శోధించండి',
-    },
     'hxfi0o86': {
       'en': 'Recent Users',
       'bn': 'সাম্প্রতিক ব্যবহারকারী',
@@ -161,6 +145,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'menzaya4': {
       'en': 'AksharAI',
+      'bn': 'অক্ষরাই',
+      'hi': 'अक्षराई',
+      'pa': 'ਅਕਸ਼ਰਾਯ',
+      'ta': 'அக்ஷராஐ',
+      'te': 'అక్షరై',
+    },
+    '4stoyjbw': {
+      'en': 'Activity',
       'bn': 'অক্ষরাই',
       'hi': 'अक्षराई',
       'pa': 'ਅਕਸ਼ਰਾਯ',
@@ -202,7 +194,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'பயனர்களைத் தேடுங்கள்',
       'te': 'వినియోగదారుల కోసం శోధించండి',
     },
-    '66i48dy7': {
+    'c4ku5nwd': {
       'en': 'Mummy',
       'bn': 'মমি',
       'hi': 'मां',
@@ -210,7 +202,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'மம்மி',
       'te': 'మమ్మీ',
     },
-    'qe73y15c': {
+    'gm39916d': {
       'en': 'gritu444@gmail.com',
       'bn': 'gritu444@gmail.com',
       'hi': 'gritu444@gmail.com',
@@ -218,7 +210,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'gritu444@gmail.com',
       'te': 'gritu444@gmail.com',
     },
-    'ckuoepzx': {
+    '87hg0vn0': {
       'en': 'Mummy',
       'bn': 'মমি',
       'hi': 'मां',
@@ -226,7 +218,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'மம்மி',
       'te': 'మమ్మీ',
     },
-    'nqep19ix': {
+    'cs9p43bf': {
       'en': 'gritu444@gmail.com',
       'bn': 'gritu444@gmail.com',
       'hi': 'gritu444@gmail.com',
@@ -234,7 +226,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'gritu444@gmail.com',
       'te': 'gritu444@gmail.com',
     },
-    '4wvsx5xm': {
+    'cxgcxudn': {
       'en': 'Mummy',
       'bn': 'মমি',
       'hi': 'मां',
@@ -242,7 +234,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'மம்மி',
       'te': 'మమ్మీ',
     },
-    'd2bh6q85': {
+    'afh6cipo': {
       'en': 'gritu444@gmail.com',
       'bn': 'gritu444@gmail.com',
       'hi': 'gritu444@gmail.com',
@@ -250,7 +242,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'gritu444@gmail.com',
       'te': 'gritu444@gmail.com',
     },
-    'pq2lzahf': {
+    '3x8liky8': {
       'en': 'Mummy',
       'bn': 'মমি',
       'hi': 'मां',
@@ -258,7 +250,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': 'மம்மி',
       'te': 'మమ్మీ',
     },
-    '3cjcg1qt': {
+    'og3vgtb2': {
       'en': 'gritu444@gmail.com',
       'bn': 'gritu444@gmail.com',
       'hi': 'gritu444@gmail.com',
@@ -528,49 +520,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': 'హోమ్',
     },
   },
-  // chat_addUser
-  {
-    'tsllruh8': {
-      'en': 'Invite Friends',
-      'bn': 'বন্ধুদের আমন্ত্রণ জানান',
-      'hi': 'मित्रों को आमंत्रित करें',
-      'pa': 'ਦੋਸਤਾਂ ਨੂੰ ਸੱਦਾ ਦਿਓ',
-      'ta': 'நண்பர்களை அழைக்க',
-      'te': 'స్నేహితులను ఆహ్వానించండి',
-    },
-    '5iasfji3': {
-      'en': 'Selected',
-      'bn': 'নির্বাচিত',
-      'hi': 'चयनित',
-      'pa': 'ਚੁਣਿਆ ਹੋਇਆ',
-      'ta': 'தேர்ந்தெடுக்கப்பட்டது',
-      'te': 'ఎంపిక చేయబడింది',
-    },
-    'ukqk38do': {
-      'en': 'Invite Friends',
-      'bn': 'বন্ধুদের আমন্ত্রণ জানান',
-      'hi': 'मित्रों को आमंत्रित करें',
-      'pa': 'ਦੋਸਤਾਂ ਨੂੰ ਸੱਦਾ ਦਿਓ',
-      'ta': 'நண்பர்களை அழைக்க',
-      'te': 'స్నేహితులను ఆహ్వానించండి',
-    },
-    'e97g2xum': {
-      'en': 'Select users from below to start a chat.',
-      'bn': 'একটি চ্যাট শুরু করতে নীচের থেকে ব্যবহারকারীদের নির্বাচন করুন.',
-      'hi': 'चैट शुरू करने के लिए नीचे से उपयोगकर्ताओं का चयन करें।',
-      'pa': 'ਚੈਟ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਹੇਠਾਂ ਤੋਂ ਉਪਭੋਗਤਾਵਾਂ ਨੂੰ ਚੁਣੋ।',
-      'ta': 'அரட்டையைத் தொடங்க கீழே உள்ள பயனர்களைத் தேர்ந்தெடுக்கவும்.',
-      'te': 'చాట్ ప్రారంభించడానికి దిగువ నుండి వినియోగదారులను ఎంచుకోండి.',
-    },
-    '2j3p4vac': {
-      'en': 'Home',
-      'bn': 'বাড়ি',
-      'hi': 'घर',
-      'pa': 'ਘਰ',
-      'ta': 'வீடு',
-      'te': 'హోమ్',
-    },
-  },
   // image_Details
   {
     'xj8lputg': {
@@ -798,7 +747,211 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ta': '',
       'te': '',
     },
+    '2j3p4vac': {
+      'en': 'Home',
+      'bn': 'বাড়ি',
+      'hi': 'घर',
+      'pa': 'ਘਰ',
+      'ta': 'வீடு',
+      'te': 'హోమ్',
+    },
+  },
+  // chat_AddUser
+  {
+    'tsllruh8': {
+      'en': 'Invite Friends',
+      'bn': 'বন্ধুদের আমন্ত্রণ জানান',
+      'hi': 'मित्रों को आमंत्रित करें',
+      'pa': 'ਦੋਸਤਾਂ ਨੂੰ ਸੱਦਾ ਦਿਓ',
+      'ta': 'நண்பர்களை அழைக்க',
+      'te': 'స్నేహితులను ఆహ్వానించండి',
+    },
+    '5iasfji3': {
+      'en': 'Selected',
+      'bn': 'নির্বাচিত',
+      'hi': 'चयनित',
+      'pa': 'ਚੁਣਿਆ ਹੋਇਆ',
+      'ta': 'தேர்ந்தெடுக்கப்பட்டது',
+      'te': 'ఎంపిక చేయబడింది',
+    },
+    'ukqk38do': {
+      'en': 'Invite Friends',
+      'bn': 'বন্ধুদের আমন্ত্রণ জানান',
+      'hi': 'मित्रों को आमंत्रित करें',
+      'pa': 'ਦੋਸਤਾਂ ਨੂੰ ਸੱਦਾ ਦਿਓ',
+      'ta': 'நண்பர்களை அழைக்க',
+      'te': 'స్నేహితులను ఆహ్వానించండి',
+    },
+    'e97g2xum': {
+      'en': 'Select users from below to start a chat.',
+      'bn': 'একটি চ্যাট শুরু করতে নীচের থেকে ব্যবহারকারীদের নির্বাচন করুন.',
+      'hi': 'चैट शुरू करने के लिए नीचे से उपयोगकर्ताओं का चयन करें।',
+      'pa': 'ਚੈਟ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਹੇਠਾਂ ਤੋਂ ਉਪਭੋਗਤਾਵਾਂ ਨੂੰ ਚੁਣੋ।',
+      'ta': 'அரட்டையைத் தொடங்க கீழே உள்ள பயனர்களைத் தேர்ந்தெடுக்கவும்.',
+      'te': 'చాట్ ప్రారంభించడానికి దిగువ నుండి వినియోగదారులను ఎంచుకోండి.',
+    },
     'jout30zu': {
+      'en': 'Home',
+      'bn': 'বাড়ি',
+      'hi': 'घर',
+      'pa': 'ਘਰ',
+      'ta': 'வீடு',
+      'te': 'హోమ్',
+    },
+  },
+  // profile
+  {
+    'q06wdtdx': {
+      'en': 'Home',
+      'bn': 'বাড়ি',
+      'hi': 'घर',
+      'pa': 'ਘਰ',
+      'ta': 'வீடு',
+      'te': 'హోమ్',
+    },
+  },
+  // notifications_List
+  {
+    '8efg0rr8': {
+      'en': 'Activity',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'n3j88j2n': {
+      'en': 'Below is a list o activities for you.',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    '8fb6xogm': {
+      'en': 'Home',
+      'bn': 'বাড়ি',
+      'hi': 'घर',
+      'pa': 'ਘਰ',
+      'ta': 'வீடு',
+      'te': 'హోమ్',
+    },
+  },
+  // notification_Create
+  {
+    'oa1uqekw': {
+      'en': 'Create Activity',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    '35ayvla2': {
+      'en': 'You can fill out the elemements below to create an activity item.',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    '3y9eq9hv': {
+      'en': 'Activity Name...',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'f4h8kbqz': {
+      'en': 'Short Description of what is going on...',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'tvhhgaop': {
+      'en': 'Activity Type',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'pe2ddwsv': {
+      'en': 'New Task',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'mdiqsmf8': {
+      'en': 'Friend Request',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    '9ikkqfvo': {
+      'en': 'New Post',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'bvvyujzz': {
+      'en': 'Reminder',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'ojb9z904': {
+      'en': '',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    '7ct5tynu': {
+      'en': 'Upload Screenshot',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'q70x7bpe': {
+      'en': 'Assign User',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'eoixfqdc': {
+      'en': 'Add User',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'xke5zux3': {
+      'en': 'Create Activity',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'kqajbg4d': {
       'en': 'Home',
       'bn': 'বাড়ি',
       'hi': 'घर',
@@ -1054,12 +1207,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': 'నుండి రూపొందించండి',
     },
     'n2hoa59a': {
-      'en': 'Label here...',
+      'en': '',
       'bn': 'এখানে লেবেল করুন...',
       'hi': 'यहां लेबल करें...',
       'pa': 'ਇੱਥੇ ਲੇਬਲ ਕਰੋ...',
       'ta': 'இங்கே லேபிளிடு...',
       'te': 'ఇక్కడ లేబుల్ చేయండి...',
+    },
+    'w3xrraz0': {
+      'en': 'Type here',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
     },
   },
   // aksharAi_INTRO
@@ -1162,41 +1323,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': 'ఇక్కడ లేబుల్ చేయండి...',
     },
   },
-  // chat_Setting_Overlay
-  {
-    'vu4b712a': {
-      'en': 'Chat Details',
-      'bn': 'চ্যাট বিবরণ',
-      'hi': 'चैट विवरण',
-      'pa': 'ਚੈਟ ਵੇਰਵੇ',
-      'ta': 'அரட்டை விவரங்கள்',
-      'te': 'చాట్ వివరాలు',
-    },
-    'jg9zqol6': {
-      'en': 'Group Chat ID: ',
-      'bn': 'গ্রুপ চ্যাট আইডি:',
-      'hi': 'समूह चैट आईडी:',
-      'pa': 'ਗਰੁੱਪ ਚੈਟ ID:',
-      'ta': 'குழு அரட்டை ஐடி:',
-      'te': 'గ్రూప్ చాట్ ID:',
-    },
-    '851drton': {
-      'en': 'In this chat',
-      'bn': 'এই আড্ডায়',
-      'hi': 'इस चैट में',
-      'pa': 'ਇਸ ਗੱਲਬਾਤ ਵਿੱਚ',
-      'ta': 'இந்த அரட்டையில்',
-      'te': 'ఈ చాట్‌లో',
-    },
-    'hyvnua8c': {
-      'en': 'Close',
-      'bn': 'বন্ধ',
-      'hi': 'बंद करना',
-      'pa': 'ਬੰਦ ਕਰੋ',
-      'ta': 'நெருக்கமான',
-      'te': 'దగ్గరగా',
-    },
-  },
   // chat_Component
   {
     'zljrmqlc': {
@@ -1222,17 +1348,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pa': 'ਕਿਰਪਾ ਕਰਕੇ ਡ੍ਰੌਪਡਾਉਨ ਵਿੱਚੋਂ ਇੱਕ ਵਿਕਲਪ ਚੁਣੋ',
       'ta': 'கீழ்தோன்றலில் இருந்து ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்',
       'te': 'దయచేసి డ్రాప్‌డౌన్ నుండి ఒక ఎంపికను ఎంచుకోండి',
-    },
-  },
-  // user_ListSmall
-  {
-    'xpittvnb': {
-      'en': 'ME',
-      'bn': 'আমাকে',
-      'hi': 'मुझे',
-      'pa': 'ME',
-      'ta': 'ME',
-      'te': 'ME',
     },
   },
   // tut
@@ -1301,7 +1416,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': '',
     },
   },
-  // deleteDialog
+  // deleteDialog_old
   {
     'sosk88x4': {
       'en': 'Chat Settings',
@@ -1368,6 +1483,168 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te': 'తొలగించు',
     },
   },
+  // chat_SettingOverlay
+  {
+    'vu4b712a': {
+      'en': 'Chat Details',
+      'bn': 'চ্যাট বিবরণ',
+      'hi': 'चैट विवरण',
+      'pa': 'ਚੈਟ ਵੇਰਵੇ',
+      'ta': 'அரட்டை விவரங்கள்',
+      'te': 'చాట్ వివరాలు',
+    },
+    'jg9zqol6': {
+      'en': 'Group Chat ID: ',
+      'bn': 'গ্রুপ চ্যাট আইডি:',
+      'hi': 'समूह चैट आईडी:',
+      'pa': 'ਗਰੁੱਪ ਚੈਟ ID:',
+      'ta': 'குழு அரட்டை ஐடி:',
+      'te': 'గ్రూప్ చాట్ ID:',
+    },
+    '851drton': {
+      'en': 'In this chat',
+      'bn': 'এই আড্ডায়',
+      'hi': 'इस चैट में',
+      'pa': 'ਇਸ ਗੱਲਬਾਤ ਵਿੱਚ',
+      'ta': 'இந்த அரட்டையில்',
+      'te': 'ఈ చాట్‌లో',
+    },
+    'hyvnua8c': {
+      'en': 'Close',
+      'bn': 'বন্ধ',
+      'hi': 'बंद करना',
+      'pa': 'ਬੰਦ ਕਰੋ',
+      'ta': 'நெருக்கமான',
+      'te': 'దగ్గరగా',
+    },
+  },
+  // user_ListSmall
+  {
+    'xpittvnb': {
+      'en': 'ME',
+      'bn': 'আমাকে',
+      'hi': 'मुझे',
+      'pa': 'ME',
+      'ta': 'ME',
+      'te': 'ME',
+    },
+  },
+  // deleteDialog
+  {
+    'lpjkw0ri': {
+      'en': 'Chat Settings',
+      'bn': 'চ্যাট সেটিংস',
+      'hi': 'चैट सेटिंग्स',
+      'pa': 'ਚੈਟ ਸੈਟਿੰਗਾਂ',
+      'ta': 'அரட்டை அமைப்புகள்',
+      'te': 'చాట్ సెట్టింగ్‌లు',
+    },
+    '06uz08pl': {
+      'en': 'Language Setting',
+      'bn': 'ভাষা সেটিং',
+      'hi': 'भाषा सेटिंग',
+      'pa': 'ਭਾਸ਼ਾ ਸੈਟਿੰਗ',
+      'ta': 'மொழி அமைப்பு',
+      'te': 'భాష సెట్టింగ్',
+    },
+    'rs4fso4n': {
+      'en': 'Options',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    '8crp19tz': {
+      'en': 'Invite Users',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'yjcrvpo9': {
+      'en': 'Delete Chat',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'cdyezmca': {
+      'en': 'Confirm Delete',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'n9xv95u9': {
+      'en': 'You can\'t undo this action.',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'rdg62fyt': {
+      'en': 'Delete',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+  },
+  // user_ListSmall_1
+  {
+    '51dxt371': {
+      'en': 'ME',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+  },
+  // user_List
+  {
+    '214zusnp': {
+      'en': 'Assign User',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'b7sxq7i8': {
+      'en': 'Select a user from the list below to continue.',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+    'lvikrlie': {
+      'en': 'Close',
+      'bn': '',
+      'hi': '',
+      'pa': '',
+      'ta': '',
+      'te': '',
+    },
+  },
+  // covertToOrginal
+  {
+    '0d704yt7': {
+      'en': 'AksharTranslated',
+      'bn': 'অক্ষরএআই',
+      'hi': 'अक्षराई',
+      'pa': 'ਅਕਸ਼ਰਏ.ਆਈ',
+      'ta': 'அக்ஷராஐ',
+      'te': 'అక్షరఏఐ',
+    },
+  },
   // Miscellaneous
   {
     'guy0hptf': {
@@ -1397,7 +1674,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'te':
           'మీడియాను భాగస్వామ్యం చేయడానికి photp లైబ్రరీకి ఈ యాప్ యాక్సెస్‌ని అనుమతించండి',
     },
-    'ojb9z904': {
+    'buungl25': {
       'en': '',
       'bn': '',
       'hi': '',

@@ -1,14 +1,20 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -68,34 +74,31 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const StartAnimationWidget() : const AnimtionWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? StartAnimationWidget()
+          : AnimtionWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? const StartAnimationWidget()
-              : const AnimtionWidget(),
+              ? entryPage ?? StartAnimationWidget()
+              : AnimtionWidget(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
           name: 'RecentUser',
           path: '/recentUser',
-          builder: (context, params) => RecentUserWidget(
-            search: params.getParam(
-              'search',
-              ParamType.String,
-            ),
-          ),
+          builder: (context, params) => RecentUserWidget(),
         ),
         FFRoute(
           name: 'chats',
@@ -130,27 +133,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Setting',
           path: '/setting',
-          builder: (context, params) => const SettingWidget(),
+          builder: (context, params) => SettingWidget(),
         ),
         FFRoute(
           name: 'animtion',
           path: '/animtion',
-          builder: (context, params) => const AnimtionWidget(),
+          builder: (context, params) => AnimtionWidget(),
         ),
         FFRoute(
           name: 'login',
           path: '/login',
-          builder: (context, params) => const LoginWidget(),
+          builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
           name: 'Register',
           path: '/register',
-          builder: (context, params) => const RegisterWidget(),
+          builder: (context, params) => RegisterWidget(),
         ),
         FFRoute(
           name: 'start_Animation',
           path: '/startAnimation',
-          builder: (context, params) => const StartAnimationWidget(),
+          builder: (context, params) => StartAnimationWidget(),
         ),
         FFRoute(
           name: 'chat_interface',
@@ -159,19 +162,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
           },
           builder: (context, params) => ChatInterfaceWidget(
-            chatRef: params.getParam(
-              'chatRef',
-              ParamType.Document,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'chat_addUser',
-          path: '/chatAddUser',
-          asyncParams: {
-            'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
-          },
-          builder: (context, params) => ChatAddUserWidget(
             chatRef: params.getParam(
               'chatRef',
               ParamType.Document,
@@ -195,17 +185,69 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'PrimaryLangSelect',
           path: '/primaryLangSelect',
-          builder: (context, params) => const PrimaryLangSelectWidget(),
+          builder: (context, params) => PrimaryLangSelectWidget(),
         ),
         FFRoute(
           name: 'SecondaryLangSelect',
           path: '/secondaryLangSelect',
-          builder: (context, params) => const SecondaryLangSelectWidget(),
+          builder: (context, params) => SecondaryLangSelectWidget(),
         ),
         FFRoute(
           name: 'UserInformation',
           path: '/userInformation',
-          builder: (context, params) => const UserInformationWidget(),
+          builder: (context, params) => UserInformationWidget(),
+        ),
+        FFRoute(
+          name: 'chat_AddUser',
+          path: '/chatAddUser',
+          asyncParams: {
+            'chatRef': getDoc(['chats'], ChatsRecord.fromSnapshot),
+          },
+          builder: (context, params) => ChatAddUserWidget(
+            chatRef: params.getParam(
+              'chatRef',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'profile',
+          path: '/profile',
+          asyncParams: {
+            'referenc': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => ProfileWidget(
+            userName: params.getParam(
+              'userName',
+              ParamType.String,
+            ),
+            email: params.getParam(
+              'email',
+              ParamType.String,
+            ),
+            pic: params.getParam(
+              'pic',
+              ParamType.String,
+            ),
+            referenc: params.getParam(
+              'referenc',
+              ParamType.Document,
+            ),
+            about: params.getParam(
+              'about',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'notifications_List',
+          path: '/notificationsList',
+          builder: (context, params) => NotificationsListWidget(),
+        ),
+        FFRoute(
+          name: 'notification_Create',
+          path: '/notificationCreate',
+          builder: (context, params) => NotificationCreateWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
@@ -283,7 +325,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -376,7 +418,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/animtion';
           }
           return null;
@@ -444,7 +486,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
@@ -455,7 +497,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;

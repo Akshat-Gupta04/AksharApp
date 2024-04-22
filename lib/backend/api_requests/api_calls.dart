@@ -1,35 +1,41 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class GetResponseCall {
-  static Future<ApiCallResponse> call({
-    String? apiKeyAuth = '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',
-    String? prompt = '',
-    String? language = '',
+/// Start translation Group Code
+
+class TranslationGroup {
+  static String baseUrl = 'https://google-translator9.p.rapidapi.com/';
+  static Map<String, String> headers = {
+    'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
+    'X-RapidAPI-Host': 'google-translator9.p.rapidapi.com',
+  };
+  static DetectsCall detectsCall = DetectsCall();
+  static TranslatesCall translatesCall = TranslatesCall();
+  static LanguagesCall languagesCall = LanguagesCall();
+}
+
+class DetectsCall {
+  Future<ApiCallResponse> call({
+    String? q = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "messages": [
-    {
-      "role": "user",
-      "content": "$prompt. Return a response that could be read allowed in a total of about 10-15 seconds in $language (language code)"
-    }
-  ],
-  "model": "gpt-3.5-turbo-0125",
-  "max_tokens": 100
+  "q": "${q}"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'GetResponse',
-      apiUrl: 'https://api.openai.com/v1/completions',
+      callName: 'detects',
+      apiUrl: '${TranslationGroup.baseUrl}v2/detect',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization':
-            'Bearer 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',
+        'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
+        'X-RapidAPI-Host': 'google-translator9.p.rapidapi.com',
       },
       params: {},
       body: ffApiRequestBody,
@@ -41,7 +47,75 @@ class GetResponseCall {
       alwaysAllowBody: false,
     );
   }
+
+  String? datadetectionslanguage(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.data.detections[:][:].language''',
+      ));
 }
+
+class TranslatesCall {
+  Future<ApiCallResponse> call({
+    String? q = '',
+    String? source = '',
+    String? target = '',
+    String? format = 'text',
+  }) async {
+    final ffApiRequestBody = '''
+{
+    "q":"${q}",
+    "source":"${source}",
+    "target": "${target}",
+    "format": "${format}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'translates',
+      apiUrl: '${TranslationGroup.baseUrl}v2',
+      callType: ApiCallType.POST,
+      headers: {
+        'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
+        'X-RapidAPI-Host': 'google-translator9.p.rapidapi.com',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  String? datatranslationstranslatedText(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.data.translations[:].translatedText''',
+      ));
+}
+
+class LanguagesCall {
+  Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'languages',
+      apiUrl: '${TranslationGroup.baseUrl}v2/languages',
+      callType: ApiCallType.GET,
+      headers: {
+        'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
+        'X-RapidAPI-Host': 'google-translator9.p.rapidapi.com',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End translation Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;

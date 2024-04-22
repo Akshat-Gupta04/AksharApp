@@ -1,8 +1,18 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'user_information_widget.dart' show UserInformationWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
 
 class UserInformationModel extends FlutterFlowModel<UserInformationWidget> {
   ///  State fields for stateful widgets in this page.
@@ -11,9 +21,9 @@ class UserInformationModel extends FlutterFlowModel<UserInformationWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for fullName widget.
   FocusNode? fullNameFocusNode;
-  TextEditingController? fullNameController;
-  String? Function(BuildContext, String?)? fullNameControllerValidator;
-  String? _fullNameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? fullNameTextController;
+  String? Function(BuildContext, String?)? fullNameTextControllerValidator;
+  String? _fullNameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         'dzv90fyh' /* Please enter the patients full... */,
@@ -25,9 +35,9 @@ class UserInformationModel extends FlutterFlowModel<UserInformationWidget> {
 
   // State field(s) for age widget.
   FocusNode? ageFocusNode;
-  TextEditingController? ageController;
-  String? Function(BuildContext, String?)? ageControllerValidator;
-  String? _ageControllerValidator(BuildContext context, String? val) {
+  TextEditingController? ageTextController;
+  String? Function(BuildContext, String?)? ageTextControllerValidator;
+  String? _ageTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         'ld3t85k3' /* Please enter an age for the pa... */,
@@ -39,14 +49,15 @@ class UserInformationModel extends FlutterFlowModel<UserInformationWidget> {
 
   // State field(s) for phoneNumber widget.
   FocusNode? phoneNumberFocusNode;
-  TextEditingController? phoneNumberController;
-  String? Function(BuildContext, String?)? phoneNumberControllerValidator;
+  TextEditingController? phoneNumberTextController;
+  String? Function(BuildContext, String?)? phoneNumberTextControllerValidator;
   // State field(s) for dateOfBirth widget.
   FocusNode? dateOfBirthFocusNode;
-  TextEditingController? dateOfBirthController;
+  TextEditingController? dateOfBirthTextController;
   final dateOfBirthMask = MaskTextInputFormatter(mask: '##/##/####');
-  String? Function(BuildContext, String?)? dateOfBirthControllerValidator;
-  String? _dateOfBirthControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? dateOfBirthTextControllerValidator;
+  String? _dateOfBirthTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         'ponooxv0' /* Please enter the date of birth... */,
@@ -64,32 +75,32 @@ class UserInformationModel extends FlutterFlowModel<UserInformationWidget> {
       choiceChipsValueController?.value = val != null ? [val] : [];
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
-  TextEditingController? descriptionController;
-  String? Function(BuildContext, String?)? descriptionControllerValidator;
+  TextEditingController? descriptionTextController;
+  String? Function(BuildContext, String?)? descriptionTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
-    fullNameControllerValidator = _fullNameControllerValidator;
-    ageControllerValidator = _ageControllerValidator;
-    dateOfBirthControllerValidator = _dateOfBirthControllerValidator;
+    fullNameTextControllerValidator = _fullNameTextControllerValidator;
+    ageTextControllerValidator = _ageTextControllerValidator;
+    dateOfBirthTextControllerValidator = _dateOfBirthTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     fullNameFocusNode?.dispose();
-    fullNameController?.dispose();
+    fullNameTextController?.dispose();
 
     ageFocusNode?.dispose();
-    ageController?.dispose();
+    ageTextController?.dispose();
 
     phoneNumberFocusNode?.dispose();
-    phoneNumberController?.dispose();
+    phoneNumberTextController?.dispose();
 
     dateOfBirthFocusNode?.dispose();
-    dateOfBirthController?.dispose();
+    dateOfBirthTextController?.dispose();
 
     descriptionFocusNode?.dispose();
-    descriptionController?.dispose();
+    descriptionTextController?.dispose();
   }
 }

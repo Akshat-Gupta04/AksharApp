@@ -1,4 +1,5 @@
 import '/akshar_pages/generate_image/generate_image_widget.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/gemini/gemini.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,6 +8,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'generate_text_model.dart';
 export 'generate_text_model.dart';
 
@@ -33,6 +36,12 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          _model.textController?.text = FFLocalizations.of(context).getText(
+            'w3xrraz0' /* Type here */,
+          );
+        }));
   }
 
   @override
@@ -45,25 +54,25 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Color(0xB20B191E),
         ),
         child: Align(
-          alignment: const AlignmentDirectional(0.0, 1.0),
+          alignment: AlignmentDirectional(0.0, 1.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(1.0, 0.0),
+                  alignment: AlignmentDirectional(1.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 16.0),
                     child: FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 30.0,
@@ -84,7 +93,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                 Material(
                   color: Colors.transparent,
                   elevation: 5.0,
-                  shape: const RoundedRectangleBorder(
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
@@ -96,7 +105,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: const BorderRadius.only(
+                      borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(16.0),
@@ -108,14 +117,14 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -132,7 +141,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 16.0, 0.0),
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.dropDownValueController ??=
@@ -165,7 +174,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                             return Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
-                                              child: const GenerateTextWidget(),
+                                              child: GenerateTextWidget(),
                                             );
                                           },
                                         ).then((value) => safeSetState(() {}));
@@ -180,7 +189,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                             return Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
-                                              child: const GenerateImageWidget(),
+                                              child: GenerateImageWidget(),
                                             );
                                           },
                                         ).then((value) => safeSetState(() {}));
@@ -207,10 +216,10 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   elevation: 2.0,
-                                  borderColor: const Color(0xFFE0E3E7),
+                                  borderColor: Color(0xFFE0E3E7),
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 4.0, 12.0, 4.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
@@ -220,14 +229,14 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                             ],
                           ),
                         ),
-                        const Divider(
+                        Divider(
                           height: 4.0,
                           thickness: 1.0,
                           color: Color(0xFFE0E3E7),
                         ),
                         Container(
                           width: double.infinity,
-                          constraints: const BoxConstraints(
+                          constraints: BoxConstraints(
                             minHeight: 100.0,
                           ),
                           decoration: BoxDecoration(
@@ -238,12 +247,19 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 8.0, 0.0),
-                                child: Text(
+                                child: SelectionArea(
+                                    child: Text(
                                   valueOrDefault<String>(
-                                    _model.textResult,
-                                    'No Result Yet',
+                                    _model.notEnLan == false
+                                        ? _model.textResult
+                                        : TranslationGroup.translatesCall
+                                            .datatranslationstranslatedText(
+                                            (_model.translatedtext?.jsonBody ??
+                                                ''),
+                                          ),
+                                    'Waiting for a question......',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -253,25 +269,25 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
-                                ),
+                                )),
                               ),
                             ],
                           ),
                         ),
-                        const Divider(
+                        Divider(
                           height: 4.0,
                           thickness: 1.0,
                           color: Color(0xFFE0E3E7),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               8.0, 4.0, 16.0, 20.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: FlutterFlowIconButton(
                                   borderColor: Colors.transparent,
@@ -296,11 +312,11 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                 children: [
                                   Container(
                                     width: 220.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 8.0, 0.0),
-                                      child: SizedBox(
+                                      child: Container(
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.19,
@@ -310,11 +326,6 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                           autofocus: true,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'n2hoa59a' /* Label here... */,
-                                            ),
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -378,7 +389,6 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                                 letterSpacing: 0.0,
                                               ),
                                           maxLines: null,
-                                          minLines: null,
                                           validator: _model
                                               .textControllerValidator
                                               .asValidator(context),
@@ -387,13 +397,13 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(30.0),
                                           bottomRight: Radius.circular(30.0),
                                           topLeft: Radius.circular(30.0),
@@ -402,13 +412,70 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                       ),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          await geminiGenerateText(
-                                            context,
-                                            _model.textController.text,
-                                          ).then((generatedText) {
-                                            safeSetState(() => _model
-                                                .textResult = generatedText);
-                                          });
+                                          _model.detect1 =
+                                              await TranslationGroup.detectsCall
+                                                  .call(
+                                            q: _model.textController.text,
+                                          );
+                                          if (TranslationGroup.detectsCall
+                                                  .datadetectionslanguage(
+                                                (_model.detect1?.jsonBody ??
+                                                    ''),
+                                              ) ==
+                                              'en') {
+                                            _model.notEnLan = false;
+                                            await geminiGenerateText(
+                                              context,
+                                              _model.textController.text,
+                                            ).then((generatedText) {
+                                              safeSetState(() => _model
+                                                  .textResult = generatedText);
+                                            });
+                                          } else {
+                                            _model.notEnLan = true;
+                                            _model.apiResult =
+                                                await TranslationGroup
+                                                    .translatesCall
+                                                    .call(
+                                              q: _model.textController.text,
+                                              source: TranslationGroup
+                                                  .detectsCall
+                                                  .datadetectionslanguage(
+                                                (_model.detect1?.jsonBody ??
+                                                    ''),
+                                              ),
+                                              target: 'en',
+                                            );
+                                            if ((_model.apiResult?.succeeded ??
+                                                true)) {
+                                              await geminiGenerateText(
+                                                context,
+                                                TranslationGroup.translatesCall
+                                                    .datatranslationstranslatedText(
+                                                  (_model.apiResult?.jsonBody ??
+                                                      ''),
+                                                )!,
+                                              ).then((generatedText) {
+                                                safeSetState(() =>
+                                                    _model.textResult1 =
+                                                        generatedText);
+                                              });
+
+                                              _model.translatedtext =
+                                                  await TranslationGroup
+                                                      .translatesCall
+                                                      .call(
+                                                q: _model.textResult1,
+                                                source: 'en',
+                                                target: TranslationGroup
+                                                    .detectsCall
+                                                    .datadetectionslanguage(
+                                                  (_model.detect1?.jsonBody ??
+                                                      ''),
+                                                ),
+                                              );
+                                            }
+                                          }
 
                                           setState(() {});
                                         },
@@ -422,10 +489,10 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .alternate,
@@ -438,7 +505,7 @@ class _GenerateTextWidgetState extends State<GenerateTextWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),

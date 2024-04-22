@@ -4,13 +4,17 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/walkthroughs/use_a_i.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_debounce/easy_debounce.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -40,9 +44,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         _model.useAIController?.show(context: context);
       }
     });
-
-    _model.searchController ??= TextEditingController();
-    _model.searchFocusNode ??= FocusNode();
   }
 
   @override
@@ -64,7 +65,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         body: Stack(
           children: [
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Color(0xFF43C6AC), Color(0xFFF8FFAE)],
                   stops: [0.0, 1.0],
@@ -73,13 +74,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 20.0, 0.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          20.0, 40.0, 20.0, 10.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -121,7 +122,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 children: [
                                   Builder(
                                     builder: (context) {
-                                      if (currentUserPhoto == '') {
+                                      if (currentUserPhoto == null ||
+                                          currentUserPhoto == '') {
                                         return Container(
                                           width: 42.0,
                                           height: 42.0,
@@ -149,7 +151,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             width: 42.0,
                                             height: 42.0,
                                             clipBehavior: Clip.antiAlias,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
@@ -164,123 +166,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ],
                               ),
                             ),
+                          ).addWalkthrough(
+                            container0l8b72ol,
+                            _model.useAIController,
                           ),
                         ],
                       ),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 10.0, 8.0, 0.0),
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: TextFormField(
-                                controller: _model.searchController,
-                                focusNode: _model.searchFocusNode,
-                                onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.searchController',
-                                  const Duration(milliseconds: 2000),
-                                  () async {
-                                    context.pushNamed(
-                                      'RecentUser',
-                                      queryParameters: {
-                                        'search': serializeParam(
-                                          _model.searchController.text,
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                        ),
-                                      },
-                                    );
-                                  },
-                                ),
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'd39snm5w' /* Search User */,
-                                  ),
-                                  labelStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  alignLabelWithHint: true,
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'gx7n4ftx' /* Search for users */,
-                                  ),
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  prefixIcon: const Icon(
-                                    Icons.search,
-                                  ),
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      letterSpacing: 0.0,
-                                    ),
-                                minLines: null,
-                                validator: _model.searchControllerValidator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                    Divider(
+                      thickness: 2.0,
+                      color: FlutterFlowTheme.of(context).primaryText,
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 14.0, 8.0, 14.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 14.0, 8.0, 14.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -304,15 +203,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed(
-                                'RecentUser',
-                                queryParameters: {
-                                  'search': serializeParam(
-                                    _model.searchController.text,
-                                    ParamType.String,
-                                  ),
-                                }.withoutNulls,
-                              );
+                              context.pushNamed('RecentUser');
                             },
                             child: Text(
                               FFLocalizations.of(context).getText(
@@ -323,6 +214,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w800,
                                   ),
                             ),
                           ),
@@ -331,86 +223,90 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          StreamBuilder<List<UsersRecord>>(
-                            stream: queryUsersRecord(),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            StreamBuilder<List<UsersRecord>>(
+                              stream: queryUsersRecord(),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              }
-                              List<UsersRecord> rowUsersRecordList = snapshot
-                                  .data!
-                                  .where((u) => u.uid != currentUserUid)
-                                  .toList();
-                              return SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: List.generate(
-                                      rowUsersRecordList.length, (rowIndex) {
-                                    final rowUsersRecord =
-                                        rowUsersRecordList[rowIndex];
-                                    return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 8.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          StreamBuilder<List<ChatsRecord>>(
-                                            stream: queryChatsRecord(
-                                              singleRecord: true,
-                                            ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                      ),
+                                  );
+                                }
+                                List<UsersRecord> rowUsersRecordList = snapshot
+                                    .data!
+                                    .where((u) => u.uid != currentUserUid)
+                                    .toList();
+                                return SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: List.generate(
+                                        rowUsersRecordList.length, (rowIndex) {
+                                      final rowUsersRecord =
+                                          rowUsersRecordList[rowIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 8.0, 0.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'profile',
+                                                  queryParameters: {
+                                                    'userName': serializeParam(
+                                                      rowUsersRecord
+                                                          .displayName,
+                                                      ParamType.String,
                                                     ),
-                                                  ),
+                                                    'email': serializeParam(
+                                                      rowUsersRecord.email,
+                                                      ParamType.String,
+                                                    ),
+                                                    'pic': serializeParam(
+                                                      rowUsersRecord.photoUrl,
+                                                      ParamType.String,
+                                                    ),
+                                                    'referenc': serializeParam(
+                                                      rowUsersRecord,
+                                                      ParamType.Document,
+                                                    ),
+                                                    'about': serializeParam(
+                                                      rowUsersRecord
+                                                          .shortDescription,
+                                                      ParamType.String,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'referenc': rowUsersRecord,
+                                                  },
                                                 );
-                                              }
-                                              List<ChatsRecord>
-                                                  containerChatsRecordList =
-                                                  snapshot.data!;
-                                              // Return an empty Container when the item does not exist.
-                                              if (snapshot.data!.isEmpty) {
-                                                return Container();
-                                              }
-                                              final containerChatsRecord =
-                                                  containerChatsRecordList
-                                                          .isNotEmpty
-                                                      ? containerChatsRecordList
-                                                          .first
-                                                      : null;
-                                              return Container(
+                                              },
+                                              child: Container(
                                                 width: 60.0,
                                                 height: 60.0,
                                                 decoration: BoxDecoration(
@@ -430,35 +326,36 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .primaryText,
                                                   ),
                                                 ),
-                                              );
-                                            },
-                                          ),
-                                          Text(
-                                            rowUsersRecord.displayName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
+                                              ),
+                                            ),
+                                            Text(
+                                              rowUsersRecord.displayName,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: StreamBuilder<List<ChatsRecord>>(
                           stream: queryChatsRecord(
                             queryBuilder: (chatsRecord) => chatsRecord
@@ -487,7 +384,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 snapshot.data!;
                             if (listViewChatsRecordList.isEmpty) {
                               return Center(
-                                child: SizedBox(
+                                child: Container(
                                   width: MediaQuery.sizeOf(context).width * 0.9,
                                   child: GroupStateWidget(
                                     icon: Icon(
@@ -512,7 +409,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 final listViewChatsRecord =
                                     listViewChatsRecordList[listViewIndex];
                                 return Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 12.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -536,7 +433,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     child: Material(
                                       color: Colors.transparent,
                                       elevation: 0.0,
-                                      shape: const RoundedRectangleBorder(
+                                      shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(20.0),
                                           bottomRight: Radius.circular(20.0),
@@ -555,13 +452,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
-                                              offset: const Offset(
+                                              offset: Offset(
                                                 0.0,
                                                 1.0,
                                               ),
                                             )
                                           ],
-                                          borderRadius: const BorderRadius.only(
+                                          borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(20.0),
                                             bottomRight: Radius.circular(20.0),
                                             topLeft: Radius.circular(20.0),
@@ -574,7 +471,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     .users.length <=
                                                 2) {
                                               return Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 12.0, 12.0, 12.0),
                                                 child:
@@ -625,7 +522,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   1.0, 1.0),
                                                           child: Container(
                                                             width: 44.0,
@@ -652,10 +549,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             child: Stack(
                                                               children: [
                                                                 if (currentUserPhoto !=
+                                                                        null &&
+                                                                    currentUserPhoto !=
                                                                         '')
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             2.0),
                                                                     child:
                                                                         AuthUserStreamWidget(
@@ -682,10 +581,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     ),
                                                                   ),
                                                                 if (currentUserPhoto ==
+                                                                        null ||
+                                                                    currentUserPhoto ==
                                                                         '')
                                                                   Padding(
                                                                     padding:
-                                                                        const EdgeInsets.all(
+                                                                        EdgeInsets.all(
                                                                             2.0),
                                                                     child:
                                                                         AuthUserStreamWidget(
@@ -733,7 +634,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -755,7 +656,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     Expanded(
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             12.0,
@@ -783,7 +684,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         .contains(
                                                                             currentUserReference))
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             8.0,
@@ -811,7 +712,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ],
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -843,7 +744,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           .spaceBetween,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -876,7 +777,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       size:
                                                                           24.0,
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           16.0)),
                                                                 ),
@@ -891,7 +792,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               );
                                             } else {
                                               return Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 12.0, 12.0, 12.0),
                                                 child:
@@ -942,20 +843,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
                                                                       0.0,
                                                                       8.0),
-                                                          child: SizedBox(
+                                                          child: Container(
                                                             width: 44.0,
                                                             height: 54.0,
                                                             child: Stack(
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           1.0,
                                                                           1.0),
                                                                   child: FutureBuilder<
@@ -1017,14 +918,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                             Builder(
                                                                           builder:
                                                                               (context) {
-                                                                            if (containerUsersRecord.photoUrl != '') {
+                                                                            if (containerUsersRecord.photoUrl != null &&
+                                                                                containerUsersRecord.photoUrl != '') {
                                                                               return Padding(
-                                                                                padding: const EdgeInsets.all(2.0),
+                                                                                padding: EdgeInsets.all(2.0),
                                                                                 child: ClipRRect(
                                                                                   borderRadius: BorderRadius.circular(8.0),
                                                                                   child: CachedNetworkImage(
-                                                                                    fadeInDuration: const Duration(milliseconds: 200),
-                                                                                    fadeOutDuration: const Duration(milliseconds: 200),
+                                                                                    fadeInDuration: Duration(milliseconds: 200),
+                                                                                    fadeOutDuration: Duration(milliseconds: 200),
                                                                                     imageUrl: valueOrDefault<String>(
                                                                                       containerUsersRecord.photoUrl,
                                                                                       'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/test-flow-at3mts/assets/jozbfglfd548/flutterflow_future%402x.jpg',
@@ -1037,7 +939,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                               );
                                                                             } else {
                                                                               return Padding(
-                                                                                padding: const EdgeInsets.all(2.0),
+                                                                                padding: EdgeInsets.all(2.0),
                                                                                 child: Container(
                                                                                   width: 100.0,
                                                                                   height: 100.0,
@@ -1045,7 +947,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     borderRadius: BorderRadius.circular(8.0),
                                                                                   ),
-                                                                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0),
                                                                                   child: Text(
                                                                                     valueOrDefault<String>(
                                                                                       containerUsersRecord.displayName,
@@ -1069,7 +971,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                 ),
                                                                 Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.0,
                                                                           -1.0),
                                                                   child:
@@ -1101,30 +1003,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       builder:
                                                                           (context) {
                                                                         if (rowUsersRecord.photoUrl !=
+                                                                                null &&
+                                                                            rowUsersRecord.photoUrl !=
                                                                                 '') {
                                                                           return Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(2.0),
+                                                                                EdgeInsets.all(2.0),
                                                                             child:
-                                                                                ClipRRect(
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                              child: CachedNetworkImage(
-                                                                                fadeInDuration: const Duration(milliseconds: 200),
-                                                                                fadeOutDuration: const Duration(milliseconds: 200),
-                                                                                imageUrl: valueOrDefault<String>(
-                                                                                  rowUsersRecord.photoUrl,
-                                                                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/test-flow-at3mts/assets/jozbfglfd548/flutterflow_future%402x.jpg',
-                                                                                ),
-                                                                                width: 44.0,
-                                                                                height: 44.0,
-                                                                                fit: BoxFit.cover,
+                                                                                Container(
+                                                                              width: 44.0,
+                                                                              height: 44.0,
+                                                                              decoration: BoxDecoration(
+                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              ),
+                                                                              child: Icon(
+                                                                                Icons.person,
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                size: 24.0,
                                                                               ),
                                                                             ),
                                                                           );
                                                                         } else {
                                                                           return Padding(
                                                                             padding:
-                                                                                const EdgeInsets.all(2.0),
+                                                                                EdgeInsets.all(2.0),
                                                                             child:
                                                                                 Container(
                                                                               width: 100.0,
@@ -1133,7 +1035,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                 borderRadius: BorderRadius.circular(8.0),
                                                                               ),
-                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
                                                                               child: Text(
                                                                                 valueOrDefault<String>(
                                                                                   rowUsersRecord.displayName,
@@ -1160,7 +1062,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -1182,7 +1084,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     Expanded(
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             12.0,
@@ -1209,7 +1111,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         .contains(
                                                                             currentUserReference))
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             8.0,
@@ -1237,7 +1139,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   ],
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -1273,7 +1175,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           .spaceBetween,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -1309,7 +1211,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       size:
                                                                           24.0,
                                                                     ),
-                                                                  ].divide(const SizedBox(
+                                                                  ].divide(SizedBox(
                                                                       width:
                                                                           16.0)),
                                                                 ),
@@ -1339,7 +1241,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       height: 100.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBackground,
-                        borderRadius: const BorderRadius.only(
+                        borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
                           bottomRight: Radius.circular(0.0),
                           topLeft: Radius.circular(80.0),
@@ -1351,7 +1253,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -1360,9 +1262,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pushNamed(
-                                  'chat_addUser',
+                                  'chat_AddUser',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType:
                                           PageTransitionType.bottomToTop,
@@ -1375,7 +1277,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(20.0),
                                     bottomRight: Radius.circular(20.0),
                                     topLeft: Radius.circular(20.0),
@@ -1393,7 +1295,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       size: 40.0,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 16.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -1418,7 +1320,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -1441,7 +1343,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: const AksharAiINTROWidget(),
+                                        child: AksharAiINTROWidget(),
                                       ),
                                     );
                                   },
@@ -1451,7 +1353,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(20.0),
                                     bottomRight: Radius.circular(20.0),
                                     topLeft: Radius.circular(20.0),
@@ -1469,7 +1371,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       size: 40.0,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 16.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -1488,6 +1390,63 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ],
                                 ).addWalkthrough(
                                   column6xhs2qa9,
+                                  _model.useAIController,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 8.0, 0.0, 0.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('notifications_List');
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20.0),
+                                    bottomRight: Radius.circular(20.0),
+                                    topLeft: Radius.circular(20.0),
+                                    topRight: Radius.circular(20.0),
+                                  ),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.stackExchange,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 40.0,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 16.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '4stoyjbw' /* Activity */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 20.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ).addWalkthrough(
+                                  columnXcznc8c7,
                                   _model.useAIController,
                                 ),
                               ),
@@ -1515,8 +1474,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           await currentUserReference!.update(createUsersRecordData(
             walkthrough: true,
           ));
-          await Future.delayed(const Duration(milliseconds: 1000));
-          if (!(valueOrDefault(currentUserDocument?.secondaryLang, '') != '')) {
+          await Future.delayed(const Duration(milliseconds: 500));
+          if (!(valueOrDefault(currentUserDocument?.secondaryLang, '') !=
+                  null &&
+              valueOrDefault(currentUserDocument?.secondaryLang, '') != '')) {
             context.pushNamed('PrimaryLangSelect');
           }
         },
@@ -1525,8 +1486,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             await currentUserReference!.update(createUsersRecordData(
               walkthrough: true,
             ));
-            await Future.delayed(const Duration(milliseconds: 1000));
-            if (!(valueOrDefault(currentUserDocument?.secondaryLang, '') != '')) {
+            await Future.delayed(const Duration(milliseconds: 500));
+            if (!(valueOrDefault(currentUserDocument?.secondaryLang, '') !=
+                    null &&
+                valueOrDefault(currentUserDocument?.secondaryLang, '') != '')) {
               context.pushNamed('PrimaryLangSelect');
             }
           }();

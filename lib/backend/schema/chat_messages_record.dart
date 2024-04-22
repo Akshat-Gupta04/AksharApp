@@ -6,12 +6,13 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class ChatMessagesRecord extends FirestoreRecord {
   ChatMessagesRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
@@ -50,6 +51,26 @@ class ChatMessagesRecord extends FirestoreRecord {
   String get video => _video ?? '';
   bool hasVideo() => _video != null;
 
+  // "text_2" field.
+  String? _text2;
+  String get text2 => _text2 ?? '';
+  bool hasText2() => _text2 != null;
+
+  // "audio" field.
+  String? _audio;
+  String get audio => _audio ?? '';
+  bool hasAudio() => _audio != null;
+
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
+
+  // "text_3" field.
+  String? _text3;
+  String get text3 => _text3 ?? '';
+  bool hasText3() => _text3 != null;
+
   void _initializeFields() {
     _user = snapshotData['user'] as DocumentReference?;
     _text = snapshotData['text'] as String?;
@@ -58,6 +79,10 @@ class ChatMessagesRecord extends FirestoreRecord {
     _chatUser = snapshotData['chatUser'] as DocumentReference?;
     _chat = snapshotData['chat'] as DocumentReference?;
     _video = snapshotData['video'] as String?;
+    _text2 = snapshotData['text_2'] as String?;
+    _audio = snapshotData['audio'] as String?;
+    _type = snapshotData['type'] as String?;
+    _text3 = snapshotData['text_3'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -102,6 +127,10 @@ Map<String, dynamic> createChatMessagesRecordData({
   DocumentReference? chatUser,
   DocumentReference? chat,
   String? video,
+  String? text2,
+  String? audio,
+  String? type,
+  String? text3,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -112,6 +141,10 @@ Map<String, dynamic> createChatMessagesRecordData({
       'chatUser': chatUser,
       'chat': chat,
       'video': video,
+      'text_2': text2,
+      'audio': audio,
+      'type': type,
+      'text_3': text3,
     }.withoutNulls,
   );
 
@@ -130,7 +163,11 @@ class ChatMessagesRecordDocumentEquality
         e1?.image == e2?.image &&
         e1?.chatUser == e2?.chatUser &&
         e1?.chat == e2?.chat &&
-        e1?.video == e2?.video;
+        e1?.video == e2?.video &&
+        e1?.text2 == e2?.text2 &&
+        e1?.audio == e2?.audio &&
+        e1?.type == e2?.type &&
+        e1?.text3 == e2?.text3;
   }
 
   @override
@@ -141,7 +178,11 @@ class ChatMessagesRecordDocumentEquality
         e?.image,
         e?.chatUser,
         e?.chat,
-        e?.video
+        e?.video,
+        e?.text2,
+        e?.audio,
+        e?.type,
+        e?.text3
       ]);
 
   @override

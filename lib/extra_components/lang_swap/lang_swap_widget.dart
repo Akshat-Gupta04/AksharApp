@@ -2,6 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'lang_swap_model.dart';
 export 'lang_swap_model.dart';
 
@@ -37,9 +39,9 @@ class _LangSwapWidgetState extends State<LangSwapWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(1.0, -1.0),
+      alignment: AlignmentDirectional(1.0, -1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(80.0, 32.0, 12.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(80.0, 32.0, 12.0, 0.0),
         child: Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           color: FlutterFlowTheme.of(context).accent4,
@@ -50,7 +52,7 @@ class _LangSwapWidgetState extends State<LangSwapWidget> {
           child: Container(
             width: 100.0,
             height: 120.0,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20.0),
                 bottomRight: Radius.circular(20.0),
@@ -59,7 +61,7 @@ class _LangSwapWidgetState extends State<LangSwapWidget> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -93,7 +95,7 @@ class _LangSwapWidgetState extends State<LangSwapWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 16.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +119,7 @@ class _LangSwapWidgetState extends State<LangSwapWidget> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,

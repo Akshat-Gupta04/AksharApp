@@ -1,16 +1,21 @@
-import '/akshar_pages/group_state/group_state_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/walkthroughs/add_user.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
 import 'chat_add_user_model.dart';
 export 'chat_add_user_model.dart';
 
@@ -86,7 +91,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                     ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'e97g2xum' /* Select users from below to sta... */,
@@ -101,7 +106,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 4.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 4.0),
               child: FlutterFlowIconButton(
                 borderColor: FlutterFlowTheme.of(context).alternate,
                 borderRadius: 12.0,
@@ -123,7 +128,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
           elevation: 0.0,
         ),
         body: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Color(0xFF43C6AC), Color(0xFFF8FFAE)],
               stops: [0.0, 1.0],
@@ -139,14 +144,14 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
@@ -162,7 +167,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 0.0, 0.0),
                           child: Text(
                             ((valueOrDefault<int>(
@@ -180,7 +185,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               2.0, 12.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
@@ -200,13 +205,13 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: PagedListView<DocumentSnapshot<Object?>?,
                           UsersRecord>(
                         pagingController: _model.setListViewController(
                           UsersRecord.collection.orderBy('display_name'),
                         ),
-                        padding: const EdgeInsets.fromLTRB(
+                        padding: EdgeInsets.fromLTRB(
                           0,
                           0,
                           0,
@@ -239,15 +244,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                               ),
                             ),
                           ),
-                          noItemsFoundIndicatorBuilder: (_) => GroupStateWidget(
-                            icon: Icon(
-                              Icons.groups_outlined,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 90.0,
-                            ),
-                            title: 'No Friends',
-                            body: 'No users exist to create a chat with.',
-                          ),
+
                           itemBuilder: (context, _, listViewIndex) {
                             final listViewUsersRecord = _model
                                 .listViewPagingController!
@@ -256,7 +253,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                               visible: listViewUsersRecord.reference !=
                                   currentUserReference,
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 8.0),
                                 child: Container(
                                   width: 100.0,
@@ -274,14 +271,14 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                           ? FlutterFlowTheme.of(context).primary
                                           : FlutterFlowTheme.of(context)
                                               .alternate,
-                                      width: 2.0,
+                                      width: 1.0,
                                     ),
                                   ),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 44.0,
@@ -289,7 +286,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .accent1,
-                                            borderRadius: const BorderRadius.only(
+                                            borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(10.0),
                                               bottomRight:
                                                   Radius.circular(10.0),
@@ -304,15 +301,15 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(2.0),
+                                            padding: EdgeInsets.all(2.0),
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: CachedNetworkImage(
                                                 fadeInDuration:
-                                                    const Duration(milliseconds: 200),
+                                                    Duration(milliseconds: 200),
                                                 fadeOutDuration:
-                                                    const Duration(milliseconds: 200),
+                                                    Duration(milliseconds: 200),
                                                 imageUrl: listViewUsersRecord
                                                     .photoUrl,
                                                 width: 44.0,
@@ -402,7 +399,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                                 ListTileControlAffinity
                                                     .trailing,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 8.0, 0.0),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -412,6 +409,9 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                         ),
                                       ),
                                     ],
+                                  ).addWalkthrough(
+                                    row0l5lxgqn,
+                                    _model.addUserController,
                                   ),
                                 ),
                               ),
@@ -424,7 +424,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                 ],
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Container(
                   width: double.infinity,
                   height: 140.0,
@@ -434,21 +434,15 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                         FlutterFlowTheme.of(context).accent4,
                         FlutterFlowTheme.of(context).secondaryBackground
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(0.0),
-                      bottomRight: Radius.circular(0.0),
-                      topLeft: Radius.circular(80.0),
-                      topRight: Radius.circular(80.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
                   ),
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(28.0, 0.0, 26.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         if (_model.friendsList.length >= 2) {
@@ -553,7 +547,7 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                                       letterSpacing: 0.0,
                                     ),
                               ),
-                              duration: const Duration(milliseconds: 3000),
+                              duration: Duration(milliseconds: 3000),
                               backgroundColor:
                                   FlutterFlowTheme.of(context).primary,
                             ),
@@ -569,23 +563,27 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
                         width: double.infinity,
                         height: 50.0,
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                ),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).alternate,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily: 'Readex Pro',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
+                            ),
                         elevation: 2.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(50.0),
                       ),
+                    ).addWalkthrough(
+                      buttonR43kqq7m,
+                      _model.addUserController,
                     ),
                   ),
                 ),
@@ -596,4 +594,15 @@ class _ChatAddUserWidgetState extends State<ChatAddUserWidget> {
       ),
     );
   }
+
+  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
+      TutorialCoachMark(
+        targets: createWalkthroughTargets(context),
+        onFinish: () async {
+          safeSetState(() => _model.addUserController = null);
+        },
+        onSkip: () {
+          return true;
+        },
+      );
 }

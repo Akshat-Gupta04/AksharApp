@@ -1,9 +1,12 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'animtion_model.dart';
 export 'animtion_model.dart';
 
@@ -20,20 +23,7 @@ class _AnimtionWidgetState extends State<AnimtionWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 800.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -45,6 +35,21 @@ class _AnimtionWidgetState extends State<AnimtionWidget>
       await Future.delayed(const Duration(milliseconds: 4000));
 
       context.pushNamed('Register');
+    });
+
+    animationsMap.addAll({
+      'imageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 800.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
   }
 
@@ -66,14 +71,14 @@ class _AnimtionWidgetState extends State<AnimtionWidget>
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Stack(
           children: [
-            const Align(
+            Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Stack(
                 children: [],
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(0.0, 0.27),
+              alignment: AlignmentDirectional(0.0, 0.27),
               child: Text(
                 '',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -83,7 +88,7 @@ class _AnimtionWidgetState extends State<AnimtionWidget>
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(-0.2, -0.16),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.asset(

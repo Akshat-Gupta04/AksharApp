@@ -11,14 +11,20 @@ import 'package:json_path/json_path.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cross_file/cross_file.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:record/record.dart';
+import 'uploaded_file.dart';
 
 import '../main.dart';
 
+import 'lat_lng.dart';
 
 export 'lat_lng.dart';
 export 'place.dart';
 export 'uploaded_file.dart';
 export '../app_state.dart';
+export '../app_constants.dart';
 export 'flutter_flow_model.dart';
 export 'dart:math' show min, max;
 export 'dart:typed_data' show Uint8List;
@@ -287,12 +293,12 @@ void showSnackbar(
       content: Row(
         children: [
           if (loading)
-            const Padding(
+            Padding(
               padding: EdgeInsetsDirectional.only(end: 10.0),
-              child: SizedBox(
+              child: Container(
                 height: 20,
                 width: 20,
-                child: CircularProgressIndicator(
+                child: const CircularProgressIndicator(
                   color: Colors.white,
                 ),
               ),
@@ -356,14 +362,74 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
 extension WalkthroughWrapperExtension on Widget {
   Widget addWalkthrough(
     GlobalKey walkthroughKey,
-    TutorialCoachMark? controller,
-  ) =>
-      controller != null
-          ? KeyedSubtree(
-              key: walkthroughKey,
-              child: this,
-            )
-          : this;
+    TutorialCoachMark? controller, {
+    int? listIndex,
+  }) {
+    if (listIndex != null && listIndex != 0) {
+      return this;
+    }
+    return controller != null
+        ? KeyedSubtree(
+            key: walkthroughKey,
+            child: this,
+          )
+        : this;
+  }
+}
+
+Future<void> startAudioRecording(
+  BuildContext context, {
+  required AudioRecorder audioRecorder,
+}) async {
+  if (await audioRecorder.hasPermission()) {
+    final String path;
+    final AudioEncoder encoder;
+    if (kIsWeb) {
+      path = '';
+      encoder = AudioEncoder.opus;
+    } else {
+      final dir = await getApplicationDocumentsDirectory();
+      path = '${dir.path}/audio_${DateTime.now().millisecondsSinceEpoch}.m4a';
+      encoder = AudioEncoder.aacLc;
+    }
+    await audioRecorder.start(
+      RecordConfig(encoder: encoder),
+      path: path,
+    );
+  } else {
+    if (!context.mounted) {
+      return;
+    }
+    showSnackbar(
+      context,
+      'You have not provided permission to record audio.',
+    );
+  }
+}
+
+Future<void> stopAudioRecording({
+  required AudioRecorder? audioRecorder,
+  required String audioName,
+  required Function(String?, FFUploadedFile) onRecordingComplete,
+}) async {
+  if (audioRecorder == null) {
+    return;
+  }
+  final recordedPath = await audioRecorder.stop();
+  final recordedFilePath = !kIsWeb && (Platform.isIOS || Platform.isMacOS)
+      ? 'file://$recordedPath'
+      : recordedPath;
+  if (recordedFilePath == null) {
+    return;
+  }
+  final recordedFileBytes = FFUploadedFile(
+    name: audioName,
+    bytes: await XFile(recordedPath!).readAsBytes(),
+  );
+  onRecordingComplete(
+    recordedFilePath,
+    recordedFileBytes,
+  );
 }
 
 // For iOS 16 and below, set the status bar color to match the app's theme.
@@ -387,11 +453,11 @@ void fixStatusBarOniOS16AndBelow(BuildContext context) {
 
 extension ListUniqueExt<T> on Iterable<T> {
   List<T> unique(dynamic Function(T) getKey) {
-    var distinctSet = <T>{};
+    var distinctSet = <dynamic>{};
     var distinctList = <T>[];
     for (var item in this) {
       if (distinctSet.add(getKey(item))) {
-        distinctList.add(getKey(item));
+        distinctList.add(item);
       }
     }
     return distinctList;

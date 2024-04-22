@@ -3,6 +3,8 @@ import '/extra_components/lang_swap/lang_swap_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'chat_setting_model.dart';
 export 'chat_setting_model.dart';
 
@@ -38,9 +40,9 @@ class _ChatSettingWidgetState extends State<ChatSettingWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(1.0, -1.0),
+      alignment: AlignmentDirectional(1.0, -1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(80.0, 32.0, 12.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(80.0, 32.0, 12.0, 0.0),
         child: Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           color: FlutterFlowTheme.of(context).accent4,
@@ -51,7 +53,7 @@ class _ChatSettingWidgetState extends State<ChatSettingWidget> {
           child: Container(
             width: 100.0,
             height: 150.0,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20.0),
                 bottomRight: Radius.circular(20.0),
@@ -60,7 +62,7 @@ class _ChatSettingWidgetState extends State<ChatSettingWidget> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -103,7 +105,7 @@ class _ChatSettingWidgetState extends State<ChatSettingWidget> {
                         ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -119,7 +121,7 @@ class _ChatSettingWidgetState extends State<ChatSettingWidget> {
                           builder: (context) {
                             return Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: const LangSwapWidget(),
+                              child: LangSwapWidget(),
                             );
                           },
                         ).then((value) => safeSetState(() {}));
@@ -147,7 +149,7 @@ class _ChatSettingWidgetState extends State<ChatSettingWidget> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +171,7 @@ class _ChatSettingWidgetState extends State<ChatSettingWidget> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,

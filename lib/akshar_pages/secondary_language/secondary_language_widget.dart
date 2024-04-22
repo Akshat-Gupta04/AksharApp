@@ -5,7 +5,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'secondary_language_model.dart';
 export 'secondary_language_model.dart';
 
@@ -42,33 +45,36 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                child: Text(
-                  FFLocalizations.of(context).getText(
-                    'a05kb581' /* Choose your alternative langug... */,
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'a05kb581' /* Choose your alternative langug... */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: 20.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w500,
+                        ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Readex Pro',
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        fontSize: 20.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.w500,
-                      ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 36.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 28.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -103,13 +109,13 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                               FFLocalizations.of(context).getText(
                         'm0jntuhq' /* English */,
                       )),
-                      optionHeight: 90.0,
+                      optionHeight: 85.0,
                       optionWidth: MediaQuery.sizeOf(context).width * 0.8,
                       textStyle:
                           FlutterFlowTheme.of(context).labelLarge.override(
                                 fontFamily: 'Readex Pro',
                                 color: FlutterFlowTheme.of(context).tertiary,
-                                fontSize: 24.0,
+                                fontSize: 22.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -117,7 +123,7 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                           FlutterFlowTheme.of(context).bodyLarge.override(
                                 fontFamily: 'Readex Pro',
                                 color: FlutterFlowTheme.of(context).secondary,
-                                fontSize: 32.0,
+                                fontSize: 28.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w800,
                               ),
@@ -144,19 +150,19 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                   await currentUserReference!.update(createUsersRecordData(
                     secondaryLang: () {
                       if (_model.radioButtonValue == 'हिंदी  (Hindi)') {
-                        return 'Hindi';
+                        return 'hi';
                       } else if (_model.radioButtonValue ==
                           'ਪੰਜਾਬੀ  (Punjabi)') {
-                        return 'Punjabi';
+                        return 'pa';
                       } else if (_model.radioButtonValue ==
                           'తెలుగు  (Telugu)') {
-                        return 'Telugu';
+                        return 'te';
                       } else if (_model.radioButtonValue == 'বাংলা  (Bangla)') {
-                        return 'Bangla';
+                        return 'ba';
                       } else if (_model.radioButtonValue == 'தமிழ்  (Tamil)') {
-                        return 'Tamil';
+                        return 'ta';
                       } else {
-                        return 'English';
+                        return 'en';
                       }
                     }(),
                   ));
@@ -165,7 +171,7 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                     context.pushNamed(
                       'HomePage',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
+                        kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.fade,
                         ),
@@ -181,7 +187,7 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                             color: FlutterFlowTheme.of(context).primary,
                           ),
                         ),
-                        duration: const Duration(milliseconds: 1200),
+                        duration: Duration(milliseconds: 1200),
                         backgroundColor: FlutterFlowTheme.of(context).secondary,
                       ),
                     );
@@ -190,23 +196,23 @@ class _SecondaryLanguageWidgetState extends State<SecondaryLanguageWidget> {
                 text: FFLocalizations.of(context).getText(
                   'ci1uki0i' /* Next */,
                 ),
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_forward,
                   size: 15.0,
                 ),
                 options: FFButtonOptions(
                   width: MediaQuery.sizeOf(context).width * 0.75,
                   height: 45.0,
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,
                         letterSpacing: 0.0,
                       ),
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),
