@@ -13,7 +13,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 class TranslationGroup {
   static String getBaseUrl() => 'https://google-translator9.p.rapidapi.com/';
   static Map<String, String> headers = {
-    'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
+    'X-RapidAPI-Key': '',
     'X-RapidAPI-Host': 'google-translator9.p.rapidapi.com',
   };
   static DetectsCall detectsCall = DetectsCall();
