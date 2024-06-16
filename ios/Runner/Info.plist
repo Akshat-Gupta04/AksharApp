@@ -69,10 +69,6 @@
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>Allow this app access to photp library to share media</string>
 
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>audio</string>
-    </array>
 
 
 	<key>UILaunchStoryboardName</key>

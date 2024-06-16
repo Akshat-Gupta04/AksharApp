@@ -10,9 +10,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -71,11 +71,6 @@ class UsersRecord extends FirestoreRecord {
   DateTime? get lastActiveTime => _lastActiveTime;
   bool hasLastActiveTime() => _lastActiveTime != null;
 
-  // "role" field.
-  String? _role;
-  String get role => _role ?? '';
-  bool hasRole() => _role != null;
-
   // "title" field.
   String? _title;
   String get title => _title ?? '';
@@ -113,7 +108,6 @@ class UsersRecord extends FirestoreRecord {
     _created = snapshotData['Created'] as bool?;
     _shortDescription = snapshotData['shortDescription'] as String?;
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
-    _role = snapshotData['role'] as String?;
     _title = snapshotData['title'] as String?;
     _dateofBirth = snapshotData['dateofBirth'] as String?;
     _age = castToType<int>(snapshotData['Age']);
@@ -166,7 +160,6 @@ Map<String, dynamic> createUsersRecordData({
   bool? created,
   String? shortDescription,
   DateTime? lastActiveTime,
-  String? role,
   String? title,
   String? dateofBirth,
   int? age,
@@ -186,7 +179,6 @@ Map<String, dynamic> createUsersRecordData({
       'Created': created,
       'shortDescription': shortDescription,
       'last_active_time': lastActiveTime,
-      'role': role,
       'title': title,
       'dateofBirth': dateofBirth,
       'Age': age,
@@ -214,7 +206,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.created == e2?.created &&
         e1?.shortDescription == e2?.shortDescription &&
         e1?.lastActiveTime == e2?.lastActiveTime &&
-        e1?.role == e2?.role &&
         e1?.title == e2?.title &&
         e1?.dateofBirth == e2?.dateofBirth &&
         e1?.age == e2?.age &&
@@ -235,7 +226,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.created,
         e?.shortDescription,
         e?.lastActiveTime,
-        e?.role,
         e?.title,
         e?.dateofBirth,
         e?.age,

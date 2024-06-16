@@ -1,11 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'start_animation_model.dart';
 export 'start_animation_model.dart';
 
@@ -28,12 +25,12 @@ class _StartAnimationWidgetState extends State<StartAnimationWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 8000));
+      await Future.delayed(const Duration(milliseconds: 5000));
 
       context.goNamed(
         'HomePage',
         extra: <String, dynamic>{
-          kTransitionInfoKey: TransitionInfo(
+          kTransitionInfoKey: const TransitionInfo(
             hasTransition: true,
             transitionType: PageTransitionType.fade,
           ),
@@ -60,7 +57,7 @@ class _StartAnimationWidgetState extends State<StartAnimationWidget> {
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryText,
-          body: Align(
+          body: const Align(
             alignment: AlignmentDirectional(0.0, 0.0),
             child: FlutterFlowVideoPlayer(
               path: 'assets/videos/animation2.mp4',

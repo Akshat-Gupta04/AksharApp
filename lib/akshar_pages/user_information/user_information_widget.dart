@@ -6,12 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:provider/provider.dart';
 import 'user_information_model.dart';
 export 'user_information_model.dart';
 
@@ -95,11 +91,11 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                       letterSpacing: 0.0,
                     ),
               ),
-            ].divide(SizedBox(height: 4.0)),
+            ].divide(const SizedBox(height: 4.0)),
           ),
           actions: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
               child: FlutterFlowIconButton(
                 borderColor: FlutterFlowTheme.of(context).alternate,
                 borderRadius: 12.0,
@@ -123,7 +119,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xFF43C6AC), Color(0xFFF8FFAE)],
                 stops: [0.0, 1.0],
@@ -144,17 +140,17 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
+                            alignment: const AlignmentDirectional(0.0, -1.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: Container(
-                                constraints: BoxConstraints(
+                                constraints: const BoxConstraints(
                                   maxWidth: 770.0,
                                 ),
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -256,7 +252,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -363,7 +359,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -473,7 +469,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -591,7 +587,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -819,7 +815,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                                 : FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 16.0, 16.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -842,8 +838,8 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                         ),
                                       ),
                                     ]
-                                        .divide(SizedBox(height: 12.0))
-                                        .addToEnd(SizedBox(height: 32.0)),
+                                        .divide(const SizedBox(height: 12.0))
+                                        .addToEnd(const SizedBox(height: 32.0)),
                                   ),
                                 ),
                               ),
@@ -854,12 +850,12 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                     ),
                   ),
                   Container(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 770.0,
                     ),
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           16.0, 12.0, 16.0, 12.0),
                       child: FFButtonWidget(
                         onPressed: () async {
@@ -892,7 +888,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                       letterSpacing: 0.0,
                                     ),
                               ),
-                              duration: Duration(milliseconds: 2400),
+                              duration: const Duration(milliseconds: 2400),
                               backgroundColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                             ),
@@ -906,9 +902,9 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 48.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -918,7 +914,7 @@ class _UserInformationWidgetState extends State<UserInformationWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

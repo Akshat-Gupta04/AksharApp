@@ -1,7 +1,6 @@
 import '/akshar_pages/covert_to_orginal/covert_to_orginal_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_audio_player.dart';
 import '/flutter_flow/flutter_flow_media_display.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,8 +8,7 @@ import '/flutter_flow/flutter_flow_video_player.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'chat_update_model.dart';
 export 'chat_update_model.dart';
 
@@ -60,7 +58,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
               return Visibility(
                 visible: widget.chatMessagesRef?.user != currentUserReference,
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -68,7 +66,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 0.0),
                       child: FutureBuilder<UsersRecord>(
                         future: _model.chatUser(
                           uniqueQueryKey: widget.chatMessagesRef?.reference.id,
@@ -96,7 +94,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 8.0, 16.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -110,38 +108,40 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                       isDismissible: false,
                                       context: context,
                                       builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: CovertToOrginalWidget(
-                                            intro:
-                                                '${otherUserUsersRecord.displayName} sent this message in ${() {
-                                              if (otherUserUsersRecord
-                                                      .primaryLang ==
-                                                  'hi') {
-                                                return 'Hindi';
-                                              } else if (otherUserUsersRecord
-                                                      .primaryLang ==
-                                                  'pa') {
-                                                return 'Punjabi';
-                                              } else if (otherUserUsersRecord
-                                                      .primaryLang ==
-                                                  'ta') {
-                                                return 'Tamil';
-                                              } else if (otherUserUsersRecord
-                                                      .primaryLang ==
-                                                  'te') {
-                                                return 'Telgu';
-                                              } else if (otherUserUsersRecord
-                                                      .primaryLang ==
-                                                  'ba') {
-                                                return 'Bangla';
-                                              } else {
-                                                return 'English';
-                                              }
-                                            }()} Language',
-                                            conversion:
-                                                widget.chatMessagesRef!.text,
+                                        return WebViewAware(
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: CovertToOrginalWidget(
+                                              intro:
+                                                  '${otherUserUsersRecord.displayName} sent this message in ${() {
+                                                if (otherUserUsersRecord
+                                                        .primaryLang ==
+                                                    'hi') {
+                                                  return 'Hindi';
+                                                } else if (otherUserUsersRecord
+                                                        .primaryLang ==
+                                                    'pa') {
+                                                  return 'Punjabi';
+                                                } else if (otherUserUsersRecord
+                                                        .primaryLang ==
+                                                    'ta') {
+                                                  return 'Tamil';
+                                                } else if (otherUserUsersRecord
+                                                        .primaryLang ==
+                                                    'te') {
+                                                  return 'Telgu';
+                                                } else if (otherUserUsersRecord
+                                                        .primaryLang ==
+                                                    'ba') {
+                                                  return 'Bangla';
+                                                } else {
+                                                  return 'English';
+                                                }
+                                              }()} Language',
+                                              conversion:
+                                                  widget.chatMessagesRef!.text,
+                                            ),
                                           ),
                                         );
                                       },
@@ -164,19 +164,17 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                     child: Builder(
                                       builder: (context) {
                                         if (otherUserUsersRecord.photoUrl !=
-                                                null &&
-                                            otherUserUsersRecord.photoUrl !=
                                                 '') {
                                           return Padding(
-                                            padding: EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: CachedNetworkImage(
                                                 fadeInDuration:
-                                                    Duration(milliseconds: 200),
+                                                    const Duration(milliseconds: 200),
                                                 fadeOutDuration:
-                                                    Duration(milliseconds: 200),
+                                                    const Duration(milliseconds: 200),
                                                 imageUrl:
                                                     valueOrDefault<String>(
                                                   otherUserUsersRecord.photoUrl,
@@ -190,7 +188,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                           );
                                         } else {
                                           return Padding(
-                                            padding: EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: Container(
                                               width: 100.0,
                                               height: 100.0,
@@ -201,7 +199,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
@@ -236,7 +234,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -277,17 +275,17 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),
-                                        ].divide(SizedBox(width: 4.0)),
+                                        ].divide(const SizedBox(width: 4.0)),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 20.0, 0.0),
                                       child: Container(
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .alternate,
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 3.0,
                                               color: Color(0x33000000),
@@ -297,7 +295,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                               ),
                                             )
                                           ],
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(24.0),
                                             bottomRight: Radius.circular(24.0),
                                             topLeft: Radius.circular(0.0),
@@ -310,7 +308,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -324,51 +322,53 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                                 isDismissible: false,
                                                 context: context,
                                                 builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child:
-                                                        CovertToOrginalWidget(
-                                                      intro:
-                                                          'You have selected ${() {
-                                                        if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.secondaryLang,
-                                                                '') ==
-                                                            'hi') {
-                                                          return 'Hindi';
-                                                        } else if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.secondaryLang,
-                                                                '') ==
-                                                            'pa') {
-                                                          return 'Punjabi';
-                                                        } else if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.secondaryLang,
-                                                                '') ==
-                                                            'ta') {
-                                                          return 'Tamil';
-                                                        } else if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.secondaryLang,
-                                                                '') ==
-                                                            'te') {
-                                                          return 'Telgu';
-                                                        } else if (valueOrDefault(
-                                                                currentUserDocument
-                                                                    ?.secondaryLang,
-                                                                '') ==
-                                                            'ba') {
-                                                          return 'Bangla';
-                                                        } else {
-                                                          return 'English';
-                                                        }
-                                                      }()}   as your Secondary Language',
-                                                      conversion: widget
-                                                          .chatMessagesRef!
-                                                          .text3,
+                                                  return WebViewAware(
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child:
+                                                          CovertToOrginalWidget(
+                                                        intro:
+                                                            'You have selected ${() {
+                                                          if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.secondaryLang,
+                                                                  '') ==
+                                                              'hi') {
+                                                            return 'Hindi';
+                                                          } else if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.secondaryLang,
+                                                                  '') ==
+                                                              'pa') {
+                                                            return 'Punjabi';
+                                                          } else if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.secondaryLang,
+                                                                  '') ==
+                                                              'ta') {
+                                                            return 'Tamil';
+                                                          } else if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.secondaryLang,
+                                                                  '') ==
+                                                              'te') {
+                                                            return 'Telgu';
+                                                          } else if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.secondaryLang,
+                                                                  '') ==
+                                                              'ba') {
+                                                            return 'Bangla';
+                                                          } else {
+                                                            return 'English';
+                                                          }
+                                                        }()}   as your Secondary Language',
+                                                        conversion: widget
+                                                            .chatMessagesRef!
+                                                            .text3,
+                                                      ),
                                                     ),
                                                   );
                                                 },
@@ -401,7 +401,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                                         '')
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 4.0),
                                                     child: InkWell(
@@ -446,11 +446,11 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                                           child:
                                                               CachedNetworkImage(
                                                             fadeInDuration:
-                                                                Duration(
+                                                                const Duration(
                                                                     milliseconds:
                                                                         500),
                                                             fadeOutDuration:
-                                                                Duration(
+                                                                const Duration(
                                                                     milliseconds:
                                                                         500),
                                                             imageUrl: path,
@@ -493,30 +493,20 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
             } else {
               return Visibility(
                 visible: widget.chatMessagesRef?.user != currentUserReference,
-                child: FlutterFlowAudioPlayer(
-                  audio: Audio.network(
-                    widget.chatMessagesRef!.audio,
-                    metas: Metas(
-                      id: 'sample3.mp3-305ceb77',
-                      title: 'AudioFile',
+                child: Container(
+                  decoration: const BoxDecoration(),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      '1ex6s9r3' /* under Progress....... */,
                     ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          fontSize: 24.0,
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  titleTextStyle:
-                      FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            letterSpacing: 0.0,
-                          ),
-                  playbackDurationTextStyle:
-                      FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  playbackButtonColor: FlutterFlowTheme.of(context).primary,
-                  activeTrackColor: FlutterFlowTheme.of(context).alternate,
-                  elevation: 4.0,
-                  pauseOnNavigate: false,
-                  playInBackground: PlayInBackground.enabled,
                 ),
               );
             }
@@ -528,10 +518,10 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
               return Visibility(
                 visible: widget.chatMessagesRef?.user == currentUserReference,
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                   child: Container(
                     width: double.infinity,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: double.infinity,
                     ),
                     decoration: BoxDecoration(
@@ -539,38 +529,19 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 4.0, 0.0, 8.0),
-                            child: Text(
-                              dateTimeFormat(
-                                'jm',
-                                widget.chatMessagesRef!.timestamp!,
-                                locale: FFLocalizations.of(context)
-                                        .languageShortCode ??
-                                    FFLocalizations.of(context).languageCode,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .labelSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 10.0, 0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 3.0,
                                     color: Color(0x33000000),
@@ -580,7 +551,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                     ),
                                   )
                                 ],
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(24.0),
                                   bottomRight: Radius.circular(24.0),
                                   topLeft: Radius.circular(24.0),
@@ -593,7 +564,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 8.0, 8.0, 8.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -612,7 +583,7 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                     if (widget.chatMessagesRef?.image != null &&
                                         widget.chatMessagesRef?.image != '')
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 4.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -641,9 +612,9 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                                                   BorderRadius.circular(8.0),
                                               child: CachedNetworkImage(
                                                 fadeInDuration:
-                                                    Duration(milliseconds: 500),
+                                                    const Duration(milliseconds: 500),
                                                 fadeOutDuration:
-                                                    Duration(milliseconds: 500),
+                                                    const Duration(milliseconds: 500),
                                                 imageUrl: path,
                                                 width: 300.0,
                                                 fit: BoxFit.cover,
@@ -667,6 +638,25 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
                               ),
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 4.0, 0.0, 8.0),
+                            child: Text(
+                              dateTimeFormat(
+                                'jm',
+                                widget.chatMessagesRef!.timestamp!,
+                                locale: FFLocalizations.of(context)
+                                        .languageShortCode ??
+                                    FFLocalizations.of(context).languageCode,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .labelSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -676,30 +666,26 @@ class _ChatUpdateWidgetState extends State<ChatUpdateWidget> {
             } else {
               return Visibility(
                 visible: widget.chatMessagesRef?.user == currentUserReference,
-                child: FlutterFlowAudioPlayer(
-                  audio: Audio.network(
-                    'https://filesamples.com/samples/audio/mp3/sample3.mp3',
-                    metas: Metas(
-                      id: 'sample3.mp3-237ea888',
-                      title: 'aaudio',
-                    ),
+                child: Container(
+                  decoration: const BoxDecoration(),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        FFLocalizations.of(context).getText(
+                          'wec5ldan' /* Under progess.................... */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              fontSize: 20.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ],
                   ),
-                  titleTextStyle:
-                      FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Outfit',
-                            letterSpacing: 0.0,
-                          ),
-                  playbackDurationTextStyle:
-                      FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
-                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  playbackButtonColor: FlutterFlowTheme.of(context).primary,
-                  activeTrackColor: FlutterFlowTheme.of(context).alternate,
-                  elevation: 4.0,
-                  playInBackground:
-                      PlayInBackground.disabledRestoreOnForeground,
                 ),
               );
             }

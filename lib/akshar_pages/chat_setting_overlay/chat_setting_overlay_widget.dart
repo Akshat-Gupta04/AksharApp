@@ -6,11 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'chat_setting_overlay_model.dart';
 export 'chat_setting_overlay_model.dart';
 
@@ -61,20 +57,20 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 700.0,
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(0.0),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +80,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
@@ -99,7 +95,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 16.0, 0.0),
                           child: FlutterFlowIconButton(
                             borderColor: FlutterFlowTheme.of(context).alternate,
@@ -121,7 +117,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 4.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 4.0),
                       child: RichText(
                         textScaler: MediaQuery.of(context).textScaler,
                         text: TextSpan(
@@ -130,11 +126,11 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                               text: FFLocalizations.of(context).getText(
                                 'jg9zqol6' /* Group Chat ID:  */,
                               ),
-                              style: TextStyle(),
+                              style: const TextStyle(),
                             ),
                             TextSpan(
                               text: valueOrDefault<String>(
-                                widget.chatRef?.groupChatId?.toString(),
+                                widget.chatRef?.groupChatId.toString(),
                                 '--',
                               ),
                               style: TextStyle(
@@ -153,7 +149,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '851drton' /* In this chat */,
@@ -167,18 +163,18 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: Builder(
                           builder: (context) {
                             final chatUsers =
-                                widget.chatRef?.users?.toList() ?? [];
+                                widget.chatRef?.users.toList() ?? [];
                             return ListView.separated(
                               padding: EdgeInsets.zero,
                               scrollDirection: Axis.vertical,
                               itemCount: chatUsers.length,
                               separatorBuilder: (_, __) =>
-                                  SizedBox(height: 8.0),
+                                  const SizedBox(height: 8.0),
                               itemBuilder: (context, chatUsersIndex) {
                                 final chatUsersItem = chatUsers[chatUsersIndex];
                                 return FutureBuilder<UsersRecord>(
@@ -228,9 +224,9 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                      alignment: const AlignmentDirectional(0.0, -1.0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12.0),
@@ -262,7 +258,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                                     }.withoutNulls,
                                     extra: <String, dynamic>{
                                       'chatRef': widget.chatRef,
-                                      kTransitionInfoKey: TransitionInfo(
+                                      kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
                                         transitionType:
                                             PageTransitionType.bottomToTop,
@@ -287,7 +283,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                      duration: Duration(milliseconds: 3000),
+                                      duration: const Duration(milliseconds: 3000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context).error,
                                     ),
@@ -296,7 +292,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                                   context.pushNamed(
                                     'HomePage',
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
+                                      kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
                                         transitionType:
                                             PageTransitionType.leftToRight,
@@ -312,7 +308,7 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           16.0, 16.0, 16.0, 44.0),
                       child: FFButtonWidget(
                         onPressed: () async {
@@ -324,9 +320,9 @@ class _ChatSettingOverlayWidgetState extends State<ChatSettingOverlayWidget> {
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 52.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               44.0, 0.0, 44.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,

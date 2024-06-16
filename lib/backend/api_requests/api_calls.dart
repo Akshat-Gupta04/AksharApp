@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -11,9 +11,9 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start translation Group Code
 
 class TranslationGroup {
-  static String baseUrl = 'https://google-translator9.p.rapidapi.com/';
+  static String getBaseUrl() => 'https://google-translator9.p.rapidapi.com/';
   static Map<String, String> headers = {
-    'X-RapidAPI-Key': '',
+    'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
     'X-RapidAPI-Host': 'google-translator9.p.rapidapi.com',
   };
   static DetectsCall detectsCall = DetectsCall();
@@ -25,13 +25,15 @@ class DetectsCall {
   Future<ApiCallResponse> call({
     String? q = '',
   }) async {
+    final baseUrl = TranslationGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
-  "q": "${q}"
+  "q": "$q"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'detects',
-      apiUrl: '${TranslationGroup.baseUrl}v2/detect',
+      apiUrl: '${baseUrl}v2/detect',
       callType: ApiCallType.POST,
       headers: {
         'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
@@ -62,16 +64,18 @@ class TranslatesCall {
     String? target = '',
     String? format = 'text',
   }) async {
+    final baseUrl = TranslationGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
-    "q":"${q}",
-    "source":"${source}",
-    "target": "${target}",
-    "format": "${format}"
+    "q":"$q",
+    "source":"$source",
+    "target": "$target",
+    "format": "$format"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'translates',
-      apiUrl: '${TranslationGroup.baseUrl}v2',
+      apiUrl: '${baseUrl}v2',
       callType: ApiCallType.POST,
       headers: {
         'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
@@ -97,9 +101,11 @@ class TranslatesCall {
 
 class LanguagesCall {
   Future<ApiCallResponse> call() async {
+    final baseUrl = TranslationGroup.getBaseUrl();
+
     return ApiManager.instance.makeApiCall(
       callName: 'languages',
-      apiUrl: '${TranslationGroup.baseUrl}v2/languages',
+      apiUrl: '${baseUrl}v2/languages',
       callType: ApiCallType.GET,
       headers: {
         'X-RapidAPI-Key': '4a487d0ecemsh3653b50a9dcfe18p1d05dcjsn04988e5c3e8b',
@@ -117,6 +123,20 @@ class LanguagesCall {
 
 /// End translation Group Code
 
+/// Start speech to text Group Code
+
+class SpeechToTextGroup {
+  static String getBaseUrl() =>
+      'https://cloudlabs-text-to-speech.p.rapidapi.com/';
+  static Map<String, String> headers = {
+    'content-type': 'application/x-www-form-urlencoded',
+    'X-RapidAPI-Key': '3c11fb6d17mshd9e05e116b260d8p18745djsn24662b45ff65',
+    'X-RapidAPI-Host': 'cloudlabs-text-to-speech.p.rapidapi.com',
+  };
+}
+
+/// End speech to text Group Code
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
@@ -133,11 +153,21 @@ class ApiPagingParams {
       'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
 }
 
+String _toEncodable(dynamic item) {
+  if (item is DocumentReference) {
+    return item.path;
+  }
+  return item;
+}
+
 String _serializeList(List? list) {
   list ??= <String>[];
   try {
-    return json.encode(list);
+    return json.encode(list, toEncodable: _toEncodable);
   } catch (_) {
+    if (kDebugMode) {
+      print("List serialization failed. Returning empty list.");
+    }
     return '[]';
   }
 }
@@ -145,8 +175,11 @@ String _serializeList(List? list) {
 String _serializeJson(dynamic jsonVar, [bool isList = false]) {
   jsonVar ??= (isList ? [] : {});
   try {
-    return json.encode(jsonVar);
+    return json.encode(jsonVar, toEncodable: _toEncodable);
   } catch (_) {
+    if (kDebugMode) {
+      print("Json serialization failed. Returning empty json.");
+    }
     return isList ? '[]' : '{}';
   }
 }

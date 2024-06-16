@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'covert_to_orginal_model.dart';
 export 'covert_to_orginal_model.dart';
 
@@ -45,18 +43,18 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 5.0,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(25.0),
                     bottomRight: Radius.circular(25.0),
@@ -65,11 +63,11 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
                   ),
                 ),
                 child: AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   curve: Curves.bounceOut,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).alternate,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 10.0,
                         color: Color(0x33000000),
@@ -79,20 +77,20 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
                         ),
                       )
                     ],
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(25.0),
                       bottomRight: Radius.circular(25.0),
                       topLeft: Radius.circular(25.0),
                       topRight: Radius.circular(25.0),
                     ),
                   ),
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 0.0, 12.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -102,7 +100,7 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
                               width: 50.0,
                               height: 50.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.asset(
@@ -111,7 +109,7 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -136,13 +134,13 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
                       ),
                       Container(
                         width: double.infinity,
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           minHeight: 100.0,
                         ),
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(25.0),
                             bottomRight: Radius.circular(25.0),
                             topLeft: Radius.circular(0.0),
@@ -153,7 +151,7 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 10.0),
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
@@ -186,7 +184,7 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 10.0, 5.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -204,8 +202,8 @@ class _CovertToOrginalWidgetState extends State<CovertToOrginalWidget> {
                                             ),
                                       ),
                                     ]
-                                        .addToStart(SizedBox(width: 4.0))
-                                        .addToEnd(SizedBox(width: 4.0)),
+                                        .addToStart(const SizedBox(width: 4.0))
+                                        .addToEnd(const SizedBox(width: 4.0)),
                                   ),
                                 ),
                               ],

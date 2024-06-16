@@ -5,10 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'primary_language_model.dart';
 export 'primary_language_model.dart';
 
@@ -44,18 +41,18 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'l4o57wmo' /* Choose your first languge */,
@@ -73,7 +70,7 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 28.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 28.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +166,7 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
                   context.pushNamed(
                     'SecondaryLangSelect',
                     extra: <String, dynamic>{
-                      kTransitionInfoKey: TransitionInfo(
+                      kTransitionInfoKey: const TransitionInfo(
                         hasTransition: true,
                         transitionType: PageTransitionType.bottomToTop,
                       ),
@@ -182,16 +179,16 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
                 text: FFLocalizations.of(context).getText(
                   '823b9wm1' /* Next */,
                 ),
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_forward,
                   size: 15.0,
                 ),
                 options: FFButtonOptions(
                   width: MediaQuery.sizeOf(context).width * 0.75,
                   height: 45.0,
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
@@ -199,7 +196,7 @@ class _PrimaryLanguageWidgetState extends State<PrimaryLanguageWidget> {
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w800,
                       ),
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

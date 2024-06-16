@@ -14,12 +14,8 @@ import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/permissions_util.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 import 'package:record/record.dart';
 import 'chat_component_model.dart';
 export 'chat_component_model.dart';
@@ -68,7 +64,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
     return Container(
       width: double.infinity,
       height: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [Color(0xFF43C6AC), Color(0xFFF8FFAE)],
           stops: [0.0, 1.0],
@@ -90,26 +86,28 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                     )
                     .orderBy('timestamp', descending: true),
                 limit: 200,
-              )..listen((snapshot) async {
+              )..listen((snapshot) {
                   List<ChatMessagesRecord> listViewChatMessagesRecordList =
                       snapshot;
                   if (_model.listViewPreviousSnapshot != null &&
                       !const ListEquality(ChatMessagesRecordDocumentEquality())
                           .equals(listViewChatMessagesRecordList,
                               _model.listViewPreviousSnapshot)) {
-                    if (!widget.chatRef!.lastMessageSeenBy
-                        .contains(currentUserReference)) {
-                      await widget.chatRef!.reference.update({
-                        ...mapToFirestore(
-                          {
-                            'last_message_seen_by':
-                                FieldValue.arrayUnion([currentUserReference]),
-                          },
-                        ),
-                      });
-                    }
+                    () async {
+                      if (!widget.chatRef!.lastMessageSeenBy
+                          .contains(currentUserReference)) {
+                        await widget.chatRef!.reference.update({
+                          ...mapToFirestore(
+                            {
+                              'last_message_seen_by':
+                                  FieldValue.arrayUnion([currentUserReference]),
+                            },
+                          ),
+                        });
+                      }
 
-                    setState(() {});
+                      setState(() {});
+                    }();
                   }
                   _model.listViewPreviousSnapshot = snapshot;
                 }),
@@ -118,7 +116,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                 if (!snapshot.hasData) {
                   return Center(
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: SizedBox(
                         width: 50.0,
                         height: 50.0,
@@ -145,7 +143,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                   );
                 }
                 return ListView.builder(
-                  padding: EdgeInsets.fromLTRB(
+                  padding: const EdgeInsets.fromLTRB(
                     0,
                     12.0,
                     0,
@@ -158,7 +156,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                     final listViewChatMessagesRecord =
                         listViewChatMessagesRecordList[listViewIndex];
                     return Container(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: wrapWithModel(
                         model: _model.chatUpdateModels.getModel(
                           listViewChatMessagesRecord.reference.id,
@@ -183,7 +181,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
             width: double.infinity,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   blurRadius: 3.0,
                   color: Color(0x33000000),
@@ -199,14 +197,13 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
               children: [
                 Stack(
                   children: [
-                    if (_model.uploadedFileUrl != null &&
-                        _model.uploadedFileUrl != '')
+                    if (_model.uploadedFileUrl != '')
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
@@ -221,9 +218,9 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                             BorderRadius.circular(8.0),
                                         child: CachedNetworkImage(
                                           fadeInDuration:
-                                              Duration(milliseconds: 500),
+                                              const Duration(milliseconds: 500),
                                           fadeOutDuration:
-                                              Duration(milliseconds: 500),
+                                              const Duration(milliseconds: 500),
                                           imageUrl: path,
                                           width: 120.0,
                                           height: 100.0,
@@ -243,7 +240,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
+                                          const AlignmentDirectional(-1.0, -1.0),
                                       child: FlutterFlowIconButton(
                                         borderColor:
                                             FlutterFlowTheme.of(context).error,
@@ -271,9 +268,9 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                       ),
                                     ),
                                   ]
-                                      .divide(SizedBox(width: 8.0))
-                                      .addToStart(SizedBox(width: 16.0))
-                                      .addToEnd(SizedBox(width: 16.0)),
+                                      .divide(const SizedBox(width: 8.0))
+                                      .addToStart(const SizedBox(width: 16.0))
+                                      .addToEnd(const SizedBox(width: 16.0)),
                                 ),
                               ),
                             ),
@@ -286,7 +283,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -294,7 +291,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    alignment: const AlignmentDirectional(-1.0, -1.0),
                                     child: FlutterFlowIconButton(
                                       borderColor:
                                           FlutterFlowTheme.of(context).error,
@@ -321,9 +318,8 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                           },
                                         );
 
-                                        setState(() {
-                                          _model.audioRecord = false;
-                                        });
+                                        _model.audioRecord = false;
+                                        setState(() {});
                                         _model.timerController.onResetTimer();
 
                                         _model.timerController.onStopTimer();
@@ -333,7 +329,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    alignment: const AlignmentDirectional(-1.0, -1.0),
                                     child: FlutterFlowIconButton(
                                       borderColor:
                                           FlutterFlowTheme.of(context).error,
@@ -427,9 +423,8 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                           _model.uploadedFileUrl = '';
                                         });
 
-                                        setState(() {
-                                          _model.imagesUploaded = [];
-                                        });
+                                        _model.imagesUploaded = [];
+                                        setState(() {});
 
                                         setState(() {});
                                       },
@@ -439,7 +434,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 20.0, 0.0),
                                         child: Lottie.asset(
                                           'assets/lottie_animations/voice_anime.json',
@@ -450,7 +445,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                         ),
                                       ),
                                       FlutterFlowTimer(
-                                        initialTime: _model.timerMilliseconds,
+                                        initialTime: _model.timerInitialTimeMs,
                                         getDisplayTime: (value) =>
                                             StopWatchTimer.getDisplayTime(
                                           value,
@@ -459,7 +454,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                         ),
                                         controller: _model.timerController,
                                         updateStateInterval:
-                                            Duration(milliseconds: 100),
+                                            const Duration(milliseconds: 100),
                                         onChanged:
                                             (value, displayTime, shouldUpdate) {
                                           _model.timerMilliseconds = value;
@@ -488,10 +483,10 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                   key: _model.formKey,
                   autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
-                    padding: EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: FutureBuilder<UsersRecord>(
                       future: UsersRecord.getDocumentOnce(
-                          (widget.chatRef?.users?[1]) == currentUserReference
+                          (widget.chatRef?.users[1]) == currentUserReference
                               ? widget.chatRef!.userA!
                               : widget.chatRef!.userB!),
                       builder: (context, snapshot) {
@@ -516,7 +511,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 4.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor:
@@ -606,12 +601,10 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                     }
                                   }
 
-                                  if (_model.uploadedFileUrl != null &&
-                                      _model.uploadedFileUrl != '') {
-                                    setState(() {
-                                      _model.addToImagesUploaded(
-                                          _model.uploadedFileUrl);
-                                    });
+                                  if (_model.uploadedFileUrl != '') {
+                                    _model.addToImagesUploaded(
+                                        _model.uploadedFileUrl);
+                                    setState(() {});
                                   }
                                 },
                               ),
@@ -633,9 +626,8 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                 ),
                                 onPressed: () async {
                                   await requestPermission(microphonePermission);
-                                  setState(() {
-                                    _model.audioRecord = true;
-                                  });
+                                  _model.audioRecord = true;
+                                  setState(() {});
                                   _model.timerController.onStartTimer();
                                   await startAudioRecording(
                                     context,
@@ -649,9 +641,9 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                 children: [
                                   if (!_model.audioRecord)
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
-                                      child: Container(
+                                      child: SizedBox(
                                         width: double.infinity,
                                         child: TextFormField(
                                           controller: _model.textController,
@@ -733,9 +725,8 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                               _model.uploadedFileUrl = '';
                                             });
 
-                                            setState(() {
-                                              _model.imagesUploaded = [];
-                                            });
+                                            _model.imagesUploaded = [];
+                                            setState(() {});
 
                                             setState(() {});
                                           },
@@ -818,7 +809,7 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                   BorderRadius.circular(24.0),
                                             ),
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 56.0, 16.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -838,9 +829,9 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                       ),
                                     ),
                                   Align(
-                                    alignment: AlignmentDirectional(1.0, 0.0),
+                                    alignment: const AlignmentDirectional(1.0, 0.0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 6.0, 4.0),
                                       child: FlutterFlowIconButton(
                                         borderColor:
@@ -868,8 +859,12 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                     .validate()) {
                                               return;
                                             }
-                                            await TranslationGroup.languagesCall
-                                                .call();
+                                            _model.langD =
+                                                await TranslationGroup
+                                                    .detectsCall
+                                                    .call(
+                                              q: _model.textController.text,
+                                            );
                                             _model.translte1 =
                                                 await TranslationGroup
                                                     .translatesCall
@@ -879,7 +874,50 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                   currentUserDocument
                                                       ?.primaryLang,
                                                   ''),
-                                              source: 'en',
+                                              source: () {
+                                                if (TranslationGroup.detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'hi') {
+                                                  return 'hi';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'pa') {
+                                                  return 'pa';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'te') {
+                                                  return 'te';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'ba') {
+                                                  return 'ba';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'ta') {
+                                                  return 'ta';
+                                                } else {
+                                                  return 'en';
+                                                }
+                                              }(),
                                             );
                                             _model.translate2 =
                                                 await TranslationGroup
@@ -888,7 +926,50 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                               q: _model.textController.text,
                                               target:
                                                   rowUsersRecord.primaryLang,
-                                              source: 'en',
+                                              source: () {
+                                                if (TranslationGroup.detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'hi') {
+                                                  return 'hi';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'pa') {
+                                                  return 'pa';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'te') {
+                                                  return 'te';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'ba') {
+                                                  return 'ba';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'ta') {
+                                                  return 'ta';
+                                                } else {
+                                                  return 'en';
+                                                }
+                                              }(),
                                             );
                                             _model.translate3 =
                                                 await TranslationGroup
@@ -897,7 +978,50 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                               q: _model.textController.text,
                                               target:
                                                   rowUsersRecord.secondaryLang,
-                                              source: 'en',
+                                              source: () {
+                                                if (TranslationGroup.detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'hi') {
+                                                  return 'hi';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'pa') {
+                                                  return 'pa';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'te') {
+                                                  return 'te';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'ba') {
+                                                  return 'ba';
+                                                } else if (TranslationGroup
+                                                        .detectsCall
+                                                        .datadetectionslanguage(
+                                                      (_model.langD?.jsonBody ??
+                                                          ''),
+                                                    ) ==
+                                                    'ta') {
+                                                  return 'ta';
+                                                } else {
+                                                  return 'en';
+                                                }
+                                              }(),
                                             );
                                             // newChatMessage
 
@@ -910,11 +1034,17 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                   user: currentUserReference,
                                                   chat:
                                                       widget.chatRef?.reference,
-                                                  text: valueOrDefault(
+                                                  text: TranslationGroup
+                                                              .detectsCall
+                                                              .datadetectionslanguage(
+                                                            (_model.langD
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          ) ==
+                                                          valueOrDefault(
                                                               currentUserDocument
                                                                   ?.primaryLang,
-                                                              '') ==
-                                                          'en'
+                                                              '')
                                                       ? _model
                                                           .textController.text
                                                       : TranslationGroup
@@ -927,9 +1057,15 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                   timestamp:
                                                       getCurrentTimestamp,
                                                   image: _model.uploadedFileUrl,
-                                                  text2: rowUsersRecord
-                                                              .primaryLang ==
-                                                          'en'
+                                                  text2: TranslationGroup
+                                                              .detectsCall
+                                                              .datadetectionslanguage(
+                                                            (_model.langD
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          ) ==
+                                                          rowUsersRecord
+                                                              .primaryLang
                                                       ? _model
                                                           .textController.text
                                                       : TranslationGroup
@@ -940,9 +1076,15 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                               ''),
                                                         ),
                                                   type: 'txt',
-                                                  text3: rowUsersRecord
-                                                              .secondaryLang ==
-                                                          'en'
+                                                  text3: TranslationGroup
+                                                              .detectsCall
+                                                              .datadetectionslanguage(
+                                                            (_model.langD
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          ) ==
+                                                          rowUsersRecord
+                                                              .secondaryLang
                                                       ? _model
                                                           .textController.text
                                                       : TranslationGroup
@@ -960,11 +1102,17 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                           currentUserReference,
                                                       chat: widget
                                                           .chatRef?.reference,
-                                                      text: valueOrDefault(
+                                                      text: TranslationGroup
+                                                                  .detectsCall
+                                                                  .datadetectionslanguage(
+                                                                (_model.langD
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ) ==
+                                                              valueOrDefault(
                                                                   currentUserDocument
                                                                       ?.primaryLang,
-                                                                  '') ==
-                                                              'en'
+                                                                  '')
                                                           ? _model
                                                               .textController
                                                               .text
@@ -979,9 +1127,15 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                           getCurrentTimestamp,
                                                       image: _model
                                                           .uploadedFileUrl,
-                                                      text2: rowUsersRecord
-                                                                  .primaryLang ==
-                                                              'en'
+                                                      text2: TranslationGroup
+                                                                  .detectsCall
+                                                                  .datadetectionslanguage(
+                                                                (_model.langD
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ) ==
+                                                              rowUsersRecord
+                                                                  .primaryLang
                                                           ? _model
                                                               .textController
                                                               .text
@@ -993,9 +1147,15 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                                                   ''),
                                                             ),
                                                       type: 'txt',
-                                                      text3: rowUsersRecord
-                                                                  .secondaryLang ==
-                                                              'en'
+                                                      text3: TranslationGroup
+                                                                  .detectsCall
+                                                                  .datadetectionslanguage(
+                                                                (_model.langD
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ) ==
+                                                              rowUsersRecord
+                                                                  .secondaryLang
                                                           ? _model
                                                               .textController
                                                               .text
@@ -1082,9 +1242,8 @@ class _ChatComponentWidgetState extends State<ChatComponentWidget> {
                                               _model.uploadedFileUrl = '';
                                             });
 
-                                            setState(() {
-                                              _model.imagesUploaded = [];
-                                            });
+                                            _model.imagesUploaded = [];
+                                            setState(() {});
                                           } finally {
                                             await firestoreBatch.commit();
                                           }

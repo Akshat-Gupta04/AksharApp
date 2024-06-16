@@ -6,8 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'akshar_ai_i_n_t_r_o_model.dart';
 export 'akshar_ai_i_n_t_r_o_model.dart';
 
@@ -43,25 +42,25 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xB20B191E),
         ),
         child: Align(
-          alignment: AlignmentDirectional(0.0, 1.0),
+          alignment: const AlignmentDirectional(0.0, 1.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
+                  alignment: const AlignmentDirectional(1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 16.0),
                     child: FlutterFlowIconButton(
                       borderColor: Colors.transparent,
                       borderRadius: 30.0,
@@ -82,7 +81,7 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                 Material(
                   color: Colors.transparent,
                   elevation: 5.0,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
@@ -94,7 +93,7 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(16.0),
@@ -106,14 +105,14 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -130,7 +129,7 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 16.0, 0.0),
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.dropDownValueController ??=
@@ -155,10 +154,13 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                                           enableDrag: false,
                                           context: context,
                                           builder: (context) {
-                                            return Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: GenerateTextWidget(),
+                                            return WebViewAware(
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: const GenerateTextWidget(),
+                                              ),
                                             );
                                           },
                                         ).then((value) => safeSetState(() {}));
@@ -170,10 +172,13 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                                           enableDrag: false,
                                           context: context,
                                           builder: (context) {
-                                            return Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: GenerateImageWidget(),
+                                            return WebViewAware(
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: const GenerateImageWidget(),
+                                              ),
                                             );
                                           },
                                         ).then((value) => safeSetState(() {}));
@@ -200,10 +205,10 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                                   fillColor:
                                       FlutterFlowTheme.of(context).alternate,
                                   elevation: 2.0,
-                                  borderColor: Color(0xFFE0E3E7),
+                                  borderColor: const Color(0xFFE0E3E7),
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                  margin: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 4.0, 12.0, 4.0),
                                   hidesUnderline: true,
                                   isOverButton: false,
@@ -214,7 +219,7 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                             ],
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           height: 4.0,
                           thickness: 1.0,
                           color: Color(0xFFE0E3E7),
@@ -226,7 +231,7 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                                 .secondaryBackground,
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 6.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
@@ -243,7 +248,7 @@ class _AksharAiINTROWidgetState extends State<AksharAiINTROWidget> {
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           height: 4.0,
                           thickness: 1.0,
                           color: Color(0xFFE0E3E7),

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 const kPermissionStateToBool = {
@@ -9,9 +8,9 @@ const kPermissionStateToBool = {
   PermissionStatus.permanentlyDenied: false,
 };
 
-final cameraPermission = Permission.camera;
-final microphonePermission = Permission.microphone;
-final photoLibraryPermission = Permission.photos;
+const cameraPermission = Permission.camera;
+const microphonePermission = Permission.microphone;
+const photoLibraryPermission = Permission.photos;
 
 Future<bool> getPermissionStatus(Permission setting) async {
   final status = await setting.status;

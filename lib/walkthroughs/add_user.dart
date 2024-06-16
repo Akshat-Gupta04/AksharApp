@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '/akshar_pages/tut/tut_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 // Focus widget keys for this walkthrough
 final row0l5lxgqn = GlobalKey();
@@ -23,7 +21,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.bottom,
-            builder: (context, __) => TutWidget(
+            builder: (context, __) => const TutWidget(
               question: 'How to add Users?',
               explain: 'choose from the available users to create a chat ',
             ),
@@ -41,7 +39,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => TutWidget(
+            builder: (context, __) => const TutWidget(
               question: 'How to add Users?',
               explain: 'Click here to conferm',
             ),

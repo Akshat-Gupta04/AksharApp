@@ -2,7 +2,8 @@
 export '/akshar_pages/home_page/home_page_widget.dart' show HomePageWidget;
 export '/akshar_pages/recent_user/recent_user_widget.dart'
     show RecentUserWidget;
-export '/extra_components/chats/chats_widget.dart' show ChatsWidget;
+export '/akshar_pages/extra_components/chats/chats_widget.dart'
+    show ChatsWidget;
 export '/akshar_pages/setting/setting_widget.dart' show SettingWidget;
 export '/akshar_pages/animtion/animtion_widget.dart' show AnimtionWidget;
 export '/akshar_pages/login/login_widget.dart' show LoginWidget;
@@ -22,7 +23,10 @@ export '/akshar_pages/user_information/user_information_widget.dart'
 export '/akshar_pages/chat_add_user/chat_add_user_widget.dart'
     show ChatAddUserWidget;
 export '/akshar_pages/profile/profile_widget.dart' show ProfileWidget;
-export '/notifications/notifications_list/notifications_list_widget.dart'
+export '/akshar_pages/notifications_list/notifications_list_widget.dart'
     show NotificationsListWidget;
-export '/notifications/notification_create/notification_create_widget.dart'
+export '/akshar_pages/notification_create/notification_create_widget.dart'
     show NotificationCreateWidget;
+export '/akshar_pages/about_akshar/about_akshar_widget.dart'
+    show AboutAksharWidget;
+export '/voice_assistant/voice_assistant_widget.dart' show VoiceAssistantWidget;

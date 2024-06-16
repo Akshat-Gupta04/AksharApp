@@ -1,20 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -74,31 +68,29 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
-    GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? entryPage ?? StartAnimationWidget()
-          : AnimtionWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? const StartAnimationWidget() : const AnimtionWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? entryPage ?? StartAnimationWidget()
-              : AnimtionWidget(),
+              ? const StartAnimationWidget()
+              : const AnimtionWidget(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: 'RecentUser',
           path: '/recentUser',
-          builder: (context, params) => RecentUserWidget(),
+          builder: (context, params) => const RecentUserWidget(),
         ),
         FFRoute(
           name: 'chats',
@@ -115,14 +107,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
             chatUser: params.getParam(
               'chatUser',
               ParamType.DocumentReference,
-              false,
-              ['chats'],
+              isList: false,
+              collectionNamePath: ['chats'],
             ),
             userRef: params.getParam(
               'userRef',
               ParamType.DocumentReference,
-              false,
-              ['users'],
+              isList: false,
+              collectionNamePath: ['users'],
             ),
             userProfile: params.getParam(
               'userProfile',
@@ -133,27 +125,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
         FFRoute(
           name: 'Setting',
           path: '/setting',
-          builder: (context, params) => SettingWidget(),
+          builder: (context, params) => const SettingWidget(),
         ),
         FFRoute(
           name: 'animtion',
           path: '/animtion',
-          builder: (context, params) => AnimtionWidget(),
+          builder: (context, params) => const AnimtionWidget(),
         ),
         FFRoute(
           name: 'login',
           path: '/login',
-          builder: (context, params) => LoginWidget(),
+          builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
           name: 'Register',
           path: '/register',
-          builder: (context, params) => RegisterWidget(),
+          builder: (context, params) => const RegisterWidget(),
         ),
         FFRoute(
           name: 'start_Animation',
           path: '/startAnimation',
-          builder: (context, params) => StartAnimationWidget(),
+          builder: (context, params) => const StartAnimationWidget(),
         ),
         FFRoute(
           name: 'chat_interface',
@@ -185,17 +177,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
         FFRoute(
           name: 'PrimaryLangSelect',
           path: '/primaryLangSelect',
-          builder: (context, params) => PrimaryLangSelectWidget(),
+          builder: (context, params) => const PrimaryLangSelectWidget(),
         ),
         FFRoute(
           name: 'SecondaryLangSelect',
           path: '/secondaryLangSelect',
-          builder: (context, params) => SecondaryLangSelectWidget(),
+          builder: (context, params) => const SecondaryLangSelectWidget(),
         ),
         FFRoute(
           name: 'UserInformation',
           path: '/userInformation',
-          builder: (context, params) => UserInformationWidget(),
+          builder: (context, params) => const UserInformationWidget(),
         ),
         FFRoute(
           name: 'chat_AddUser',
@@ -237,17 +229,35 @@ GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
               'about',
               ParamType.String,
             ),
+            primaryLan: params.getParam(
+              'primaryLan',
+              ParamType.String,
+            ),
+            secondLan: params.getParam(
+              'secondLan',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
           name: 'notifications_List',
           path: '/notificationsList',
-          builder: (context, params) => NotificationsListWidget(),
+          builder: (context, params) => const NotificationsListWidget(),
         ),
         FFRoute(
           name: 'notification_Create',
           path: '/notificationCreate',
-          builder: (context, params) => NotificationCreateWidget(),
+          builder: (context, params) => const NotificationCreateWidget(),
+        ),
+        FFRoute(
+          name: 'about_Akshar',
+          path: '/aboutAkshar',
+          builder: (context, params) => const AboutAksharWidget(),
+        ),
+        FFRoute(
+          name: 'voice_Assistant',
+          path: '/voiceAssistant',
+          builder: (context, params) => const VoiceAssistantWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
@@ -344,7 +354,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -365,10 +375,10 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -486,7 +496,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
@@ -507,4 +517,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

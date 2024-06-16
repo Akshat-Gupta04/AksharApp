@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '/akshar_pages/tut/tut_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 // Focus widget keys for this walkthrough
 final columnXcznc8c7 = GlobalKey();
@@ -25,7 +23,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => TutWidget(
+            builder: (context, __) => const TutWidget(
               question: 'Do u want to connect with Community?',
               explain: 'click here to connect and asign task to users',
             ),
@@ -43,7 +41,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => TutWidget(
+            builder: (context, __) => const TutWidget(
               question: 'How to use AksharAI?',
               explain: 'Click on this Button to access our AI',
             ),
@@ -61,7 +59,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => TutWidget(
+            builder: (context, __) => const TutWidget(
               question: 'How to Start a new Chat?',
               explain: 'Click on this button to create a new chat',
             ),
@@ -79,7 +77,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.bottom,
-            builder: (context, __) => TutWidget(
+            builder: (context, __) => const TutWidget(
               question: 'How to update user information? ',
               explain: 'Click here to update your details ',
             ),
